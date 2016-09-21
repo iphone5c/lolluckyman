@@ -13,14 +13,8 @@ Ext.Loader.setConfig({
 Ext.application({
     name: 'LLManBackApp',
     launch: function () {
-        Ext.window.Window.prototype.constrainHeader = true;
         Ext['appContext'] = Ext.create('LLManBack.utils.AppContext');
         Ext['exUtils'] = Ext.create('LLManBack.utils.ExUtils');
-        //Ext['linkButton'] = Ext.create('YCBack.utils.LinkButton');
-        Ext.setGlyphFontFamily('FontAwesome');
-        /*
-         * 启动主界面
-         */
         Ext.create('LLManBack.init.Application', {
             renderTo: Ext.getBody()
         });

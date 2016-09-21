@@ -6,6 +6,8 @@
 
 out/
 
+classes/
+
 *.iml
 
 target/
