@@ -36,17 +36,30 @@ public class CodeBuilder implements ICodeBuilder{
             result += LolConvert.toInt(LolConvert.charToString(builder.charAt(i)));
         return result % 10;
     }
-    
+
     /**
-     * 获取一个新的用户编码(规则：年月日时分秒+4位序列号)
+     * 获取一个新的管理员编码(规则：年月日时分秒+4位序列号)
      *
-     * @return 新的用户编码
+     * @return 新的管理员编码
      */
     @Override
-    public String getUserCode() {
+    public String getAdminCode() {
         StringBuilder builder = new StringBuilder();
         builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
         builder.append(seriaNumService.getNewSerialNumByString(ECodeType.USER_CODE.name(),4));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的系统参数配置编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的系统参数配置编码
+     */
+    @Override
+    public String getSystemParamsCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.SYSTEMPARAMS_CODE.name(),4));
         return builder.toString();
     }
 }

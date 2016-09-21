@@ -15,8 +15,8 @@ Ext.define('LLManBack.init.menuPanel', {
                 expanded: true,
                 children: [
                     { text: "系统管理", expanded: true, children: [
-                        { text: "管理员",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },
-                        { text: "系统参数配置",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true}
+                        { text: "管理员",module:'LLManBack.business.admin.adminList', leaf: true },
+                        { text: "系统参数配置",module:'LLManBack.business.systemparams.systemParamsList', leaf: true}
                     ] },
                     { text: "账户管理", expanded: false, children: [
                         { text: "玩家账户管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },

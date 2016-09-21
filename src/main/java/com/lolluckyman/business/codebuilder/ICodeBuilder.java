@@ -5,9 +5,16 @@ package com.lolluckyman.business.codebuilder;
  */
 public interface ICodeBuilder {
     /**
-     * 获取一个新的用户编码(规则：年月日时分秒+4位序列号)
+     * 获取一个新的管理员编码(规则：年月日时分秒+4位序列号)
      *
-     * @return 新的用户编码
+     * @return 新的管理员编码
      */
-    String getUserCode();
+    String getAdminCode();
+
+    /**
+     * 获取一个新的系统参数配置编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的系统参数配置编码
+     */
+    String getSystemParamsCode();
 }

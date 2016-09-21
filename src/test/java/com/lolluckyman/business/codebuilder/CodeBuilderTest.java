@@ -15,6 +15,6 @@ public class CodeBuilderTest {
 
     @Test
     public void testGetUserCode() throws Exception {
-        System.out.println(codeBuilder.getUserCode());
+
     }
 }
