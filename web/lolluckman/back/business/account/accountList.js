@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('LLManBack.business.admin.adminList',{
+Ext.define('LLManBack.business.account.accountList',{
     extend: 'Ext.grid.Panel',
     // ====入口参数定义===================================================================
     /**
@@ -10,11 +10,12 @@ Ext.define('LLManBack.business.admin.adminList',{
     config: {},
 
     // ====基类属性重写、属性定义==========================================================
-    title: '管理员列表',
+    title: '账户列表',
     frame: false,
     border: false,
     header: false,
     columnLines:true,
+    autoScroll:true,
 
     // ====初始化定义==========================================================
     initComponent: function () {
@@ -79,9 +80,16 @@ Ext.define('LLManBack.business.admin.adminList',{
             },
             columns: [
                 { header: '编号',  dataIndex: 'code',width:153 },
-                { header: '登录名', dataIndex: 'loginName',width:120 },
-                { header: '登陆密码', dataIndex: 'password',width:360 },
-                { header: '创建时间', dataIndex: 'createTime',width:140 },
+                { header: '会员账号', dataIndex: 'loginAccount',width:120 },
+                { header: '真实姓名', dataIndex: 'realName',width:120 },
+                { header: '联系电话', dataIndex: 'phone',width:120 },
+                { header: 'E-mail', dataIndex: 'email',width:120 },
+                { header: 'QQ', dataIndex: 'qq',width:360 },
+                { header: '密码问题', dataIndex: 'problem',width:360 },
+                { header: '密码答案', dataIndex: 'passwordAnswer',width:360 },
+                { header: '账户状态', dataIndex: 'accountStatus',width:360 },
+                { header: '注册时间', dataIndex: 'createTime',width:140 },
+                { header: '描述', dataIndex: 'desc',width:360 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -114,11 +122,22 @@ Ext.define('LLManBack.business.admin.adminList',{
 
     createStore:function(){
         var store=Ext.create('Ext.data.Store', {
+            fields:[
+                {name: 'code', mapping: 'account.code'},
+                {name: 'loginAccount', mapping: 'account.loginAccount'},
+                {name: 'realName', mapping: 'account.realName'},
+                {name: 'phone', mapping: 'account.phone'},
+                {name: 'email', mapping: 'account.email'},
+                {name: 'qq', mapping: 'account.qq'},
+                {name: 'problem', mapping: 'problem'},
+                {name: 'passwordAnswer', mapping: 'account.passwordAnswer'},
+                {name: 'accountStatus', mapping: 'account.accountStatus'},
+                {name: 'desc', mapping: 'account.desc'}
+            ],
             autoLoad: true,
             pageSize:20,
-            fields: [],
             proxy: {
-                url: '/back/admin/getAdminPageList',
+                url: '/back/account/getAccountPageList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {

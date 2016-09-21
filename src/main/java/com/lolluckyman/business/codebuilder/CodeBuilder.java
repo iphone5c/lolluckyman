@@ -62,4 +62,17 @@ public class CodeBuilder implements ICodeBuilder{
         builder.append(seriaNumService.getNewSerialNumByString(ECodeType.SYSTEMPARAMS_CODE.name(),4));
         return builder.toString();
     }
+
+    /**
+     * 获取一个新的账户资产编码(规则：年月日时分秒+6位序列号)
+     *
+     * @return 新的账户资产编码
+     */
+    @Override
+    public String getAccountAssetsCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.ACCOUNTASSETS_CODE.name(),6));
+        return builder.toString();
+    }
 }

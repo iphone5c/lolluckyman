@@ -17,4 +17,11 @@ public interface ICodeBuilder {
      * @return 新的系统参数配置编码
      */
     String getSystemParamsCode();
+
+    /**
+     * 获取一个新的账户资产编码(规则：年月日时分秒+6位序列号)
+     *
+     * @return 新的账户资产编码
+     */
+    String getAccountAssetsCode();
 }

@@ -12,4 +12,8 @@ public enum ECodeType {
      * 系统参数编码
      */
     SYSTEMPARAMS_CODE,
+    /**
+     * 账户资产编码
+     */
+    ACCOUNTASSETS_CODE,
 }
