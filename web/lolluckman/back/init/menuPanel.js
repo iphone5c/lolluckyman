@@ -23,7 +23,7 @@ Ext.define('LLManBack.init.menuPanel', {
                         { text: "账户资产管理",module:'LLManBack.business.accountassets.accountAssetsList', leaf: true}
                     ] },
                     { text: "奖品管理", expanded: false, children: [
-                        { text: "奖品管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true }
+                        { text: "奖品管理",module:'LLManBack.business.prize.prizeList', leaf: true }
                     ] },
                     { text: "业务管理", expanded: false, children: [
                         { text: "充值管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },

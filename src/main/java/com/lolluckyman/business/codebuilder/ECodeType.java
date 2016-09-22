@@ -16,4 +16,8 @@ public enum ECodeType {
      * 账户资产编码
      */
     ACCOUNTASSETS_CODE,
+    /**
+     * 奖品编码
+     */
+    PRIZE_CODE,
 }

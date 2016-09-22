@@ -24,4 +24,11 @@ public interface ICodeBuilder {
      * @return 新的账户资产编码
      */
     String getAccountAssetsCode();
+
+    /**
+     * 获取一个新的奖品编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的奖品编码
+     */
+    String getPrizeCode();
 }
