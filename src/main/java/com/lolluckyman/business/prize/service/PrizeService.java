@@ -100,6 +100,8 @@ public class PrizeService extends BaseService implements IPrizeService {
     public Boolean deletePrize(String code) {
         if (LolUtils.isEmptyOrNull(code))
             throw new IllegalArgumentException("删除指定奖品时，奖品主键不能为空");
+        if (prizeDao.getObject(code,true)==null)
+            return true;
         int info = prizeDao.deleteObject(code);
         return info>0?true:false;
     }

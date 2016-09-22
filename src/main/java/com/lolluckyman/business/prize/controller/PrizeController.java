@@ -98,6 +98,9 @@ public class PrizeController extends BaseController {
             return validationResult(1001,"修改奖品信息时，奖品名不能为空或null");
         if (prize.getPrizeType()==null)
             return validationResult(1001,"修改奖品信息时，奖品类型不能为空或null");
+        updatePrize.setPrizeName(prize.getPrizeName());
+        updatePrize.setPrizeType(prize.getPrizeType());
+        updatePrize.setDescription(prize.getDescription());
         Prize temp=prizeService.updatePrize(updatePrize);
         if (temp==null){
             return validationResult(1001,"修改失败");

@@ -20,4 +20,12 @@ public enum ECodeType {
      * 奖品编码
      */
     PRIZE_CODE,
+    /**
+     * 战队编码
+     */
+    TEAM_CODE,
+    /**
+     * 战队成员编码
+     */
+    TEAMPLAYER_CODE,
 }

@@ -31,4 +31,18 @@ public interface ICodeBuilder {
      * @return 新的奖品编码
      */
     String getPrizeCode();
+
+    /**
+     * 获取一个新的战队编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的战队编码
+     */
+    String getTeamCode();
+
+    /**
+     * 获取一个新的战队成员编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的战队成员编码
+     */
+    String getTeamPlayerCode();
 }

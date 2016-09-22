@@ -115,7 +115,7 @@
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="Gyd2zi0AM0WUyRbKPsTWUQAA">
-<XPD:ATTR name="Name" type="string">desc</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">description</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">队员简介</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>

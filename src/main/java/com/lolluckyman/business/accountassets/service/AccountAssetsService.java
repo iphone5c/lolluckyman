@@ -4,9 +4,6 @@ import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.account.service.IAccountService;
 import com.lolluckyman.business.accountassets.dao.IAccountAssetsDao;
 import com.lolluckyman.business.accountassets.entity.AccountAssets;
-import com.lolluckyman.business.admin.dao.IAdminDao;
-import com.lolluckyman.business.admin.entity.Admin;
-import com.lolluckyman.business.admin.service.IAdminService;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
@@ -17,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -105,10 +101,9 @@ public class AccountAssetsService extends BaseService implements IAccountAssetsS
         if (LolUtils.isEmptyOrNull(accountCode))
             throw new IllegalArgumentException("根据账户code删除账户资产信息，accountCode不能为空");
         AccountAssets accountAssets=this.getAccountAssetsByAccountCode(accountCode);
-        if (accountAssets!=null){
-            int info=accountAssetsDao.deleteObject(accountAssets.getCode());
-            return info>0?true:false;
-        }
-        return true;
+        if (accountAssets==null)
+            return true;
+        int info=accountAssetsDao.deleteObject(accountAssets.getCode());
+        return info>0?true:false;
     }
 }

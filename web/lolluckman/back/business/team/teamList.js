@@ -1,7 +1,7 @@
 /**
- * Created by Administrator on 2016/2/26.
+ * Created by Teamistrator on 2016/2/26.
  */
-Ext.define('LLManBack.business.accountassets.accountAssetsList',{
+Ext.define('LLManBack.business.team.teamList',{
     extend: 'Ext.grid.Panel',
     // ====入口参数定义===================================================================
     /**
@@ -10,12 +10,11 @@ Ext.define('LLManBack.business.accountassets.accountAssetsList',{
     config: {},
 
     // ====基类属性重写、属性定义==========================================================
-    title: '账户资产列表',
+    title: '战队列表',
     frame: false,
     border: false,
     header: false,
     columnLines:true,
-    autoScroll:true,
 
     // ====初始化定义==========================================================
     initComponent: function () {
@@ -33,21 +32,40 @@ Ext.define('LLManBack.business.accountassets.accountAssetsList',{
                     {
                         xtype: 'button', text: '新增',  scope: me,
                         handler: function () {
+                            me.showDetailWin();
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '修改',  scope: me,
+                        handler: function () {
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.showDetailWin(list[0].data.code);
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '删除',  scope: me,
+                        handler: function () {
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.deleteTeam(list[0].data.code);
                         }
                     }
                 ]
             },
             columns: [
-                { header: '会员账号', dataIndex: 'loginAccount',width:120 },
-                { header: '真实姓名', dataIndex: 'realName',width:120 },
-                { header: '联系电话', dataIndex: 'phone',width:120 },
-                { header: '账户状态', dataIndex: 'accountStatus',width:360 },
-                { header: '可用竞猜币', dataIndex: 'quizMoney',width:120 },
-                { header: '可用抚恤金', dataIndex: 'pensionMoney',width:120 },
-                { header: '可用胜利币', dataIndex: 'victoryMoney',width:120 },
-                { header: '冻结竞猜币', dataIndex: 'freezeQuizMoney',width:120 },
-                { header: '冻结抚恤金', dataIndex: 'freezePensionMoney',width:120 },
-                { header: '冻结胜利币', dataIndex: 'freezeVictoryMoney',width:120 },
+                { header: '编号',  dataIndex: 'code',width:153 },
+                { header: '中文名字', dataIndex: 'chinaName',width:120 },
+                { header: '外文名字', dataIndex: 'englishName',width:360 },
+                { header: '战队教练', dataIndex: 'teamTeacher',width:360 },
+                { header: '战队网站', dataIndex: 'teamWeb',width:360 },
+                { header: '建队时间', dataIndex: 'createTeamTime',width:360 },
+                { header: '战队简介', dataIndex: 'description',width:360 },
+                { header: '创建时间', dataIndex: 'createTime',width:140 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -80,23 +98,11 @@ Ext.define('LLManBack.business.accountassets.accountAssetsList',{
 
     createStore:function(){
         var store=Ext.create('Ext.data.Store', {
-            fields:[
-                {name: 'code', mapping: 'accountAssets.code'},
-                {name: 'loginAccount', mapping: 'account.loginAccount'},
-                {name: 'realName', mapping: 'account.realName'},
-                {name: 'phone', mapping: 'account.phone'},
-                {name: 'accountStatus', mapping: 'account.accountStatus'},
-                {name: 'quizMoney', mapping: 'accountAssets.quizMoney'},
-                {name: 'pensionMoney', mapping: 'accountAssets.pensionMoney'},
-                {name: 'victoryMoney', mapping: 'accountAssets.victoryMoney'},
-                {name: 'freezeQuizMoney', mapping: 'accountAssets.freezeQuizMoney'},
-                {name: 'freezePensionMoney', mapping: 'accountAssets.freezePensionMoney'},
-                {name: 'freezeVictoryMoney', mapping: 'accountAssets.freezeVictoryMoney'}
-            ],
             autoLoad: true,
             pageSize:20,
+            fields: [],
             proxy: {
-                url: '/back/accountassets/getAccountAssetsPageList',
+                url: '/back/team/getTeamPageList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {
@@ -111,11 +117,24 @@ Ext.define('LLManBack.business.accountassets.accountAssetsList',{
         return store;
     },
 
-    showDetailWin: function (adminCode) {
-        var heigth=Ext.exUtils.isEmpty(adminCode)? 255:185;
-        var win = Ext.appContext.openWindow("LLManBack.business.admin.forms.adminDetailForm",{adminCode: adminCode}, {width: 300, height: heigth});
+    showDetailWin: function (teamCode) {
+        var win = Ext.appContext.openWindow("LLManBack.business.team.forms.teamDetailForm",{teamCode: teamCode}, {width: 340, height: 300});
         win.innerView.on('DataChanged', function (source, param) {
             this.reload();
         }, this);
+    },
+
+    /**
+     * 删除指定战队
+     * @param teamCode 战队code
+     */
+    deleteTeam:function(teamCode){
+        var result = Ext.appContext.invokeService("/back/team","/deleteTeam", {teamCode: teamCode});
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
+            Ext.Msg.alert('成功', result.result);
+            this.reload();
+        }
     }
 })

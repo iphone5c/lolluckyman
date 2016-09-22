@@ -105,6 +105,8 @@ public class AdminService extends BaseService implements IAdminService {
     public Boolean deleteAdmin(String code) {
         if (LolUtils.isEmptyOrNull(code))
             throw new IllegalArgumentException("删除管理员时，管理员主键不能为空");
+        if (adminDao.getObject(code,true)==null)
+            return true;
         int info=adminDao.deleteObject(code);
         return info>0?true:false;
     }

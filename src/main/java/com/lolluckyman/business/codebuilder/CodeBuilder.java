@@ -88,4 +88,30 @@ public class CodeBuilder implements ICodeBuilder{
         builder.append(seriaNumService.getNewSerialNumByString(ECodeType.PRIZE_CODE.name(),4));
         return builder.toString();
     }
+
+    /**
+     * 获取一个新的战队编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的战队编码
+     */
+    @Override
+    public String getTeamCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.TEAM_CODE.name(),4));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的战队成员编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的战队成员编码
+     */
+    @Override
+    public String getTeamPlayerCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.TEAMPLAYER_CODE.name(),4));
+        return builder.toString();
+    }
 }
