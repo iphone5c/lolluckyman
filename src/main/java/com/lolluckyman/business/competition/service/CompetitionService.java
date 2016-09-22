@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -43,6 +44,16 @@ public class CompetitionService extends BaseService implements ICompetitionServi
     @Override
     public PageList<Competition> getCompetitionPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return competitionDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     *获取赛事信息列表
+     * @param wheres    条件
+     * @return 对象列表
+     */
+    @Override
+    public List<Competition> getCompetitionList(QueryParams wheres) {
+        return competitionDao.queryList(wheres,0,-1,true);
     }
 
     /**
@@ -154,6 +165,7 @@ public class CompetitionService extends BaseService implements ICompetitionServi
             throw new IllegalArgumentException("操作指定赛事的状态时，找不到此赛事信息，code："+code);
         competition.setCompetitionStatus(competitionStatus);
         int info=competitionDao.updateObject(competition);
+        //TODO 启用和禁用都将控制局数的状态，这是一个总状态
         return info>0?true:false;
     }
 

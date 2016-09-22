@@ -7,6 +7,7 @@ import com.lolluckyman.business.team.entity.Team;
 import com.lolluckyman.business.team.service.ITeamService;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseController;
+import com.lolluckyman.utils.core.NameValue;
 import com.lolluckyman.utils.core.PageList;
 import com.lolluckyman.utils.core.QueryParams;
 import org.apache.log4j.Logger;
@@ -45,9 +46,9 @@ public class CompetitionController extends BaseController {
             Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
             Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
             if (teamA==null)
-                return validationResult(1001,"赛事信息信息code："+competition.getCode()+"找不到关联战队A信息，accountCode："+competition.getTeamCodeA());
+                return validationResult(1001,"赛事信息信息code："+competition.getCode()+"找不到关联赛事A信息，accountCode："+competition.getTeamCodeA());
             if (teamB==null)
-                return validationResult(1001,"赛事信息信息code："+competition.getCode()+"找不到关联战队B信息，accountCode："+competition.getTeamCodeB());
+                return validationResult(1001,"赛事信息信息code："+competition.getCode()+"找不到关联赛事B信息，accountCode："+competition.getTeamCodeB());
 
             competitionModel.setTeamA(teamA);
             competitionModel.setTeamB(teamB);
@@ -60,6 +61,29 @@ public class CompetitionController extends BaseController {
         competitionModelPageList.setPageSize(competitionPageList.getPageSize());
         competitionModelPageList.setList(competitionModelList);
         return result(competitionModelPageList);
+    }
+
+    @RequestMapping(value = "/getCompetitionList")
+    public Object getCompetitionList(){
+        log.info("获取的赛事列表信息");
+        QueryParams queryParams = new QueryParams();
+        queryParams.addOrderBy("code",true);
+        return result(competitionService.getCompetitionList(queryParams));
+    }
+
+    @RequestMapping(value = "/getCompetitionListToNameValue")
+    public Object getCompetitionListToNameValue(){
+        log.info("获取的赛事列表信息");
+        QueryParams queryParams = new QueryParams();
+        queryParams.addOrderBy("code",true);
+        List<Competition> competitionList=competitionService.getCompetitionList(queryParams);
+        List<NameValue> nameValueList=new ArrayList<>();
+        if (competitionList==null&&competitionList.size()<=0)
+            return result(nameValueList);
+        for (Competition competition:competitionList){
+            nameValueList.add(NameValue.create(competition.getCompetitionName()+"("+teamService.getTeamByCode(competition.getTeamCodeA()).getChinaName()+"-"+teamService.getTeamByCode(competition.getTeamCodeB()).getChinaName()+")",competition.getCode()));
+        }
+        return result(nameValueList);
     }
 
     @RequestMapping(value = "/getCompetitionByCode")
@@ -102,9 +126,9 @@ public class CompetitionController extends BaseController {
         if(LolUtils.isEmptyOrNull(competition.getCompetitionName()))
             return validationResult(1001,"新增赛事信息时，比赛名称不能为空或者null");
         if (LolUtils.isEmptyOrNull(competition.getTeamCodeA()))
-            return validationResult(1001,"新增赛事信息时，pk战队A不能为空或者null");
+            return validationResult(1001,"新增赛事信息时，pk赛事A不能为空或者null");
         if (LolUtils.isEmptyOrNull(competition.getTeamCodeB()))
-            return validationResult(1001,"新增赛事信息时，pk战队B不能为空或者null");
+            return validationResult(1001,"新增赛事信息时，pk赛事B不能为空或者null");
         if(competition.getGameStartTime()==null)
             return validationResult(1001,"新增赛事信息时，比赛开始时间不能为空或者null");
         Competition temp=competitionService.createCompetition(competition);
@@ -131,13 +155,13 @@ public class CompetitionController extends BaseController {
         if(LolUtils.isEmptyOrNull(competition.getCompetitionName()))
             return validationResult(1001,"修改赛事信息信息时，比赛名称不能为空或者null");
         if(LolUtils.isEmptyOrNull(competition.getTeamCodeA()))
-            return validationResult(1001,"修改赛事信息信息时，pk战队A不能为空或者null");
+            return validationResult(1001,"修改赛事信息信息时，pk赛事A不能为空或者null");
         if(LolUtils.isEmptyOrNull(competition.getTeamCodeB()))
-            return validationResult(1001,"修改赛事信息信息时，pk战队B不能为空或者null");
+            return validationResult(1001,"修改赛事信息信息时，pk赛事B不能为空或者null");
         if (teamService.getTeamByCode(competition.getTeamCodeA())==null)
-            return validationResult(1001,"修改赛事信息信息时，pk战队A的战队信息找不到");
+            return validationResult(1001,"修改赛事信息信息时，pk赛事A的赛事信息找不到");
         if (teamService.getTeamByCode(competition.getTeamCodeB())==null)
-            return validationResult(1001,"修改赛事信息信息时，pk战队B的战队信息找不到");
+            return validationResult(1001,"修改赛事信息信息时，pk赛事B的赛事信息找不到");
         if(competition.getGameStartTime()==null)
             return validationResult(1001,"修改赛事信息信息时，比赛开始时间不能为空或者null");
 

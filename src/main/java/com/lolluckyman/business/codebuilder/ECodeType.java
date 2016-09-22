@@ -32,4 +32,8 @@ public enum ECodeType {
      * 赛事信息编码
      */
     COMPETITION_CODE,
+    /**
+     * 局数信息编码
+     */
+    RESTRAIN_CODE,
 }

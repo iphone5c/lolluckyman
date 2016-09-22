@@ -5,10 +5,12 @@
 
 package com.lolluckyman.business.restrain.entity;
 
+import com.lolluckyman.business.restrain.entity.em.RestrainStatus;
+
 import java.util.Date;
 
 /**
- * 比赛信息
+ * 比赛局数信息
  * Created by lenovo on 2016/09/22.
  */
 public class Restrain implements java.io.Serializable {
@@ -23,7 +25,7 @@ public class Restrain implements java.io.Serializable {
     // 局数顺序
     private int restrainNum;
     // 局数状态
-    private String restrainStatus;
+    private RestrainStatus restrainStatus;
     // 局数描述
     private String description;
     // 添加时间
@@ -88,7 +90,7 @@ public class Restrain implements java.io.Serializable {
      * 
      * @return 局数状态
      */
-    public String getRestrainStatus() {
+    public RestrainStatus getRestrainStatus() {
         return restrainStatus;
     }
 
@@ -97,7 +99,7 @@ public class Restrain implements java.io.Serializable {
      * 
      * @param restrainStatus 局数状态
      */
-    public void setRestrainStatus(String restrainStatus) {
+    public void setRestrainStatus(RestrainStatus restrainStatus) {
         this.restrainStatus = restrainStatus;
     }
 
