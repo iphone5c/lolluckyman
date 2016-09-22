@@ -12,11 +12,12 @@
 <XPD:ATTR name="Title" type="string">project</XPD:ATTR>
 <XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
-<XPD:ATTR name="Name" type="string">com.lolluckyman.business.playrecord.entity</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">com.lolluckyman.business.restrain.entity</XPD:ATTR>
 <XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
 <XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">局数信息</XPD:ATTR>
 <XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
 <XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
@@ -24,15 +25,15 @@
 <XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="B2jRiLUybEmGlbEZ+uUULQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">220</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">128</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">236</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">44</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">162</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">147</XPD:ATTR>
 <XPD:REF name="Model">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="pYjN4t58q0S0p5+BmW/lrQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="x/5Gpqgk4kCokjAOnYj5PwAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">PlayRecord</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Restrain</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="ef6vd7LJt0KdRWTrHlunvgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -56,58 +57,46 @@
 </XPD:OBJ>
 <XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="AdP/rWFDSE6lxDLKNtnYngAA">
-<XPD:ATTR name="Name" type="string">PlayRecord</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">联盟玩法</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Restrain</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">比赛信息</XPD:ATTR>
 <XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">B2jRiLUybEmGlbEZ+uUULQAA</XPD:REF>
 <XPD:REF name="Views[1]">xEyn0FFBz0SR6DONfzEyVQAA</XPD:REF>
 <XPD:REF name="Views[2]">srPiZSgiPU2jXeKryLYTsQAA</XPD:REF>
 <XPD:REF name="Views[3]">TN8uQIYwHk6BUuiweznCjwAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">8</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">6</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="GgUZ9VANvUulU3m34ooLfgAA">
 <XPD:ATTR name="Name" type="string">code</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">联盟玩法记录code</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">局数code</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="McIoU8TsDUCsK+lQ+OurrQAA">
-<XPD:ATTR name="Name" type="string">foreignKey</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">外键（比赛外键、局数外键）</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">competitionCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">比赛code外键</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="1wuhMyOVb02+SH17AuTQEwAA">
-<XPD:ATTR name="Name" type="string">play</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">玩法</XPD:ATTR>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="3iwOZ4f1L0qFzT1zc3znwwAA">
+<XPD:ATTR name="Name" type="string">restrainNum</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">局数顺序</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
+<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="guk2toLbl0i1EcmS0hozXQAA">
+<XPD:ATTR name="Name" type="string">restrainStatus</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">局数状态</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="CWDqm6aTD0S6hGPEHH5xggAA">
-<XPD:ATTR name="Name" type="string">content</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">赔率内容JSON格式字符串</XPD:ATTR>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="syNnr8zF2EyUxi2WfwokLgAA">
+<XPD:ATTR name="Name" type="string">description</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">局数描述</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="HFNNQZlW7UqH9LSD82XoRAAA">
-<XPD:ATTR name="Name" type="string">success</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">竞猜获胜方</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
-<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="qlkd8zWhqE+PaqZuD9KAqgAA">
-<XPD:ATTR name="Name" type="string">resultDesc</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">结果描述</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
-<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="AdQ6miwzi0qBIdGXG/UvMwAA">
-<XPD:ATTR name="Name" type="string">playRecordStatus</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">玩法状态</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
-<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="Y18J+GyyoE2yrvgiZcuolQAA">
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="Y18J+GyyoE2yrvgiZcuolQAA">
 <XPD:ATTR name="Name" type="string">createTime</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">添加时间</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>

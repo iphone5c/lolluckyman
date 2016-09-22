@@ -28,4 +28,8 @@ public enum ECodeType {
      * 战队成员编码
      */
     TEAMPLAYER_CODE,
+    /**
+     * 赛事信息编码
+     */
+    COMPETITION_CODE,
 }

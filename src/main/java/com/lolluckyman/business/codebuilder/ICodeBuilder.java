@@ -45,4 +45,11 @@ public interface ICodeBuilder {
      * @return 新的战队成员编码
      */
     String getTeamPlayerCode();
+
+    /**
+     * 获取一个新的赛事信息编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的赛事信息编码
+     */
+    String getCompetitionCode();
 }

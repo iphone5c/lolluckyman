@@ -114,4 +114,17 @@ public class CodeBuilder implements ICodeBuilder{
         builder.append(seriaNumService.getNewSerialNumByString(ECodeType.TEAMPLAYER_CODE.name(),4));
         return builder.toString();
     }
+
+    /**
+     * 获取一个新的赛事信息编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的赛事信息编码
+     */
+    @Override
+    public String getCompetitionCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.COMPETITION_CODE.name(),4));
+        return builder.toString();
+    }
 }

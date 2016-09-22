@@ -35,6 +35,7 @@ Ext.define('LLManBack.init.menuPanel', {
                         { text: "战队成员管理",module:'LLManBack.business.teamplayer.teamPlayerList', leaf: true },
                         { text: "战队管理",module:'LLManBack.business.team.teamList', leaf: true},
                         { text: "赛事管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
+                        { text: "比赛局数管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
                         { text: "联盟玩法管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true}
                     ] },
                     { text: "综合查询", expanded: false, children: [
