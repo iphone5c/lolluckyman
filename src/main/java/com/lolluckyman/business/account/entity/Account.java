@@ -5,11 +5,12 @@
 
 package com.lolluckyman.business.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lolluckyman.business.account.entity.em.AccountStatus;
 import com.lolluckyman.business.account.entity.em.Problem;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.*;
-import java.math.*;
+import java.util.Date;
 
 /**
  * 账户信息
@@ -43,7 +44,9 @@ public class Account implements java.io.Serializable {
     // 账户状态
     private AccountStatus accountStatus;
     // 账户描述
-    private String desc;
+    private String description;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 添加时间
     private Date createTime;
 
@@ -251,16 +254,16 @@ public class Account implements java.io.Serializable {
      * @return 账户描述
      */
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     /** 
      * 设置账户描述
      * 
-     * @param desc 账户描述
+     * @param description 账户描述
      */
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDesc(String description) {
+        this.description = description;
     }
 
     /** 

@@ -30,50 +30,30 @@ Ext.define('LLManBack.business.account.accountList',{
             tbar:{
                 xtype: 'toolbar', scope: me,
                 items:[
+//                    {
+//                        xtype: 'button', text: '新增',  scope: me,
+//                        handler: function () {
+//                            me.showDetailWin();
+//                        }
+//                    },
                     {
-                        xtype: 'button', text: '新增',  scope: me,
-                        handler: function () {
-                            me.showDetailWin();
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '修改',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.showDetailWin(list[0].data.code);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '删除',  scope: me,
+                        xtype: 'button', text: '禁用',  scope: me,
                         handler: function () {
                             var list = me.getSelection();
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.deleteAdmin(list[0].data.code);
+                                me.disableAccount(list[0].data.code);
                         }
                     },
                     {
-                        xtype: 'button', text: '修改密码',  scope: me,
+                        xtype: 'button', text: '解除禁用',  scope: me,
                         handler: function () {
                             var list = me.getSelection();
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.updateAdminPassword(list[0].data.code);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetAdminPassword(list[0].data.code);
+                                me.removeDisableAccount(list[0].data.code);
                         }
                     }
                 ]
@@ -89,7 +69,7 @@ Ext.define('LLManBack.business.account.accountList',{
                 { header: '密码答案', dataIndex: 'passwordAnswer',width:360 },
                 { header: '账户状态', dataIndex: 'accountStatus',width:360 },
                 { header: '注册时间', dataIndex: 'createTime',width:140 },
-                { header: '描述', dataIndex: 'desc',width:360 },
+                { header: '描述', dataIndex: 'description',width:360 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -132,7 +112,8 @@ Ext.define('LLManBack.business.account.accountList',{
                 {name: 'problem', mapping: 'problem'},
                 {name: 'passwordAnswer', mapping: 'account.passwordAnswer'},
                 {name: 'accountStatus', mapping: 'account.accountStatus'},
-                {name: 'desc', mapping: 'account.desc'}
+                {name: 'description', mapping: 'account.description'},
+                {name: 'createTime', mapping: 'account.createTime'}
             ],
             autoLoad: true,
             pageSize:20,
@@ -161,11 +142,11 @@ Ext.define('LLManBack.business.account.accountList',{
     },
 
     /**
-     * 重置密码
+     * 禁用
      * @param adminCode 用户code
      */
-    resetAdminPassword:function(adminCode){
-        var result = Ext.appContext.invokeService("/back/admin","/resetAdminPassword", {adminCode: adminCode});
+    disableAccount:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/account","/disableAccount", {code: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -175,22 +156,11 @@ Ext.define('LLManBack.business.account.accountList',{
     },
 
     /**
-     *修改用户密码
-     * @param adminCode
+     * 解除禁用
+     * @param adminCode 用户code
      */
-    updateAdminPassword: function (adminCode) {
-        var win = Ext.appContext.openWindow("LLManBack.business.admin.forms.updateAdminPasswordForm",{adminCode: adminCode}, {width: 300, height: 185});
-        win.innerView.on('DataChanged', function (source, param) {
-            this.reload();
-        }, this);
-    },
-
-    /**
-     * 删除指定用户
-     * @param adminCode 管理员code
-     */
-    deleteAdmin:function(adminCode){
-        var result = Ext.appContext.invokeService("/back/admin","/deleteAdmin", {adminCode: adminCode});
+    removeDisableAccount:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/account","/removeDisableAccount", {code: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -198,4 +168,5 @@ Ext.define('LLManBack.business.account.accountList',{
             this.reload();
         }
     }
+
 })

@@ -53,10 +53,38 @@ public class AccountController extends BaseController {
     @RequestMapping(value = "/getAccountByCode")
     public Object getAccountByCode(String code){
         log.info("获取主键为"+code+"的账户信息");
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"查询账户信息，Code不能为空");
         Account account=accountService.getAccountByCode(code);
         if (account==null)
             return validationResult(1001,"找不到此"+code+"的账户信息");
         return result(account);
+    }
+
+    @RequestMapping(value = "/disableAccount")
+    public Object disableAccount(String code){
+        log.info("禁用用户code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"禁用账户信息，Code不能为空");
+        boolean flag=accountService.disableAccount(code);
+        if (flag){
+            return result("禁用成功");
+        }else {
+            return validationResult(1001,"禁用失败");
+        }
+    }
+
+    @RequestMapping(value = "/removeDisableAccount")
+    public Object removeDisableAccount(String code){
+        log.info("解除禁用用户code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"解除禁用账户信息，Code不能为空");
+        boolean flag=accountService.removeDisableAccount(code);
+        if (flag){
+            return result("解除禁用成功");
+        }else{
+            return validationResult(1001,"解除禁用失败");
+        }
     }
 
 }

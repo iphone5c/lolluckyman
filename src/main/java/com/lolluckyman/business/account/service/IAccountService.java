@@ -1,6 +1,7 @@
 package com.lolluckyman.business.account.service;
 
 import com.lolluckyman.business.account.entity.Account;
+import com.lolluckyman.business.account.entity.em.AccountStatus;
 import com.lolluckyman.utils.core.PageList;
 import com.lolluckyman.utils.core.QueryParams;
 
@@ -25,5 +26,27 @@ public interface IAccountService {
      * @return 账户对象
      */
     public Account getAccountByCode(String code);
+
+    /**
+     * 操作指定用户额状态
+     * @param accountCode 用户code
+     * @param accountStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean operationAccountStatus(String accountCode,AccountStatus accountStatus);
+
+    /**
+     * 禁用指定用户
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean disableAccount(String accountCode);
+
+    /**
+     * 将指定用户解除禁用
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean removeDisableAccount(String accountCode);
 
 }

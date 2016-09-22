@@ -2,6 +2,7 @@ package com.lolluckyman.business.account.service;
 
 import com.lolluckyman.business.account.dao.IAccountDao;
 import com.lolluckyman.business.account.entity.Account;
+import com.lolluckyman.business.account.entity.em.AccountStatus;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
@@ -11,8 +12,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -53,4 +52,47 @@ public class AccountService extends BaseService implements IAccountService {
         return accountDao.getObject(code,true);
     }
 
+    /**
+     * 操作指定用户额状态
+     * @param accountCode 用户code
+     * @param accountStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationAccountStatus(String accountCode, AccountStatus accountStatus) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("操作指定用户的状态时，code不能为空或null");
+        if (accountStatus==null)
+            throw new IllegalArgumentException("操作指定用户的状态时，修改的用户状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new IllegalArgumentException("操作指定用户的状态时，找不到此用户信息，code："+accountCode);
+        account.setAccountStatus(accountStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户
+     * @param uccountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableAccount(String uccountCode) {
+        if (LolUtils.isEmptyOrNull(uccountCode))
+            throw new IllegalArgumentException("禁用指定用户时，code不能为空或null");
+        return this.operationAccountStatus(uccountCode,AccountStatus.禁用);
+    }
+
+    /**
+     * 将指定用户解除禁用
+     * @param uccountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean removeDisableAccount(String uccountCode) {
+        if (LolUtils.isEmptyOrNull(uccountCode))
+            throw new IllegalArgumentException("解除指定用户的禁用状态时，code不能为空或null");
+        return this.operationAccountStatus(uccountCode,AccountStatus.正常);
+    }
 }

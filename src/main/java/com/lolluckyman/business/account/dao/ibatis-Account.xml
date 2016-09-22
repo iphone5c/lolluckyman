@@ -18,12 +18,12 @@
         <result property="passwordAnswer" column="passwordanswer" />
         <result property="withdrawalsPassword" column="withdrawalspassword" />
         <result property="accountStatus" column="accountstatus" />
-        <result property="desc" column="desc" />
+        <result property="description" column="description" />
         <result property="createTime" column="createtime" />
     </resultMap>
 
     <sql id="baseCol">
-        code, loginaccount, password, realname, phone, email, qq, passwordproblem, passwordanswer, withdrawalspassword, accountstatus, desc, createtime
+        code, loginaccount, password, realname, phone, email, qq, passwordproblem, passwordanswer, withdrawalspassword, accountstatus, description, createtime
     </sql>
 
     <sql id="whereSql">
@@ -105,10 +105,10 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
-            <if test="desc != null"><![CDATA[ and desc like #{desc} ]]></if>
-            <if test="desc_enum != null">
-                <![CDATA[ and desc in ]]>
-                <foreach collection="desc_enum" item="value" open="(" separator="," close=")">
+            <if test="description != null"><![CDATA[ and description like #{description} ]]></if>
+            <if test="description_enum != null">
+                <![CDATA[ and description in ]]>
+                <foreach collection="description_enum" item="value" open="(" separator="," close=")">
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
@@ -128,7 +128,7 @@
                     <if test="item.name == 'passwordAnswer'"><![CDATA[ passwordanswer like #{item.value} ]]></if>
                     <if test="item.name == 'withdrawalsPassword'"><![CDATA[ withdrawalspassword like #{item.value} ]]></if>
                     <if test="item.name == 'accountStatus'"><![CDATA[ accountstatus like #{item.value} ]]></if>
-                    <if test="item.name == 'desc'"><![CDATA[ desc like #{item.value} ]]></if>
+                    <if test="item.name == 'description'"><![CDATA[ description like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -158,8 +158,8 @@
             <if test="_orderBy == 'withdrawalsPassword_asc'"><![CDATA[ withdrawalspassword, ]]></if>
             <if test="_orderBy == 'accountStatus_desc'"><![CDATA[ accountstatus desc, ]]></if>
             <if test="_orderBy == 'accountStatus_asc'"><![CDATA[ accountstatus, ]]></if>
-            <if test="_orderBy == 'desc_desc'"><![CDATA[ desc desc, ]]></if>
-            <if test="_orderBy == 'desc_asc'"><![CDATA[ desc, ]]></if>
+            <if test="_orderBy == 'description_desc'"><![CDATA[ description desc, ]]></if>
+            <if test="_orderBy == 'description_asc'"><![CDATA[ description, ]]></if>
             <if test="_orderBy == 'createTime_desc'"><![CDATA[ createtime desc, ]]></if>
             <if test="_orderBy == 'createTime_asc'"><![CDATA[ createtime, ]]></if>
         </trim>
@@ -167,13 +167,13 @@
 
     <insert id="insertObject" parameterType="com.lolluckyman.business.account.entity.Account">
         insert into
-        lol_account(code,loginaccount,password,realname,phone,email,qq,passwordproblem,passwordanswer,withdrawalspassword,accountstatus,desc,createtime)
-        values(#{code},#{loginAccount},#{password},#{realName},#{phone},#{email},#{qq},#{passwordProblem},#{passwordAnswer},#{withdrawalsPassword},#{accountStatus},#{desc},#{createTime});
+        lol_account(code,loginaccount,password,realname,phone,email,qq,passwordproblem,passwordanswer,withdrawalspassword,accountstatus,description,createtime)
+        values(#{code},#{loginAccount},#{password},#{realName},#{phone},#{email},#{qq},#{passwordProblem},#{passwordAnswer},#{withdrawalsPassword},#{accountStatus},#{description},#{createTime});
     </insert>
 
     <update id="updateObject" parameterType="com.lolluckyman.business.account.entity.Account">
         update lol_account
-        set loginaccount=#{loginAccount},password=#{password},realname=#{realName},phone=#{phone},email=#{email},qq=#{qq},passwordproblem=#{passwordProblem},passwordanswer=#{passwordAnswer},withdrawalspassword=#{withdrawalsPassword},accountstatus=#{accountStatus},desc=#{desc},createtime=#{createTime}
+        set loginaccount=#{loginAccount},password=#{password},realname=#{realName},phone=#{phone},email=#{email},qq=#{qq},passwordproblem=#{passwordProblem},passwordanswer=#{passwordAnswer},withdrawalspassword=#{withdrawalsPassword},accountstatus=#{accountStatus},description=#{description},createtime=#{createTime}
         where code=#{code};
     </update>
 
