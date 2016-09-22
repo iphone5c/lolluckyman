@@ -120,7 +120,7 @@
         delete from lol_competition where code=#{code};
     </delete>
 
-    <delete id="deleteObjectByWhere" parameterType="com.funi.core.framework.QueryParams">
+    <delete id="deleteObjectByWhere" parameterType="com.lolluckyman.utils.core.QueryParams">
         delete from lol_competition
         <include refid="whereSql" />
     </delete>
@@ -135,12 +135,12 @@
         select * from lol_competition where code=#{code};
     </select>
 
-    <select id="queryCount" parameterType="com.funi.core.framework.QueryParams" resultType="int">
+    <select id="queryCount" parameterType="com.lolluckyman.utils.core.QueryParams" resultType="int">
         select count(*) from lol_competition
           <include refid="whereSql" />
     </select>
 
-    <select id="queryBaseList" parameterType="com.funi.core.framework.QueryParams" resultMap="resultMap">
+    <select id="queryBaseList" parameterType="com.lolluckyman.utils.core.QueryParams" resultMap="resultMap">
         select 
         <include refid="baseCol" />
         from lol_competition
@@ -148,7 +148,7 @@
         <include refid="orderSql" />
     </select>
 
-    <select id="queryDetailList" parameterType="com.funi.core.framework.QueryParams" resultMap="resultMap">
+    <select id="queryDetailList" parameterType="com.lolluckyman.utils.core.QueryParams" resultMap="resultMap">
         select * from lol_competition
           <include refid="whereSql" />
         <include refid="orderSql" />

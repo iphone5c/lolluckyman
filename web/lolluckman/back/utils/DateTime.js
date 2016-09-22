@@ -498,7 +498,7 @@ Ext.define('LLManBack.utils.DateTime', {
         // Create floating Picker BoundList. It will acquire a floatParent by looking up
         // its ancestor hierarchy (Pickers use their pickerField property as an upward link)
         // for a floating component.
-        return new YCBack.utils.DateTimePicker({
+        return new LLManBack.utils.DateTimePicker({
             pickerField: me,
             floating: true,
             focusable: false, // Key events are listened from the input field which is never blurred

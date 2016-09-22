@@ -5,7 +5,9 @@
 
 package com.lolluckyman.business.competition.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lolluckyman.business.competition.entity.em.CompetitionStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -26,12 +28,16 @@ public class Competition implements java.io.Serializable {
     private String teamCodeA;
     // PK战队B
     private String teamCodeB;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 比赛开始时间
     private Date gameStartTime;
     // 比赛状态
     private CompetitionStatus competitionStatus;
     // 比赛描述
     private String description;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 添加时间
     private Date createTime;
 

@@ -7,8 +7,10 @@ import com.lolluckyman.business.team.entity.Team;
  * Created by lenovo on 2016/9/22.
  */
 public class CompetitionModel {
-    //战队信息
-    private Team team;
+    //战队A
+    private Team teamA;
+    //战队B
+    private Team teamB;
     //赛事信息
     private Competition competition;
 
@@ -20,11 +22,19 @@ public class CompetitionModel {
         this.competition = competition;
     }
 
-    public Team getTeam() {
-        return team;
+    public Team getTeamA() {
+        return teamA;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setTeamA(Team teamA) {
+        this.teamA = teamA;
+    }
+
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    public void setTeamB(Team teamB) {
+        this.teamB = teamB;
     }
 }

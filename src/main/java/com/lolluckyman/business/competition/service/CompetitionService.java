@@ -4,6 +4,7 @@ import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.business.competition.dao.ICompetitionDao;
 import com.lolluckyman.business.competition.entity.Competition;
 import com.lolluckyman.business.competition.entity.em.CompetitionStatus;
+import com.lolluckyman.business.team.service.ITeamService;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
 import com.lolluckyman.utils.core.PageList;
@@ -28,6 +29,8 @@ public class CompetitionService extends BaseService implements ICompetitionServi
     private ICompetitionDao competitionDao;
     @Autowired
     private ICodeBuilder codeBuilder;
+    @Autowired
+    private ITeamService teamService;
 
     /**
      *获取赛事信息分页列表
@@ -69,6 +72,10 @@ public class CompetitionService extends BaseService implements ICompetitionServi
             throw new IllegalArgumentException("新增赛事信息时，pk战队A不能为空或者null");
         if(LolUtils.isEmptyOrNull(competition.getTeamCodeB()))
             throw new IllegalArgumentException("新增赛事信息时，pk战队B不能为空或者null");
+        if (teamService.getTeamByCode(competition.getTeamCodeA())==null)
+            throw new IllegalArgumentException("新增赛事信息时，pk战队A的战队信息找不到");
+        if (teamService.getTeamByCode(competition.getTeamCodeB())==null)
+            throw new IllegalArgumentException("新增赛事信息时，pk战队B的战队信息找不到");
         if(competition.getGameStartTime()==null)
             throw new IllegalArgumentException("新增赛事信息时，比赛开始时间不能为空或者null");
         competition.setCode(codeBuilder.getCompetitionCode());
@@ -95,6 +102,10 @@ public class CompetitionService extends BaseService implements ICompetitionServi
             throw new IllegalArgumentException("修改赛事信息时，pk战队A不能为空或者null");
         if(LolUtils.isEmptyOrNull(competition.getTeamCodeB()))
             throw new IllegalArgumentException("修改赛事信息时，pk战队B不能为空或者null");
+        if (teamService.getTeamByCode(competition.getTeamCodeA())==null)
+            throw new IllegalArgumentException("修改赛事信息时，pk战队A的战队信息找不到");
+        if (teamService.getTeamByCode(competition.getTeamCodeB())==null)
+            throw new IllegalArgumentException("修改赛事信息时，pk战队B的战队信息找不到");
         if(competition.getGameStartTime()==null)
             throw new IllegalArgumentException("修改赛事信息时，比赛开始时间不能为空或者null");
 
@@ -116,11 +127,58 @@ public class CompetitionService extends BaseService implements ICompetitionServi
     public Boolean deleteCompetition(String code) {
         if (LolUtils.isEmptyOrNull(code))
             throw new IllegalArgumentException("删除指定赛事信息时，赛事信息主键不能为空");
-        if (competitionDao.getObject(code,true)==null)
+        Competition competition=competitionDao.getObject(code,true);
+        if (competition==null)
             return true;
+        if (competition.getCompetitionStatus()!=CompetitionStatus.未启用)
+            throw new IllegalArgumentException("删除赛事信息时，只有在未启用状态下才能删除信息，code："+competition.getCode());
         int info = competitionDao.deleteObject(code);
         //TODO 删除对应的所有比赛局数信息和玩法信息
         return info>0?true:false;
+    }
+
+    /**
+     * 操作指定赛事状态
+     * @param code 赛事code
+     * @param competitionStatus 赛事状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationCompetitionStatus(String code, CompetitionStatus competitionStatus) {
+        if (LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("操作指定赛事的状态时，code不能为空或null");
+        if (competitionStatus==null)
+            throw new IllegalArgumentException("操作指定赛事的状态时，修改的赛事状态不能为空");
+        Competition competition=competitionDao.getObject(code,true);
+        if (competition==null)
+            throw new IllegalArgumentException("操作指定赛事的状态时，找不到此赛事信息，code："+code);
+        competition.setCompetitionStatus(competitionStatus);
+        int info=competitionDao.updateObject(competition);
+        return info>0?true:false;
+    }
+
+    /**
+     * 将指定赛事开启
+     * @param code 赛事code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean openBetting(String code) {
+        if (LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("禁用指定赛事时，code不能为空或null");
+        return this.operationCompetitionStatus(code,CompetitionStatus.投注中);
+    }
+
+    /**
+     * 将指定赛事禁止投注
+     * @param code 赛事code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean prohibitBetting(String code) {
+        if (LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("解除指定赛事的禁用状态时，code不能为空或null");
+        return this.operationCompetitionStatus(code,CompetitionStatus.禁止投注);
     }
 
 }

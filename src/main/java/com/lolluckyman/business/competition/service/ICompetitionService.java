@@ -1,6 +1,7 @@
 package com.lolluckyman.business.competition.service;
 
 import com.lolluckyman.business.competition.entity.Competition;
+import com.lolluckyman.business.competition.entity.em.CompetitionStatus;
 import com.lolluckyman.utils.core.PageList;
 import com.lolluckyman.utils.core.QueryParams;
 
@@ -46,5 +47,27 @@ public interface ICompetitionService {
      * @return true表示成功 false表示失败
      */
     public Boolean deleteCompetition(String code);
+
+    /**
+     * 操作指定赛事状态
+     * @param code 赛事code
+     * @param competitionStatus 赛事状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean operationCompetitionStatus(String code,CompetitionStatus competitionStatus);
+
+    /**
+     * 将指定赛事开启
+     * @param code 赛事code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean openBetting(String code);
+
+    /**
+     * 将指定赛事禁止投注
+     * @param code 赛事code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean prohibitBetting(String code);
 
 }
