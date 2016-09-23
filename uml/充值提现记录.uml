@@ -77,52 +77,52 @@
 <XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="oUCV7tyLOUi47MkXbJzTUgAA">
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="ZY7QYvu0BEiXcCkHvBIwcgAA">
+<XPD:ATTR name="Name" type="string">applyAccountCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">申请人code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="oUCV7tyLOUi47MkXbJzTUgAA">
 <XPD:ATTR name="Name" type="string">money</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">实际到账金额</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="3iwOZ4f1L0qFzT1zc3znwwAA">
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="3iwOZ4f1L0qFzT1zc3znwwAA">
 <XPD:ATTR name="Name" type="string">applyTime</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">申请时间</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="guk2toLbl0i1EcmS0hozXQAA">
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="guk2toLbl0i1EcmS0hozXQAA">
 <XPD:ATTR name="Name" type="string">businessType</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">业务类型（充值、提现）</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="tinia5RqcUeVga3CCG66gwAA">
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="tinia5RqcUeVga3CCG66gwAA">
 <XPD:ATTR name="Name" type="string">tradeType</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">交易类型（微信、支付宝）</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="gkvs0ShTSkmoukJbCliVwwAA">
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="gkvs0ShTSkmoukJbCliVwwAA">
 <XPD:ATTR name="Name" type="string">tradeNumber</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">交易账号</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="Gyd2zi0AM0WUyRbKPsTWUQAA">
+<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="Gyd2zi0AM0WUyRbKPsTWUQAA">
 <XPD:ATTR name="Name" type="string">disposalStatus</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">处理状态</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="kxukABluWU+vloGxFj2SsQAA">
+<XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="kxukABluWU+vloGxFj2SsQAA">
 <XPD:ATTR name="Name" type="string">disposalTime</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">处理时间</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
-<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="ZY7QYvu0BEiXcCkHvBIwcgAA">
-<XPD:ATTR name="Name" type="string">accountCode</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">申请账户code</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
