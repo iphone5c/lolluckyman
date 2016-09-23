@@ -142,7 +142,7 @@ Ext.define('LLManBack.business.restrain.restrainList',{
     },
 
     showDetailWin: function (restrainCode) {
-        var win = Ext.appContext.openWindow("LLManBack.business.restrain.forms.restrainDetailForm",{restrainCode: restrainCode}, {width: 340, height: 255});
+        var win = Ext.appContext.openWindow("LLManBack.business.restrain.forms.restrainDetailForm",{restrainCode: restrainCode}, {width: 340, height: 225});
         win.innerView.on('DataChanged', function (source, param) {
             this.reload();
         }, this);

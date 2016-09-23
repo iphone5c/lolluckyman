@@ -115,7 +115,7 @@ Ext.define('LLManBack.business.prize.prizeList',{
     },
 
     showDetailWin: function (prizeCode) {
-        var win = Ext.appContext.openWindow("LLManBack.business.prize.forms.prizeDetailForm",{prizeCode: prizeCode}, {width: 300, height: 255});
+        var win = Ext.appContext.openWindow("LLManBack.business.prize.forms.prizeDetailForm",{prizeCode: prizeCode}, {width: 300, height: 225});
         win.innerView.on('DataChanged', function (source, param) {
             this.reload();
         }, this);

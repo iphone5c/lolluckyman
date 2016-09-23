@@ -97,7 +97,7 @@ Ext.define('LLManBack.business.competition.forms.competitionDetailForm', {
 
                 {text:'赛事信息简介',islabel: true},
                 {
-                    xtype:'textfield',name: 'description', bind: '{description}'
+                    xtype:'textareafield',name: 'description', bind: '{description}',bodyPadding: 10,store:me
                 },
                 { }
 

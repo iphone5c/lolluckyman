@@ -118,7 +118,7 @@ Ext.define('LLManBack.business.team.teamList',{
     },
 
     showDetailWin: function (teamCode) {
-        var win = Ext.appContext.openWindow("LLManBack.business.team.forms.teamDetailForm",{teamCode: teamCode}, {width: 340, height: 300});
+        var win = Ext.appContext.openWindow("LLManBack.business.team.forms.teamDetailForm",{teamCode: teamCode}, {width: 340, height: 330});
         win.innerView.on('DataChanged', function (source, param) {
             this.reload();
         }, this);

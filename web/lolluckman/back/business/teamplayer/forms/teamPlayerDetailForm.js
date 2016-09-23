@@ -110,7 +110,7 @@ Ext.define('LLManBack.business.teamplayer.forms.teamPlayerDetailForm', {
                 { },
                 {text:'战队成员简介',islabel: true},
                 {
-                    xtype:'textfield',name: 'description', bind: '{description}'
+                    xtype:'textareafield',name: 'description', bind: '{description}',bodyPadding: 10,store:me
                 },
                 { }
 

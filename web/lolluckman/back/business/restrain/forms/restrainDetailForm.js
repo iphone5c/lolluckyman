@@ -85,7 +85,7 @@ Ext.define('LLManBack.business.restrain.forms.restrainDetailForm', {
                 { },
                 {text:'局数信息简介',islabel: true},
                 {
-                    xtype:'textfield',name: 'description', bind: '{description}'
+                    xtype:'textareafield',name: 'description', bind: '{description}',bodyPadding: 10,store:me
                 },
                 { }
 

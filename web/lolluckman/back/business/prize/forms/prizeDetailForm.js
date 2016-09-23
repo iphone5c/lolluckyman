@@ -85,7 +85,7 @@ Ext.define('LLManBack.business.prize.forms.prizeDetailForm', {
                 { },
                 {text:'奖品描述',islabel: true},
                 {
-                    xtype:'textfield',name: 'description', bind: '{description}'
+                    xtype:'textareafield',name: 'description', bind: '{description}',bodyPadding: 10,store:me
                 },
                 { }
 
