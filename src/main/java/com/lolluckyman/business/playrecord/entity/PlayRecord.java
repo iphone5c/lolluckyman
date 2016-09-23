@@ -5,8 +5,10 @@
 
 package com.lolluckyman.business.playrecord.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lolluckyman.business.playrecord.entity.em.Play;
 import com.lolluckyman.business.playrecord.entity.em.PlayRecordStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -33,6 +35,8 @@ public class PlayRecord implements java.io.Serializable {
     private String resultDesc;
     // 玩法状态
     private PlayRecordStatus playRecordStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 添加时间
     private Date createTime;
 

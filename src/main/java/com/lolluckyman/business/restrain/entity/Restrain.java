@@ -5,7 +5,9 @@
 
 package com.lolluckyman.business.restrain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lolluckyman.business.restrain.entity.em.RestrainStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -28,6 +30,8 @@ public class Restrain implements java.io.Serializable {
     private RestrainStatus restrainStatus;
     // 局数描述
     private String description;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 添加时间
     private Date createTime;
 

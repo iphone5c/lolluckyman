@@ -5,10 +5,9 @@ import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.restrain.controller.model.RestrainModel;
 import com.lolluckyman.business.restrain.entity.Restrain;
 import com.lolluckyman.business.restrain.service.IRestrainService;
-import com.lolluckyman.business.team.entity.Team;
-import com.lolluckyman.business.team.service.ITeamService;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseController;
+import com.lolluckyman.utils.core.NameValue;
 import com.lolluckyman.utils.core.PageList;
 import com.lolluckyman.utils.core.QueryParams;
 import org.apache.log4j.Logger;
@@ -69,6 +68,29 @@ public class RestrainController extends BaseController {
         if (restrain==null)
             return validationResult(1001,"找不到此"+restrainCode+"的局数信息信息");
         return result(restrain);
+    }
+
+    @RequestMapping(value = "/getRestrainList")
+    public Object getRestrainList(){
+        log.info("获取的局数列表信息");
+        QueryParams queryParams = new QueryParams();
+        queryParams.addOrderBy("code",true);
+        return result(restrainService.getRestrainList(queryParams));
+    }
+
+    @RequestMapping(value = "/getRestrainListToNameValue")
+    public Object getRestrainListToNameValue(){
+        log.info("获取的局数列表信息");
+        QueryParams queryParams = new QueryParams();
+        queryParams.addOrderBy("code",true);
+        List<Restrain> restrainList=restrainService.getRestrainList(queryParams);
+        List<NameValue> nameValueList=new ArrayList<>();
+        if (restrainList==null&&restrainList.size()<=0)
+            return result(nameValueList);
+        for (Restrain restrain:restrainList){
+            nameValueList.add(NameValue.create(restrain.getCompetitionCode()+"(第"+restrain.getRestrainNum()+"局)",restrain.getCode()));
+        }
+        return result(nameValueList);
     }
 
     /**

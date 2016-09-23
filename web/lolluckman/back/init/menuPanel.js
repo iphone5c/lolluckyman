@@ -36,14 +36,14 @@ Ext.define('LLManBack.init.menuPanel', {
                         { text: "战队管理",module:'LLManBack.business.team.teamList', leaf: true},
                         { text: "赛事管理",module:'LLManBack.business.competition.competitionList', leaf: true},
                         { text: "比赛局数管理",module:'LLManBack.business.restrain.restrainList', leaf: true},
-                        { text: "联盟玩法管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true}
+                        { text: "联盟玩法管理",module:'LLManBack.business.playrecord.playRecordList', leaf: true}
                     ] },
                     { text: "综合查询", expanded: false, children: [
                         { text: "充值提现查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },
                         { text: "奖品兑换记录查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
                         { text: "投注记录查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
                         { text: "比赛结果查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true}
-                    ] },
+                    ] }
                 ]
             }
         });

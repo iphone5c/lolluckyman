@@ -59,4 +59,11 @@ public interface ICodeBuilder {
      * @return 新的局数信息编码
      */
     String getRestrainCode();
+
+    /**
+     * 获取一个新的玩法信息编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的玩法信息编码
+     */
+    String getPlayRecordCode();
 }

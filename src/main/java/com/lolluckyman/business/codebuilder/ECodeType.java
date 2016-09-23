@@ -36,4 +36,8 @@ public enum ECodeType {
      * 局数信息编码
      */
     RESTRAIN_CODE,
+    /**
+     * 玩法信息编码
+     */
+    PLAYRECORD_CODE,
 }

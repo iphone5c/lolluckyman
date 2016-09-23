@@ -3,6 +3,8 @@ package com.lolluckyman.business.competition.controller;
 import com.lolluckyman.business.competition.controller.model.CompetitionModel;
 import com.lolluckyman.business.competition.entity.Competition;
 import com.lolluckyman.business.competition.service.ICompetitionService;
+import com.lolluckyman.business.restrain.entity.Restrain;
+import com.lolluckyman.business.restrain.service.IRestrainService;
 import com.lolluckyman.business.team.entity.Team;
 import com.lolluckyman.business.team.service.ITeamService;
 import com.lolluckyman.utils.cmd.LolUtils;
@@ -31,6 +33,8 @@ public class CompetitionController extends BaseController {
     private ICompetitionService competitionService;
     @Autowired
     private ITeamService teamService;
+    @Autowired
+    private IRestrainService restrainService;
 
     @RequestMapping(value = "/getCompetitionPageList")
     public Object getCompetitionPageList(int pageIndex,int pageSize){
@@ -67,7 +71,7 @@ public class CompetitionController extends BaseController {
     public Object getCompetitionList(){
         log.info("获取的赛事列表信息");
         QueryParams queryParams = new QueryParams();
-        queryParams.addOrderBy("code",true);
+        queryParams.addOrderBy("code", true);
         return result(competitionService.getCompetitionList(queryParams));
     }
 
@@ -93,8 +97,63 @@ public class CompetitionController extends BaseController {
             return validationResult(1001,"查询赛事信息信息，competitionCode不能为空");
         Competition competition=competitionService.getCompetitionByCode(competitionCode);
         if (competition==null)
-            return validationResult(1001,"找不到此"+competitionCode+"的赛事信息信息");
+            return validationResult(1001,"找不到此"+competitionCode+"的赛事信息");
         return result(competition);
+    }
+
+    /**
+     * 根据赛事code获取赛事战队双方信息
+     * @param competitionCode
+     * @return
+     */
+    @RequestMapping(value = "/getCompetitionTeamByCode")
+    public Object getCompetitionTeamByCode(String competitionCode){
+        log.info("获取主键为"+competitionCode+"的赛事信息信息");
+        if (LolUtils.isEmptyOrNull(competitionCode))
+            return validationResult(1001,"查询赛事信息信息，competitionCode不能为空");
+        CompetitionModel competitionModel=new CompetitionModel();
+        Competition competition=competitionService.getCompetitionByCode(competitionCode);
+        if (competition==null)
+            return validationResult(1001,"找不到此"+competitionCode+"的赛事信息信息");
+        Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+        Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+        if (teamA==null)
+            return validationResult(1001,"找不到此"+competition.getTeamCodeA()+"的战队信息");
+        if (teamB==null)
+            return validationResult(1001,"找不到此"+competition.getTeamCodeB()+"的战队信息");
+        competitionModel.setTeamA(teamA);
+        competitionModel.setTeamB(teamB);
+        competitionModel.setCompetition(competition);
+        return result(competitionModel);
+    }
+
+    /**
+     * 根据局数code获取赛事战队双方信息
+     * @param restrainCode
+     * @return
+     */
+    @RequestMapping(value = "/getCompetitionTeamByRestrainCode")
+    public Object getCompetitionTeamByRestrainCode(String restrainCode){
+        log.info("获取局数主键为"+restrainCode+"的赛事信息信息");
+        if (LolUtils.isEmptyOrNull(restrainCode))
+            return validationResult(1001,"根据局数code查询赛事信息信息，restrainCode不能为空");
+        Restrain restrain = restrainService.getRestrainByCode(restrainCode);
+        if (restrain==null)
+            return validationResult(1001,"找不到此"+restrainCode+"的局数信息");
+        CompetitionModel competitionModel=new CompetitionModel();
+        Competition competition=competitionService.getCompetitionByCode(restrain.getCompetitionCode());
+        if (competition==null)
+            return validationResult(1001,"找不到此"+restrain.getCompetitionCode()+"的赛事信息信息");
+        Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+        Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+        if (teamA==null)
+            return validationResult(1001,"找不到此"+competition.getTeamCodeA()+"的战队信息");
+        if (teamB==null)
+            return validationResult(1001,"找不到此"+competition.getTeamCodeB()+"的战队信息");
+        competitionModel.setTeamA(teamA);
+        competitionModel.setTeamB(teamB);
+        competitionModel.setCompetition(competition);
+        return result(competitionModel);
     }
 
     /**
