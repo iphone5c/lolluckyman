@@ -5,6 +5,11 @@
 
 package com.lolluckyman.business.exchangeprize.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lolluckyman.business.exchangeprize.entity.em.ConsumptionCurrency;
+import com.lolluckyman.business.exchangeprize.entity.em.ExchangeStatus;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -25,11 +30,15 @@ public class ExchangePrize implements java.io.Serializable {
     // 实际到账数量
     private Integer exchangePrizeNum;
     // 消费币种
-    private String consumptionCurrency;
+    private ConsumptionCurrency consumptionCurrency;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 申请兑换时间
     private Date applyExchangeTime;
     // 兑换状态
-    private String exchangeStatus;
+    private ExchangeStatus exchangeStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 处理时间
     private Date disposalTime;
     // 充值账号
@@ -114,7 +123,7 @@ public class ExchangePrize implements java.io.Serializable {
      * 
      * @return 消费币种
      */
-    public String getConsumptionCurrency() {
+    public ConsumptionCurrency getConsumptionCurrency() {
         return consumptionCurrency;
     }
 
@@ -123,7 +132,7 @@ public class ExchangePrize implements java.io.Serializable {
      * 
      * @param consumptionCurrency 消费币种
      */
-    public void setConsumptionCurrency(String consumptionCurrency) {
+    public void setConsumptionCurrency(ConsumptionCurrency consumptionCurrency) {
         this.consumptionCurrency = consumptionCurrency;
     }
 
@@ -150,7 +159,7 @@ public class ExchangePrize implements java.io.Serializable {
      * 
      * @return 兑换状态
      */
-    public String getExchangeStatus() {
+    public ExchangeStatus getExchangeStatus() {
         return exchangeStatus;
     }
 
@@ -159,7 +168,7 @@ public class ExchangePrize implements java.io.Serializable {
      * 
      * @param exchangeStatus 兑换状态
      */
-    public void setExchangeStatus(String exchangeStatus) {
+    public void setExchangeStatus(ExchangeStatus exchangeStatus) {
         this.exchangeStatus = exchangeStatus;
     }
 

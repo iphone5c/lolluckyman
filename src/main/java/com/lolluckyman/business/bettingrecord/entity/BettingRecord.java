@@ -5,6 +5,11 @@
 
 package com.lolluckyman.business.bettingrecord.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lolluckyman.business.bettingrecord.entity.em.BettingRecordResult;
+import com.lolluckyman.business.bettingrecord.entity.em.BettingRecordStatus;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -24,12 +29,14 @@ public class BettingRecord implements java.io.Serializable {
     private String playRecordCode;
     // 投注竞猜币数量
     private Double quizMoney;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 投注时间
     private Date bettingRecordTime;
     // 投注结果
-    private String bettingRecordResult;
+    private BettingRecordResult bettingRecordResult;
     // 投注状态
-    private String bettingRecordStatus;
+    private BettingRecordStatus bettingRecordStatus;
 
     /** 
      * 获取投注code [主键]
@@ -126,7 +133,7 @@ public class BettingRecord implements java.io.Serializable {
      * 
      * @return 投注结果
      */
-    public String getBettingRecordResult() {
+    public BettingRecordResult getBettingRecordResult() {
         return bettingRecordResult;
     }
 
@@ -135,7 +142,7 @@ public class BettingRecord implements java.io.Serializable {
      * 
      * @param bettingRecordResult 投注结果
      */
-    public void setBettingRecordResult(String bettingRecordResult) {
+    public void setBettingRecordResult(BettingRecordResult bettingRecordResult) {
         this.bettingRecordResult = bettingRecordResult;
     }
 
@@ -144,7 +151,7 @@ public class BettingRecord implements java.io.Serializable {
      * 
      * @return 投注状态
      */
-    public String getBettingRecordStatus() {
+    public BettingRecordStatus getBettingRecordStatus() {
         return bettingRecordStatus;
     }
 
@@ -153,7 +160,7 @@ public class BettingRecord implements java.io.Serializable {
      * 
      * @param bettingRecordStatus 投注状态
      */
-    public void setBettingRecordStatus(String bettingRecordStatus) {
+    public void setBettingRecordStatus(BettingRecordStatus bettingRecordStatus) {
         this.bettingRecordStatus = bettingRecordStatus;
     }
 

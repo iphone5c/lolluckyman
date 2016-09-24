@@ -5,6 +5,12 @@
 
 package com.lolluckyman.business.topupwithdrawal.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lolluckyman.business.topupwithdrawal.entity.em.BusinessType;
+import com.lolluckyman.business.topupwithdrawal.entity.em.DisposalStatus;
+import com.lolluckyman.business.topupwithdrawal.entity.em.TradeType;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -24,16 +30,20 @@ public class TopUpWithdrawal implements java.io.Serializable {
     private String applyAccountCode;
     // 实际到账金额
     private Double money;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 申请时间
     private Date applyTime;
     // 业务类型（充值、提现）
-    private String businessType;
+    private BusinessType businessType;
     // 交易类型（微信、支付宝）
-    private String tradeType;
+    private TradeType tradeType;
     // 交易账号
     private String tradeNumber;
     // 处理状态
-    private String disposalStatus;
+    private DisposalStatus disposalStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 处理时间
     private Date disposalTime;
 
@@ -132,7 +142,7 @@ public class TopUpWithdrawal implements java.io.Serializable {
      * 
      * @return 业务类型（充值、提现）
      */
-    public String getBusinessType() {
+    public BusinessType getBusinessType() {
         return businessType;
     }
 
@@ -141,7 +151,7 @@ public class TopUpWithdrawal implements java.io.Serializable {
      * 
      * @param businessType 业务类型（充值、提现）
      */
-    public void setBusinessType(String businessType) {
+    public void setBusinessType(BusinessType businessType) {
         this.businessType = businessType;
     }
 
@@ -150,7 +160,7 @@ public class TopUpWithdrawal implements java.io.Serializable {
      * 
      * @return 交易类型（微信、支付宝）
      */
-    public String getTradeType() {
+    public TradeType getTradeType() {
         return tradeType;
     }
 
@@ -159,7 +169,7 @@ public class TopUpWithdrawal implements java.io.Serializable {
      * 
      * @param tradeType 交易类型（微信、支付宝）
      */
-    public void setTradeType(String tradeType) {
+    public void setTradeType(TradeType tradeType) {
         this.tradeType = tradeType;
     }
 
@@ -186,7 +196,7 @@ public class TopUpWithdrawal implements java.io.Serializable {
      * 
      * @return 处理状态
      */
-    public String getDisposalStatus() {
+    public DisposalStatus getDisposalStatus() {
         return disposalStatus;
     }
 
@@ -195,7 +205,7 @@ public class TopUpWithdrawal implements java.io.Serializable {
      * 
      * @param disposalStatus 处理状态
      */
-    public void setDisposalStatus(String disposalStatus) {
+    public void setDisposalStatus(DisposalStatus disposalStatus) {
         this.disposalStatus = disposalStatus;
     }
 

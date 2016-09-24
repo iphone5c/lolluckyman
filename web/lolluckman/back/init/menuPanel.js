@@ -26,10 +26,10 @@ Ext.define('LLManBack.init.menuPanel', {
                         { text: "奖品管理",module:'LLManBack.business.prize.prizeList', leaf: true }
                     ] },
                     { text: "业务管理", expanded: false, children: [
-                        { text: "充值管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },
-                        { text: "提现管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },
-                        { text: "奖品兑换管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
-                        { text: "玩家投注管理",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true}
+                        { text: "充值管理",module:'LLManBack.business.topupwithdrawal.topupwithdrawalCZList', leaf: true },
+                        { text: "提现管理",module:'LLManBack.business.topupwithdrawal.topupwithdrawalTXList', leaf: true },
+                        { text: "奖品兑换管理",module:'LLManBack.business.exchangeprize.exchangePrizeList', leaf: true},
+                        { text: "玩家投注管理",module:'LLManBack.business.bettingrecord.bettingRecordList', leaf: true}
                     ] },
                     { text: "比赛管理", expanded: false, children: [
                         { text: "战队成员管理",module:'LLManBack.business.teamplayer.teamPlayerList', leaf: true },
@@ -39,9 +39,9 @@ Ext.define('LLManBack.init.menuPanel', {
                         { text: "联盟玩法管理",module:'LLManBack.business.playrecord.playRecordList', leaf: true}
                     ] },
                     { text: "综合查询", expanded: false, children: [
-                        { text: "充值提现查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true },
-                        { text: "奖品兑换记录查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
-                        { text: "投注记录查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true},
+                        { text: "充值提现查询",module:'LLManBack.business.comprehensivequery.topupwithdrawalListQuery', leaf: true },
+                        { text: "奖品兑换记录查询",module:'LLManBack.business.comprehensivequery.exchangePrizeListQuery', leaf: true},
+                        { text: "投注记录查询",module:'LLManBack.business.comprehensivequery.bettingRecordListQuery', leaf: true},
                         { text: "比赛结果查询",module:'YC_CORESYSTEM_ACCOUNT.accountList', leaf: true}
                     ] }
                 ]
