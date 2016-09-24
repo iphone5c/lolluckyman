@@ -1,6 +1,7 @@
 package com.lolluckyman.utils.cmd;
 
 
+import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.admin.entity.Admin;
 import com.lolluckyman.utils.LolConvert;
 import com.lolluckyman.utils.core.NameValue;
@@ -356,9 +357,24 @@ public final class LolUtils {
         return dayForWeek;
     }
 
+    /**
+     * 获取后台当前登录用户
+     * @param request
+     * @return
+     */
     public static Admin getCurrentAdmin(HttpServletRequest request){
         Admin admin= (Admin) request.getSession().getAttribute("CURRENT_AMIN");
         return admin;
+    }
+
+    /**
+     * 获取前端当前登录用户
+     * @param request
+     * @return
+     */
+    public static Account getCurrentAccount(HttpServletRequest request){
+        Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT");
+        return account;
     }
 
     public static List<Map> getPreviewGroup(HttpServletRequest request){

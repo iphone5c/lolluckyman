@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/2/23.
  */
@@ -304,5 +306,39 @@ public class AccountService extends BaseService implements IAccountService {
         if (LolUtils.isEmptyOrNull(accountCode))
             throw new IllegalArgumentException("启用指定用户的投注状态时，code不能为空或null");
         return this.operationBettingStatus(accountCode, BettingStatus.正常);
+    }
+
+    /**
+     * 登录验证
+     * @param account 用户对象
+     * @return 用户对象
+     */
+    @Override
+    public Account loginAccount(Account account) {
+        if (LolUtils.isEmptyOrNull(account.getLoginAccount()))
+            throw new IllegalArgumentException("账户登录时，登录账号不能为空或null");
+        if (LolUtils.isEmptyOrNull(account.getPassword()))
+            throw new IllegalArgumentException("账户登录时，登录密码不能为空或null");
+        Account temp=this.getAccountByLoginName(account.getLoginAccount());
+        if (temp==null)
+            throw new IllegalArgumentException("无此账户");
+        if (!LolUtils.verifyPassword(temp.getPassword(),temp.getPassword()))
+            throw new IllegalArgumentException("账户登录时，密码错误");
+        return temp;
+    }
+
+    /**
+     * 根据登录账号查找账户信息
+     * @param loginName 登录账号
+     * @return 账户信息
+     */
+    @Override
+    public Account getAccountByLoginName(String loginName) {
+        if (LolUtils.isEmptyOrNull(loginName))
+            throw new IllegalArgumentException("根据登录账号查找账户信息，登录账号不能为空或null");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("loginName",loginName);
+        List<Account> accountList=accountDao.queryList(queryParams,0,-1,true);
+        return ((accountList!=null&&accountList.size()>0)?accountList.get(0):null);
     }
 }

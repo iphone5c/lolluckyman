@@ -48,6 +48,10 @@
             <mvc:mapping path="/back/**"/>
             <bean class="com.lolluckyman.filter.InControlFilterBack"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/lol/**"/>
+            <bean class="com.lolluckyman.filter.InControlFilterBefore"></bean>
+        </mvc:interceptor>
     </mvc:interceptors>
 
 </beans>

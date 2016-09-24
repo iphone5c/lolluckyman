@@ -17,7 +17,7 @@ public class InControlFilterBack implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestPath = request.getRequestURI().toString();
-        System.out.println("path:"+requestPath);
+        System.out.println("后端path:"+requestPath);
 
         if (
                 requestPath.contains("/back/admin/loginStatus")

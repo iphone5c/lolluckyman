@@ -152,4 +152,18 @@ public interface IAccountService {
      */
     public boolean enableExchangeBettingStatus(String accountCode);
 
+    /**
+     * 登录验证
+     * @param account 用户对象
+     * @return 用户对象
+     */
+    public Account loginAccount(Account account);
+
+    /**
+     * 根据登录账号查找账户信息
+     * @param loginName 登录账号
+     * @return 账户信息
+     */
+    public Account getAccountByLoginName(String loginName);
+
 }
