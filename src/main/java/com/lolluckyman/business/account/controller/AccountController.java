@@ -61,6 +61,40 @@ public class AccountController extends BaseController {
         return result(account);
     }
 
+    /**
+     * 指定用户重置登录密码
+     * @param code
+     * @return
+     */
+    @RequestMapping(value = "/resetAccountPassword")
+    public Object resetAccountPassword(String code){
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"指定用户重置登录密码时，code不能为空或null");
+        boolean flag=accountService.resetAccountPassword(code);
+        if (flag){
+            return result("重置成功");
+        }else{
+            return validationResult(1001,"重置失败");
+        }
+    }
+
+    /**
+     * 指定用户重置取款密码
+     * @param code
+     * @return
+     */
+    @RequestMapping(value = "/resetAccountWithdrawalsPassword")
+    public Object resetAccountWithdrawalsPassword(String code){
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"指定用户重置取款密码时，code不能为空或null");
+        boolean flag=accountService.resetAccountWithdrawalsPassword(code);
+        if (flag){
+            return result("重置成功");
+        }else{
+            return validationResult(1001,"重置失败");
+        }
+    }
+
     @RequestMapping(value = "/disableAccount")
     public Object disableAccount(String code){
         log.info("禁用用户code："+code);
@@ -87,4 +121,107 @@ public class AccountController extends BaseController {
         }
     }
 
+    @RequestMapping(value = "/disableRechargeStatus")
+    public Object disableRechargeStatus(String code){
+        log.info("禁用用户提现code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"禁用账户提现，Code不能为空");
+        boolean flag=accountService.disableRechargeStatus(code);
+        if (flag){
+            return result("禁用成功");
+        }else {
+            return validationResult(1001,"禁用失败");
+        }
+    }
+
+    @RequestMapping(value = "/enableRechargeStatus")
+    public Object enableRechargeStatus(String code){
+        log.info("启用提现用户code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"启用提现账户信息，Code不能为空");
+        boolean flag=accountService.enableRechargeStatus(code);
+        if (flag){
+            return result("启用成功");
+        }else{
+            return validationResult(1001,"启用失败");
+        }
+    }
+
+    @RequestMapping(value = "/disableWithdrawalsStatus")
+    public Object disableWithdrawalsStatus(String code){
+        log.info("禁用用户充值code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"禁用账户充值，Code不能为空");
+        boolean flag=accountService.disableWithdrawalsStatus(code);
+        if (flag){
+            return result("禁用成功");
+        }else {
+            return validationResult(1001,"禁用失败");
+        }
+    }
+
+    @RequestMapping(value = "/enableWithdrawalsStatus")
+    public Object enableWithdrawalsStatus(String code){
+        log.info("启用充值用户code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"启用充值账户信息，Code不能为空");
+        boolean flag=accountService.enableWithdrawalsStatus(code);
+        if (flag){
+            return result("启用成功");
+        }else{
+            return validationResult(1001,"启用失败");
+        }
+    }
+
+    @RequestMapping(value = "/disableExchangePrizeStatus")
+    public Object disableExchangePrizeStatus(String code){
+        log.info("禁用用户兑换code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"禁用账户兑换，Code不能为空");
+        boolean flag=accountService.disableExchangePrizeStatus(code);
+        if (flag){
+            return result("禁用成功");
+        }else {
+            return validationResult(1001,"禁用失败");
+        }
+    }
+
+    @RequestMapping(value = "/enableExchangePrizeStatus")
+    public Object enableExchangePrizeStatus(String code){
+        log.info("启用兑换用户code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"启用兑换账户信息，Code不能为空");
+        boolean flag=accountService.enableExchangePrizeStatus(code);
+        if (flag){
+            return result("启用成功");
+        }else{
+            return validationResult(1001,"启用失败");
+        }
+    }
+
+    @RequestMapping(value = "/disableExchangeBettingStatus")
+    public Object disableExchangeBettingStatus(String code){
+        log.info("禁用用户投注code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"禁用账户投注，Code不能为空");
+        boolean flag=accountService.disableExchangeBettingStatus(code);
+        if (flag){
+            return result("禁用成功");
+        }else {
+            return validationResult(1001,"禁用失败");
+        }
+    }
+
+    @RequestMapping(value = "/enableExchangeBettingStatus")
+    public Object enableExchangeBettingStatus(String code){
+        log.info("启用投注用户code："+code);
+        if (LolUtils.isEmptyOrNull(code))
+            return validationResult(1001,"启用投注账户信息，Code不能为空");
+        boolean flag=accountService.enableExchangeBettingStatus(code);
+        if (flag){
+            return result("启用成功");
+        }else{
+            return validationResult(1001,"启用失败");
+        }
+    }
 }

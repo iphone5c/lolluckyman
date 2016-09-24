@@ -1,6 +1,7 @@
 package com.lolluckyman.business.team.service;
 
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
+import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.team.dao.ITeamDao;
 import com.lolluckyman.business.team.entity.Team;
 import com.lolluckyman.business.teamplayer.service.ITeamPlayerService;
@@ -31,6 +32,8 @@ public class TeamService extends BaseService implements ITeamService {
     private ICodeBuilder codeBuilder;
     @Autowired
     private ITeamPlayerService teamPlayerService;
+    @Autowired
+    private ICompetitionService competitionService;
 
     /**
      *获取战队分页列表
@@ -125,6 +128,9 @@ public class TeamService extends BaseService implements ITeamService {
     public void deleteTeam(String code) {
         if (LolUtils.isEmptyOrNull(code))
             throw new IllegalArgumentException("删除指定战队时，战队主键不能为空");
+        //判断战队是否加入了比赛
+        if (competitionService.isExistCompetitionByTeam(code))
+            throw new IllegalArgumentException("删除指定战队时，这个战队已经加入了比赛，不能进行删除");
         int info = teamDao.deleteObject(code);
         if (info<0)
             throw new IllegalArgumentException("删除指定战队失败");

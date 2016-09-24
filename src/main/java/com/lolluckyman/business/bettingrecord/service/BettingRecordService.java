@@ -91,4 +91,19 @@ public class BettingRecordService extends BaseService implements IBettingRecordS
         return info>0?true:false;
     }
 
+    /**
+     * 根据玩法删除投注记录
+     * @param playRecordCode 玩法code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean deleteBettingRecordByPlayRecordCode(String playRecordCode) {
+        if (LolUtils.isEmptyOrNull(playRecordCode))
+            throw new IllegalArgumentException("根据玩法删除投注记录,玩法code不能为空或null");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("",playRecordCode);
+        bettingRecordDao.deleteObjectByWhere(queryParams);
+        return true;
+    }
+
 }

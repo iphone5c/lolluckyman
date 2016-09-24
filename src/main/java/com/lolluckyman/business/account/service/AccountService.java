@@ -2,7 +2,7 @@ package com.lolluckyman.business.account.service;
 
 import com.lolluckyman.business.account.dao.IAccountDao;
 import com.lolluckyman.business.account.entity.Account;
-import com.lolluckyman.business.account.entity.em.AccountStatus;
+import com.lolluckyman.business.account.entity.em.*;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
@@ -53,6 +53,40 @@ public class AccountService extends BaseService implements IAccountService {
     }
 
     /**
+     * 重置指定用户登录密码
+     * @param code 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public Boolean resetAccountPassword(String code) {
+        if (LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("指定用户重置登录密码时，code不能为空或null");
+        Account account=accountDao.getObject(code,true);
+        if (account==null)
+            throw new IllegalArgumentException("指定用户重置登录密码时，找不到此用户信息，code："+code);
+        account.setPassword(LolUtils.encryptPassword("123456"));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 重置指定用户取款密码
+     * @param code 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public Boolean resetAccountWithdrawalsPassword(String code) {
+        if (LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("指定用户重置取款密码时，code不能为空或null");
+        Account account=accountDao.getObject(code,true);
+        if (account==null)
+            throw new IllegalArgumentException("指定用户重置取款密码时，找不到此用户信息，code："+code);
+        account.setWithdrawalsPassword(LolUtils.encryptPassword("123456"));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
      * 操作指定用户额状态
      * @param accountCode 用户code
      * @param accountStatus 用户状态
@@ -94,5 +128,181 @@ public class AccountService extends BaseService implements IAccountService {
         if (LolUtils.isEmptyOrNull(uccountCode))
             throw new IllegalArgumentException("解除指定用户的禁用状态时，code不能为空或null");
         return this.operationAccountStatus(uccountCode,AccountStatus.正常);
+    }
+
+    /**
+     * 操作指定用户提现状态
+     * @param accountCode 用户code
+     * @param rechargeStatus 提现状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationRechargeStatus(String accountCode, RechargeStatus rechargeStatus) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("操作指定用户的提现状态时，code不能为空或null");
+        if (rechargeStatus==null)
+            throw new IllegalArgumentException("操作指定用户的提现状态时，修改的用户提现状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new IllegalArgumentException("操作指定用户的提现状态时，找不到此用户信息，code："+accountCode);
+        account.setRechargeStatus(rechargeStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户提现
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableRechargeStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("禁用指定用户提现时，code不能为空或null");
+        return this.operationRechargeStatus(accountCode, RechargeStatus.禁用);
+    }
+
+    /**
+     * 将指定用户启用提现
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean enableRechargeStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("启用指定用户的提现状态时，code不能为空或null");
+        return this.operationRechargeStatus(accountCode, RechargeStatus.正常);
+    }
+
+    /**
+     * 操作指定用户充值状态
+     * @param accountCode 用户code
+     * @param withdrawalsStatus 充值状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationWithdrawalsStatus(String accountCode, WithdrawalsStatus withdrawalsStatus) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("操作指定用户的充值状态时，code不能为空或null");
+        if (withdrawalsStatus==null)
+            throw new IllegalArgumentException("操作指定用户的充值状态时，修改的用户充值状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new IllegalArgumentException("操作指定用户的充值状态时，找不到此用户信息，code："+accountCode);
+        account.setWithdrawalsStatus(withdrawalsStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户充值
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableWithdrawalsStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("禁用指定用户充值时，code不能为空或null");
+        return this.operationWithdrawalsStatus(accountCode, WithdrawalsStatus.禁用);
+    }
+
+    /**
+     * 将指定用户启用充值
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean enableWithdrawalsStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("启用指定用户的充值状态时，code不能为空或null");
+        return this.operationWithdrawalsStatus(accountCode, WithdrawalsStatus.正常);
+    }
+
+    /**
+     * 操作指定用户兑换状态
+     * @param accountCode 用户code
+     * @param exchangePrizeStatus 兑换状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationExchangePrizeStatus(String accountCode, ExchangePrizeStatus exchangePrizeStatus) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("操作指定用户的兑换状态时，code不能为空或null");
+        if (exchangePrizeStatus==null)
+            throw new IllegalArgumentException("操作指定用户的兑换状态时，修改的用户兑换状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new IllegalArgumentException("操作指定用户的兑换状态时，找不到此用户信息，code："+accountCode);
+        account.setExchangePrizeStatus(exchangePrizeStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户兑换
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableExchangePrizeStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("禁用指定用户兑换时，code不能为空或null");
+        return this.operationExchangePrizeStatus(accountCode, ExchangePrizeStatus.禁用);
+    }
+
+    /**
+     * 将指定用户启用兑换
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean enableExchangePrizeStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("启用指定用户的兑换状态时，code不能为空或null");
+        return this.operationExchangePrizeStatus(accountCode, ExchangePrizeStatus.正常);
+    }
+
+    /**
+     * 操作指定用户投注状态
+     * @param accountCode 用户code
+     * @param bettingStatus 投注状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationBettingStatus(String accountCode, BettingStatus bettingStatus) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("操作指定用户的投注状态时，code不能为空或null");
+        if (bettingStatus==null)
+            throw new IllegalArgumentException("操作指定用户的投注状态时，修改的用户投注状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new IllegalArgumentException("操作指定用户的投注状态时，找不到此用户信息，code："+accountCode);
+        account.setBettingStatus(bettingStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户投注
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableExchangeBettingStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("禁用指定用户投注时，code不能为空或null");
+        return this.operationBettingStatus(accountCode, BettingStatus.禁用);
+    }
+
+    /**
+     * 将指定用户启用投注
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean enableExchangeBettingStatus(String accountCode) {
+        if (LolUtils.isEmptyOrNull(accountCode))
+            throw new IllegalArgumentException("启用指定用户的投注状态时，code不能为空或null");
+        return this.operationBettingStatus(accountCode, BettingStatus.正常);
     }
 }

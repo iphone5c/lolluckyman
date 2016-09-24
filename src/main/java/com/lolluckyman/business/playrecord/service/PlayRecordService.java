@@ -1,5 +1,6 @@
 package com.lolluckyman.business.playrecord.service;
 
+import com.lolluckyman.business.bettingrecord.service.IBettingRecordService;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.playrecord.dao.IPlayRecordDao;
@@ -35,6 +36,8 @@ public class PlayRecordService extends BaseService implements IPlayRecordService
     private ITeamService teamService;
     @Autowired
     private ICompetitionService competitionService;
+    @Autowired
+    private IBettingRecordService bettingRecordService;
 
     /**
      *获取联盟玩法信息分页列表
@@ -134,6 +137,8 @@ public class PlayRecordService extends BaseService implements IPlayRecordService
         if (playRecord.getPlayRecordStatus()!=PlayRecordStatus.未处理)
             throw new IllegalArgumentException("删除联盟玩法信息时，只有在未处理状态下才能删除信息，code："+playRecord.getCode());
         int info = playRecordDao.deleteObject(code);
+        //删除玩法对应的投注记录
+        bettingRecordService.deleteBettingRecordByPlayRecordCode(playRecord.getCode());
         return info>0?true:false;
     }
 

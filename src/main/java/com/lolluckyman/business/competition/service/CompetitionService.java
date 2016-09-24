@@ -193,4 +193,20 @@ public class CompetitionService extends BaseService implements ICompetitionServi
         return this.operationCompetitionStatus(code,CompetitionStatus.禁止投注);
     }
 
+    /**
+     * 根据战队code判断在比赛战队AB中是否存在
+     * @param teamCode 战队测试
+     * @return true表示操作存在 false表示操作不存在
+     */
+    @Override
+    public boolean isExistCompetitionByTeam(String teamCode) {
+        if (LolUtils.isEmptyOrNull(teamCode))
+            throw new IllegalArgumentException("根据战队code判断在比赛战队AB中是否存在，teamCode不能为空或null");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addMulAttrParameter("teamCodeA",teamCode);
+        queryParams.addMulAttrParameter("teamCodeB",teamCode);
+        List<Competition> competitionList = competitionDao.queryList(queryParams,0,-1,true);
+        return (competitionList!=null&&competitionList.size()>0)?true:false;
+    }
+
 }

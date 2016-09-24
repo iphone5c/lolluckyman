@@ -79,4 +79,11 @@ public interface ICompetitionService {
      */
     public boolean prohibitBetting(String code);
 
+    /**
+     * 根据战队code判断在比赛战队AB中是否存在
+     * @param teamCode 战队code
+     * @return true表示操作存在 false表示操作不存在
+     */
+    public boolean isExistCompetitionByTeam(String teamCode);
+
 }

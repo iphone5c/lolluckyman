@@ -26,21 +26,6 @@ Ext.define('LLManBack.business.comprehensivequery.exchangePrizeListQuery',{
             selModel: {
                 selType: 'checkboxmodel'
             },
-            tbar:{
-                xtype: 'toolbar', scope: me,
-                items:[
-                    {
-                        xtype: 'button', text: '撤注',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.deletePlayRecord(list[0].data.code);
-                        }
-                    }
-                ]
-            },
             columns: [
                 { header: '编号',  dataIndex: 'code',width:153 },
                 { header: '兑换产品code', dataIndex: 'prizeCode',width:120 },

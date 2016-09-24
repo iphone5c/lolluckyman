@@ -45,4 +45,11 @@ public interface IBettingRecordService {
      */
     public boolean operationBettingRecordStatus(String code, BettingRecordStatus bettingRecordStatus);
 
+    /**
+     * 根据玩法删除投注记录
+     * @param playRecordCode 玩法code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean deleteBettingRecordByPlayRecordCode(String playRecordCode);
+
 }
