@@ -64,7 +64,7 @@
 <XPD:REF name="Views[1]">xEyn0FFBz0SR6DONfzEyVQAA</XPD:REF>
 <XPD:REF name="Views[2]">srPiZSgiPU2jXeKryLYTsQAA</XPD:REF>
 <XPD:REF name="Views[3]">TN8uQIYwHk6BUuiweznCjwAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">17</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">16</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="GgUZ9VANvUulU3m34ooLfgAA">
 <XPD:ATTR name="Name" type="string">code</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">账户code</XPD:ATTR>
@@ -156,14 +156,8 @@
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[15]" type="UMLAttribute" guid="5Yn9yKkTg0STCtglcrJSWAAA">
-<XPD:ATTR name="Name" type="string">exchangePrizeStatus</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">exchangePrize</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">兑换奖品状态</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
-<XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[16]" type="UMLAttribute" guid="ghJYZCwuR0abDP49WcM33QAA">
-<XPD:ATTR name="Name" type="string">bettingStatus</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">投注状态</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">AdP/rWFDSE6lxDLKNtnYngAA</XPD:REF>
 </XPD:OBJ>
