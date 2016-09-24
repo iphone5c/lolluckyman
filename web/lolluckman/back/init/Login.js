@@ -11,10 +11,10 @@ Ext.define('LLManBack.init.Login', {
         var me = this;
         var html='<form>' +
             '<div class="form-group">' +
-            '<input type="text" class="form-control" id="loginUserName" placeholder="用户名" style="width: 300px">' +
+            '<input type="text" class="form-control" id="loginName" placeholder="用户名" style="width: 300px">' +
             '</div>' +
             '<div class="form-group">' +
-            '<input type="password" class="form-control" id="loginPassword" placeholder="密码" style="width: 300px">' +
+            '<input type="password" class="form-control" id="password" placeholder="密码" style="width: 300px">' +
             '</div>' +
             '<input type="button" value="登录" class="btn btn-success" style="width: 120;margin-left: 20px;margin-right: 10px;margin-top:20px" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').submit()">' +
             '<button type="reset" class="btn btn-warning" style="width: 120;margin-left: 10px;margin-top:20px">重置</a>' +
@@ -58,30 +58,21 @@ Ext.define('LLManBack.init.Login', {
 
     gotoMainFrame: function () {
         this.destroy();
-        var main = Ext.create('YCBack.init.Application', {
+        var main = Ext.create('LLManBack.init.Application', {
             renderTo: Ext.getBody()
         });
     },
-    login:function (user){
-        var result = Ext.appContext.invokeService('/back/business/mainApp', '/login', user);
-        if (!result.result)
-            Ext.Msg.alert('错误', result.errorMessage);
-        else {
-            this.gotoMainFrame();
-        }
-//        this.gotoMainFrame();
-    },
     submit:function(){
-        var username= document.getElementById('loginUserName').value;
-        var password=document.getElementById('loginPassword').value;
-        var user = {
-            userName : username,
-            passWord: password
+        var loginName= document.getElementById('loginName').value;
+        var password=document.getElementById('password').value;
+        var admin = {
+            loginName : loginName,
+            password: password
         };
-        var result = Ext.appContext.invokeService('/back/business/mainApp', '/login', user);
-        if (!result.result)
-            Ext.Msg.alert('错误', result.errorMessage);
-        else {
+        var result = Ext.appContext.invokeService('/back/admin', '/login', admin);
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
             this.gotoMainFrame();
         }
     }

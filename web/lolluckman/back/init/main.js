@@ -15,8 +15,16 @@ Ext.application({
     launch: function () {
         Ext['appContext'] = Ext.create('LLManBack.utils.AppContext');
         Ext['exUtils'] = Ext.create('LLManBack.utils.ExUtils');
-        Ext.create('LLManBack.init.Application', {
-            renderTo: Ext.getBody()
-        });
+
+        var auth = Ext.appContext.invokeService('/back/admin', '/loginStatus', {});
+        if(auth.statusCode==1000){
+            Ext.create('LLManBack.init.Application', {
+                renderTo: Ext.getBody()
+            });
+        }else if(auth.statusCode==1001){
+            Ext.create('LLManBack.init.Login', {
+                renderTo: Ext.getBody()
+            });
+        }
     }
 });

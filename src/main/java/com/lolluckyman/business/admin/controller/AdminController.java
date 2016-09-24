@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Administrator on 2015/7/1.
  */
@@ -167,6 +169,41 @@ public class AdminController extends BaseController {
             return result("删除成功");
         }else{
             return validationResult(1001,"删除失败");
+        }
+    }
+
+    /**
+     * 管理员登录
+     * @param admin
+     * @return
+     */
+    @RequestMapping(value = "/login")
+    public Object login(HttpServletRequest request,Admin admin){
+        if (LolUtils.isEmptyOrNull(admin.getLoginName()))
+            return validationResult(1001,"管理员名不能为空");
+        if (LolUtils.isEmptyOrNull(admin.getPassword()))
+            return validationResult(1001,"管理员密码不能为空");
+
+        Admin loginAdmin=adminService.loginAdmin(admin);
+        request.getSession().setAttribute("CURRENT_AMIN",loginAdmin);
+        if (loginAdmin!=null){
+            return result("登录成功");
+        }else{
+            return validationResult(1001,"登录失败");
+        }
+    }
+
+    /**
+     * 登录验证
+     * @return
+     */
+    @RequestMapping(value = "/loginStatus")
+    public Object loginStatus(HttpServletRequest request){
+        Admin admin=LolUtils.getCurrentAdmin(request);
+        if (admin!=null){
+            return result("已经登录");
+        }else{
+            return validationResult(1001,"尚未登录");
         }
     }
 

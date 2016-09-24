@@ -1,5 +1,7 @@
 package com.lolluckyman.filter;
 
+import com.lolluckyman.business.admin.entity.Admin;
+import com.lolluckyman.utils.cmd.LolUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,38 +18,24 @@ public class InControlFilterBack implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestPath = request.getRequestURI().toString();
         System.out.println("path:"+requestPath);
-        return true;
 
-//        if (requestPath.contains("/back/business/mainApp") || requestPath.contains("/back/business/publicController"))
-//        {
+        if (
+                requestPath.contains("/back/admin/loginStatus")
+                || requestPath.contains("/back/admin/login")
+            )
+        {
 //            response.setHeader("statusFlag","1000");
-//            return true;
-//        }
+            return true;
+        }
 
-//        //判断用户是否已经登录
-//        User user= LolUtils.getCurrentUser(request);
-//        if (user==null){
-//            System.out.println("用户没有登录，请登录");
-//            response.setHeader("statusFlag","1002");
-//            return false;
-//        }else {
-//            ///权限判断
-//            //获得当前登录用户的所有权限
-//            List<Right> userRigthList=rightService.getRightListByUser(user.getUserId());
-//            boolean flag=false;
-//            for (Right right:userRigthList){
-//                if (requestPath.equals(right.getRightReallyUrl())||hasRightByPath(right.getRightId(),requestPath)){
-//                    flag=true;
-//                    break;
-//                }
-//            }
-//            if (!flag){
-//                System.out.println("你没有操作权限，请联系管理员。。。");
-//                response.setHeader("statusFlag","1003");
-//                return false;
-//            }
-//            return true;
-//        }
+        //判断用户是否已经登录
+        Admin admin = LolUtils.getCurrentAdmin(request);
+        if (admin==null){
+            System.out.println("用户没有登录，请登录");
+            response.setHeader("statusFlag","1002");
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -172,4 +172,23 @@ public class AdminService extends BaseService implements IAdminService {
         int info=adminDao.updateObject(admin);
         return info>0?true:false;
     }
+
+    /**
+     * 登录验证
+     * @param admin 管理员对象
+     * @return 管理员对象
+     */
+    @Override
+    public Admin loginAdmin(Admin admin) {
+        if (LolUtils.isEmptyOrNull(admin.getLoginName()))
+            throw new IllegalArgumentException("管理员登录时，登录名不能为空或null");
+        if (LolUtils.isEmptyOrNull(admin.getPassword()))
+            throw new IllegalArgumentException("管理员登录时，登录密码不能为空或null");
+        Admin temp=this.getAdminByLoginName(admin.getLoginName());
+        if (temp==null)
+            throw new IllegalArgumentException("管理员登录时，找不到此管理员，登录名:"+admin.getLoginName());
+        if (!LolUtils.verifyPassword(admin.getPassword(),temp.getPassword()))
+            throw new IllegalArgumentException("管理员登录时，密码错误");
+        return temp;
+    }
 }

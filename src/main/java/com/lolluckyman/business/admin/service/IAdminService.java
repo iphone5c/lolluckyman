@@ -70,4 +70,11 @@ public interface IAdminService {
      * @return true表示操作成功 false表示操作失败
      */
     public boolean resetAdminPassword(String adminCode);
+
+    /**
+     * 登录验证
+     * @param admin 管理员对象
+     * @return 管理员对象
+     */
+    public Admin loginAdmin(Admin admin);
 }

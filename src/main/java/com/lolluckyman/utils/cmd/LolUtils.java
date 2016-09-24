@@ -1,6 +1,7 @@
 package com.lolluckyman.utils.cmd;
 
 
+import com.lolluckyman.business.admin.entity.Admin;
 import com.lolluckyman.utils.LolConvert;
 import com.lolluckyman.utils.core.NameValue;
 import org.springframework.core.io.ClassPathResource;
@@ -22,8 +23,6 @@ import java.util.*;
 
 
 public final class LolUtils {
-    private static final String PWD_PREFIX = "云驰科技2015";
-    private static final String PWD_SUFFIX = "四川资产金融交易所";
     private static final String UNIT = "万千佰拾亿千佰拾万千佰拾元角分";
     private static final String DIGIT = "零壹贰叁肆伍陆柒捌玖";
     private static final double MAX_VALUE = 9.99999999999999E12D;
@@ -357,10 +356,10 @@ public final class LolUtils {
         return dayForWeek;
     }
 
-//    public static User getCurrentUser(HttpServletRequest request){
-//        User user= (User) request.getSession().getAttribute("CURRENT_USER");
-//        return user;
-//    }
+    public static Admin getCurrentAdmin(HttpServletRequest request){
+        Admin admin= (Admin) request.getSession().getAttribute("CURRENT_AMIN");
+        return admin;
+    }
 
     public static List<Map> getPreviewGroup(HttpServletRequest request){
         List<Map> list= (List<Map>) request.getSession().getAttribute("PREVIEW_GROUPS");
@@ -393,7 +392,7 @@ public final class LolUtils {
      * @return
      */
     public static String encryptPassword(String origPwd){
-        return MD5.MD5Encode(PWD_PREFIX+origPwd+PWD_SUFFIX);
+        return MD5.MD5Encode(origPwd);
     }
 
     /**
@@ -403,7 +402,7 @@ public final class LolUtils {
      * @return
      */
     public static boolean verifyPassword(String origPwd,String encryptedPwd){
-        return MD5.verify(PWD_PREFIX + origPwd + PWD_SUFFIX,encryptedPwd);
+        return MD5.verify(origPwd,encryptedPwd);
     }
 
 //    /**
