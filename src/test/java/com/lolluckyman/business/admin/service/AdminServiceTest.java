@@ -43,7 +43,8 @@ public class AdminServiceTest {
 
     @Test
     public void testDeleteAdmin() throws Exception {
-        System.out.println(adminService.deleteAdmin("201609211721140002"));
+//        System.out.println(adminService.deleteAdmin("201609211721140002"));
+        System.out.println(adminService.resetAdminPassword("201609211752190003"));
     }
 
     @Test

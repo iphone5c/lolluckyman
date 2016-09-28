@@ -185,8 +185,8 @@ public class AdminController extends BaseController {
             return validationResult(1001,"管理员密码不能为空");
 
         Admin loginAdmin=adminService.loginAdmin(admin);
-        request.getSession().setAttribute("CURRENT_AMIN",loginAdmin);
         if (loginAdmin!=null){
+            request.getSession().setAttribute("CURRENT_AMIN",loginAdmin);
             return result("登录成功");
         }else{
             return validationResult(1001,"登录失败");
