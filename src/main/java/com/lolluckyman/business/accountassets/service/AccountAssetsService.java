@@ -106,4 +106,28 @@ public class AccountAssetsService extends BaseService implements IAccountAssetsS
         int info=accountAssetsDao.deleteObject(accountAssets.getCode());
         return info>0?true:false;
     }
+
+    /**
+     * 更新账户资产信息的资金
+     * @param accountAssets
+     * @return
+     */
+    @Override
+    public AccountAssets updateAccountAssets(AccountAssets accountAssets) {
+        if (accountAssets==null)
+            throw new IllegalArgumentException("更新资产信息，资产信息不能为空");
+        if (LolUtils.isEmptyOrNull(accountAssets.getCode()))
+            throw new IllegalArgumentException("更新资产信息，资产主键不能为空");
+        AccountAssets updateAccountAssets=accountAssetsDao.getObject(accountAssets.getCode(),true);
+        if (updateAccountAssets==null)
+            throw new IllegalArgumentException("没有找到此资产信息");
+        updateAccountAssets.setQuizMoney(accountAssets.getQuizMoney());
+        updateAccountAssets.setPensionMoney(accountAssets.getPensionMoney());
+        updateAccountAssets.setVictoryMoney(accountAssets.getVictoryMoney());
+        updateAccountAssets.setFreezeQuizMoney(accountAssets.getFreezeQuizMoney());
+        updateAccountAssets.setFreezePensionMoney(accountAssets.getFreezePensionMoney());
+        updateAccountAssets.setFreezeVictoryMoney(accountAssets.getFreezeVictoryMoney());
+        int info = accountAssetsDao.updateObject(updateAccountAssets);
+        return info>0?updateAccountAssets:null;
+    }
 }

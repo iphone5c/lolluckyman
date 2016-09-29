@@ -3,6 +3,8 @@ package com.lolluckyman.business.account.service;
 import com.lolluckyman.business.account.dao.IAccountDao;
 import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.account.entity.em.*;
+import com.lolluckyman.business.accountassets.entity.AccountAssets;
+import com.lolluckyman.business.accountassets.service.IAccountAssetsService;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,6 +31,8 @@ public class AccountService extends BaseService implements IAccountService {
     private IAccountDao accountDao;
     @Autowired
     private ICodeBuilder codeBuilder;
+    @Autowired
+    private IAccountAssetsService accountAssetsService;
 
     /**
      *获取账户分页列表
@@ -51,7 +56,10 @@ public class AccountService extends BaseService implements IAccountService {
     public Account getAccountByCode(String code) {
         if (LolUtils.isEmptyOrNull(code))
             throw new IllegalArgumentException("根据code查找账户信息，code不能为空");
-        return accountDao.getObject(code,true);
+        Account account=accountDao.getObject(code,true);
+        AccountAssets accountAssets=accountAssetsService.getAccountAssetsByAccountCode(account.getCode());
+        account.setAccountAssets(accountAssets);
+        return (account!=null&&accountAssets!=null)?account:null;
     }
 
     /**
@@ -319,26 +327,80 @@ public class AccountService extends BaseService implements IAccountService {
             throw new IllegalArgumentException("账户登录时，登录账号不能为空或null");
         if (LolUtils.isEmptyOrNull(account.getPassword()))
             throw new IllegalArgumentException("账户登录时，登录密码不能为空或null");
-        Account temp=this.getAccountByLoginName(account.getLoginAccount());
+        Account temp=this.getAccountByloginAccount(account.getLoginAccount());
         if (temp==null)
             throw new IllegalArgumentException("无此账户");
         if (!LolUtils.verifyPassword(temp.getPassword(),temp.getPassword()))
             throw new IllegalArgumentException("账户登录时，密码错误");
+        if (temp.getAccountStatus()!=AccountStatus.正常)
+            throw new IllegalArgumentException("此账户已被禁用");
         return temp;
     }
 
     /**
      * 根据登录账号查找账户信息
-     * @param loginName 登录账号
+     * @param loginAccount 登录账号
      * @return 账户信息
      */
     @Override
-    public Account getAccountByLoginName(String loginName) {
-        if (LolUtils.isEmptyOrNull(loginName))
+    public Account getAccountByloginAccount(String loginAccount) {
+        if (LolUtils.isEmptyOrNull(loginAccount))
             throw new IllegalArgumentException("根据登录账号查找账户信息，登录账号不能为空或null");
         QueryParams queryParams=new QueryParams();
-        queryParams.addParameter("loginName",loginName);
+        queryParams.addParameter("loginAccount",loginAccount);
         List<Account> accountList=accountDao.queryList(queryParams,0,-1,true);
         return ((accountList!=null&&accountList.size()>0)?accountList.get(0):null);
     }
+
+    /**
+     * 注册用户
+     * @param account
+     * @return
+     */
+    @Override
+    public Account registerAccount(Account account) {
+        if (account==null)
+            throw new IllegalArgumentException("注册新用户，用户信息不能为空");
+        if (LolUtils.isEmptyOrNull(account.getLoginAccount()))
+            throw new IllegalArgumentException("注册新用户，登陆账号不能为空");
+        if (LolUtils.isEmptyOrNull(account.getPassword()))
+            throw new IllegalArgumentException("注册新用户，登陆密码不能为空");
+        if (LolUtils.isEmptyOrNull(account.getRealName()))
+            throw new IllegalArgumentException("注册新用户，真实姓名不能为空");
+        if (LolUtils.isEmptyOrNull(account.getEmail()))
+            throw new IllegalArgumentException("注册新用户，邮箱地址不能为空");
+        if (account.getPasswordProblem()==null)
+            throw new IllegalArgumentException("注册新用户，密码问题不能为空");
+        if (LolUtils.isEmptyOrNull(account.getPasswordAnswer()))
+            throw new IllegalArgumentException("注册新用户，问题答案不能为空");
+        if (LolUtils.isEmptyOrNull(account.getWithdrawalsPassword()))
+            throw new IllegalArgumentException("注册新用户，取款密码不能为空");
+        if (account.getPassword().equals(account.getWithdrawalsPassword()))
+            throw new IllegalArgumentException("注册新用户，登录密码与取款密码不能一致");
+        Account temp=this.getAccountByloginAccount(account.getLoginAccount());
+        if (temp!=null)
+            throw new IllegalArgumentException("注册新用户,此登录名已存在");
+        String accountCode = codeBuilder.getAccountCode();
+        account.setCode(accountCode);
+        account.setCreateTime(new Date());
+        account.setAccountStatus(AccountStatus.正常);
+        account.setWithdrawalsStatus(WithdrawalsStatus.正常);
+        account.setRechargeStatus(RechargeStatus.正常);
+        account.setExchangePrizeStatus(ExchangePrizeStatus.正常);
+        account.setBettingStatus(BettingStatus.正常);
+        AccountAssets accountAssets = new AccountAssets();
+        accountAssets.setAccountCode(accountCode);
+        accountAssets.setQuizMoney(0d);
+        accountAssets.setPensionMoney(0d);
+        accountAssets.setVictoryMoney(0d);
+        accountAssets.setFreezeQuizMoney(0d);
+        accountAssets.setFreezePensionMoney(0d);
+        accountAssets.setFreezeVictoryMoney(0d);
+        //资金账户添加
+        accountAssetsService.createAccountAssets(accountAssets);
+        //账户信息添加
+        int info = accountDao.insertObject(account);
+        return info>0?account:null;
+    }
+
 }

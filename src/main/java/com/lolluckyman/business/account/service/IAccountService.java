@@ -4,7 +4,6 @@ import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.account.entity.em.*;
 import com.lolluckyman.utils.core.PageList;
 import com.lolluckyman.utils.core.QueryParams;
-import org.apache.xpath.operations.Bool;
 
 /**
  * Created by 魏源 on 2015/6/30 0030.
@@ -161,9 +160,17 @@ public interface IAccountService {
 
     /**
      * 根据登录账号查找账户信息
-     * @param loginName 登录账号
+     * @param loginAccount 登录账号
      * @return 账户信息
      */
-    public Account getAccountByLoginName(String loginName);
+    public Account getAccountByloginAccount(String loginAccount);
+
+    /**
+     * 注册用户
+     * @param account
+     * @return
+     */
+    public Account registerAccount(Account account);
+
 
 }

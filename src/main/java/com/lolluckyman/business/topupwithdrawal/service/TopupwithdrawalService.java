@@ -1,11 +1,17 @@
 package com.lolluckyman.business.topupwithdrawal.service;
 
+import com.lolluckyman.business.account.entity.Account;
+import com.lolluckyman.business.account.entity.em.AccountStatus;
+import com.lolluckyman.business.account.entity.em.WithdrawalsStatus;
+import com.lolluckyman.business.account.service.IAccountService;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.team.service.ITeamService;
 import com.lolluckyman.business.topupwithdrawal.dao.ITopUpWithdrawalDao;
 import com.lolluckyman.business.topupwithdrawal.entity.TopUpWithdrawal;
+import com.lolluckyman.business.topupwithdrawal.entity.em.BusinessType;
 import com.lolluckyman.business.topupwithdrawal.entity.em.DisposalStatus;
+import com.lolluckyman.business.topupwithdrawal.entity.em.TradeType;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
 import com.lolluckyman.utils.core.PageList;
@@ -15,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +41,8 @@ public class TopUpWithdrawalService extends BaseService implements ITopUpWithdra
     private ITeamService teamService;
     @Autowired
     private ICompetitionService competitionService;
+    @Autowired
+    private IAccountService accountService;
 
     /**
      *获取充值提现信息分页列表
@@ -88,6 +97,44 @@ public class TopUpWithdrawalService extends BaseService implements ITopUpWithdra
         topUpWithdrawal.setDisposalStatus(disposalStatus);
         int info=topUpWithdrawalDao.updateObject(topUpWithdrawal);
         return info>0?true:false;
+    }
+
+    /**
+     * 申请充值
+     * @param applyMoney 申请充值金额
+     * @param applyAccountCode 申请人
+     * @param tradeType 交易类型
+     * @param tradeNumber 交易账号
+     * @return 充值记录
+     */
+    @Override
+    public TopUpWithdrawal applyTopUp(Double applyMoney, String applyAccountCode , TradeType tradeType, String tradeNumber) {
+        if (applyMoney==null||applyMoney<=0)
+            throw new IllegalArgumentException("充值金额必须大于零");
+        if (LolUtils.isEmptyOrNull(applyAccountCode))
+            throw new IllegalArgumentException("申请人不能为空");
+        if (tradeType==null)
+            throw new IllegalArgumentException("交易类型不能为空");
+        if (LolUtils.isEmptyOrNull(tradeNumber))
+            throw new IllegalArgumentException("交易账号不能为空");
+        Account temp = accountService.getAccountByCode(applyAccountCode);
+        if (temp==null)
+            throw new IllegalArgumentException("找不到此申请人的信息");
+        if (temp.getAccountStatus()!= AccountStatus.正常)
+            throw new IllegalArgumentException("此申请人的账号已被禁用，不能进行充值操作");
+        if (temp.getWithdrawalsStatus()!= WithdrawalsStatus.正常)
+            throw new IllegalArgumentException("此申请人的账号充值状态已被禁用，不能进行充值操作");
+        TopUpWithdrawal topUpWithdrawal=new TopUpWithdrawal();
+        topUpWithdrawal.setCode(codeBuilder.getTopUpWithdrawalCode());
+        topUpWithdrawal.setApplyMoney(applyMoney);
+        topUpWithdrawal.setApplyAccountCode(temp.getCode());
+        topUpWithdrawal.setApplyTime(new Date());
+        topUpWithdrawal.setBusinessType(BusinessType.充值);
+        topUpWithdrawal.setTradeType(tradeType);
+        topUpWithdrawal.setTradeNumber(tradeNumber);
+        topUpWithdrawal.setDisposalStatus(DisposalStatus.等待处理);
+        int info=topUpWithdrawalDao.insertObject(topUpWithdrawal);
+        return info>0?topUpWithdrawal:null;
     }
 
 }

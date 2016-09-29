@@ -45,4 +45,14 @@ public interface ITopUpWithdrawalService {
      */
     public boolean operationTopUpWithdrawalStatus(String code, DisposalStatus disposalStatus);
 
+    /**
+     * 申请充值
+     * @param applyMoney 申请充值金额
+     * @param applyAccountCode 申请人
+     * @param tradeType 交易类型
+     * @param tradeNumber 交易账号
+     * @return 充值记录
+     */
+    public TopUpWithdrawal applyTopUp(Double applyMoney,String applyAccountCode ,TradeType tradeType,String tradeNumber);
+
 }

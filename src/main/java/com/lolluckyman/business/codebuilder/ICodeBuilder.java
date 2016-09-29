@@ -26,6 +26,13 @@ public interface ICodeBuilder {
     String getAccountAssetsCode();
 
     /**
+     * 获取一个新的账户编码(规则：年月日时分秒+6位序列号)
+     *
+     * @return 新的账户编码
+     */
+    String getAccountCode();
+
+    /**
      * 获取一个新的奖品编码(规则：年月日时分秒+4位序列号)
      *
      * @return 新的奖品编码
@@ -66,4 +73,11 @@ public interface ICodeBuilder {
      * @return 新的玩法信息编码
      */
     String getPlayRecordCode();
+
+    /**
+     * 获取一个新的充值提现信息编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的充值提现信息编码
+     */
+    String getTopUpWithdrawalCode();
 }

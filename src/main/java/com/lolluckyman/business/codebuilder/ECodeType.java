@@ -17,6 +17,10 @@ public enum ECodeType {
      */
     ACCOUNTASSETS_CODE,
     /**
+     * 账户编码
+     */
+    ACCOUNT_CODE,
+    /**
      * 奖品编码
      */
     PRIZE_CODE,
@@ -40,4 +44,8 @@ public enum ECodeType {
      * 玩法信息编码
      */
     PLAYRECORD_CODE,
+    /**
+     * 充值提现信息编码
+     */
+    TOPUPWITHDRAWAL_CODE,
 }

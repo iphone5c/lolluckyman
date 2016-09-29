@@ -46,6 +46,7 @@ Ext.define('LLManBack.business.bettingrecord.bettingRecordList',{
                 { header: '投注人编号', dataIndex: 'accountCode',width:120 },
                 { header: '投注玩法编号', dataIndex: 'playRecordCode',width:120 },
                 { header: '投注竞猜币数量', dataIndex: 'quizMoney',width:120 },
+                { header: '投注', dataIndex: 'betting',width:120 },
                 { header: '投注时间', dataIndex: 'bettingRecordTime',width:140 },
                 { header: '投注结果', dataIndex: 'bettingRecordResult',width:120 },
                 { header: '投注状态', dataIndex: 'bettingRecordStatus',width:120 },
@@ -86,6 +87,7 @@ Ext.define('LLManBack.business.bettingrecord.bettingRecordList',{
                 {name: 'accountCode', mapping: 'accountCode'},
                 {name: 'playRecordCode', mapping: 'playRecordCode'},
                 {name: 'quizMoney', mapping: 'quizMoney'},
+                {name: 'betting', mapping: 'betting'},
                 {name: 'bettingRecordTime', mapping: 'bettingRecordTime'},
                 {name: 'bettingRecordResult', mapping: 'bettingRecordResult'},
                 {name: 'bettingRecordStatus', mapping: 'bettingRecordStatus'}

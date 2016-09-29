@@ -14,10 +14,11 @@
         <result property="bettingRecordTime" column="bettingrecordtime" />
         <result property="bettingRecordResult" column="bettingrecordresult" />
         <result property="bettingRecordStatus" column="bettingrecordstatus" />
+        <result property="betting" column="betting" />
     </resultMap>
 
     <sql id="baseCol">
-        code, accountcode, playrecordcode, quizmoney, bettingrecordtime, bettingrecordresult, bettingrecordstatus
+        code, accountcode, playrecordcode, quizmoney, bettingrecordtime, bettingrecordresult, bettingrecordstatus, betting
     </sql>
 
     <sql id="whereSql">
@@ -67,6 +68,13 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="betting != null"><![CDATA[ and betting like #{betting} ]]></if>
+            <if test="betting_enum != null">
+                <![CDATA[ and betting in ]]>
+                <foreach collection="betting_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -75,6 +83,7 @@
                     <if test="item.name == 'playRecordCode'"><![CDATA[ playrecordcode like #{item.value} ]]></if>
                     <if test="item.name == 'bettingRecordResult'"><![CDATA[ bettingrecordresult like #{item.value} ]]></if>
                     <if test="item.name == 'bettingRecordStatus'"><![CDATA[ bettingrecordstatus like #{item.value} ]]></if>
+                    <if test="item.name == 'betting'"><![CDATA[ betting like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -96,18 +105,20 @@
             <if test="_orderBy == 'bettingRecordResult_asc'"><![CDATA[ bettingrecordresult, ]]></if>
             <if test="_orderBy == 'bettingRecordStatus_desc'"><![CDATA[ bettingrecordstatus desc, ]]></if>
             <if test="_orderBy == 'bettingRecordStatus_asc'"><![CDATA[ bettingrecordstatus, ]]></if>
+            <if test="_orderBy == 'betting_desc'"><![CDATA[ betting desc, ]]></if>
+            <if test="_orderBy == 'betting_asc'"><![CDATA[ betting, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.lolluckyman.business.bettingrecord.entity.BettingRecord">
         insert into
-        lol_bettingrecord(code,accountcode,playrecordcode,quizmoney,bettingrecordtime,bettingrecordresult,bettingrecordstatus)
-        values(#{code},#{accountCode},#{playRecordCode},#{quizMoney},#{bettingRecordTime},#{bettingRecordResult},#{bettingRecordStatus});
+        lol_bettingrecord(code,accountcode,playrecordcode,quizmoney,bettingrecordtime,bettingrecordresult,bettingrecordstatus,betting)
+        values(#{code},#{accountCode},#{playRecordCode},#{quizMoney},#{bettingRecordTime},#{bettingRecordResult},#{bettingRecordStatus},#{betting});
     </insert>
 
     <update id="updateObject" parameterType="com.lolluckyman.business.bettingrecord.entity.BettingRecord">
         update lol_bettingrecord
-        set accountcode=#{accountCode},playrecordcode=#{playRecordCode},quizmoney=#{quizMoney},bettingrecordtime=#{bettingRecordTime},bettingrecordresult=#{bettingRecordResult},bettingrecordstatus=#{bettingRecordStatus}
+        set accountcode=#{accountCode},playrecordcode=#{playRecordCode},quizmoney=#{quizMoney},bettingrecordtime=#{bettingRecordTime},bettingrecordresult=#{bettingRecordResult},bettingrecordstatus=#{bettingRecordStatus},betting=#{betting}
         where code=#{code};
     </update>
 

@@ -47,4 +47,11 @@ public interface IAccountAssetsService {
      */
     public Boolean deleteAccountAssetsByAccountCode(String accountCode);
 
+    /**
+     * 更新账户资产信息的资金
+     * @param accountAssets
+     * @return
+     */
+    public AccountAssets updateAccountAssets(AccountAssets accountAssets);
+
 }

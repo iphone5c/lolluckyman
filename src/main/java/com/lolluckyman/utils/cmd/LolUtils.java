@@ -4,6 +4,8 @@ package com.lolluckyman.utils.cmd;
 import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.admin.entity.Admin;
 import com.lolluckyman.utils.LolConvert;
+import com.lolluckyman.utils.core.ISerialize;
+import com.lolluckyman.utils.core.JsonSerialize;
 import com.lolluckyman.utils.core.NameValue;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -202,17 +204,17 @@ public final class LolUtils {
         return stream;
     }
 
-    public static boolean isWrapClass(Class<?> cls) {
-        try {
-            return ((Class)cls.getField("TYPE").get((Object)null)).isPrimitive();
-        } catch (Exception var2) {
-            return false;
-        }
-    }
+//    public static boolean isWrapClass(Class<?> cls) {
+//        try {
+//            return ((Class)cls.getField("TYPE").get((Object)null)).isPrimitive();
+//        } catch (Exception var2) {
+//            return false;
+//        }
+//    }
 
-    public static boolean isBasisClass(Class<?> cls) {
-        return cls.isPrimitive() || cls.isAssignableFrom(String.class) || cls.isAssignableFrom(Date.class) || isWrapClass(cls) || cls.isEnum();
-    }
+//    public static boolean isBasisClass(Class<?> cls) {
+//        return cls.isPrimitive() || cls.isAssignableFrom(String.class) || cls.isAssignableFrom(Date.class) || isWrapClass(cls) || cls.isEnum();
+//    }
 
     public static Date dateAddMinute(Date date, int minute) {
         Calendar ca = Calendar.getInstance();
@@ -605,4 +607,41 @@ public final class LolUtils {
         return list;
     }
 
+    public static boolean isBasisClass(Class<?> cls)
+    {
+        return (cls.isPrimitive()) || (cls.isAssignableFrom(String.class)) || (cls.isAssignableFrom(Date.class)) || (isWrapClass(cls)) || (cls.isEnum());
+    }
+
+    public static boolean isWrapClass(Class<?> cls)
+    {
+        try
+        {
+            return ((Class)cls.getField("TYPE").get(null)).isPrimitive(); } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public static String getJsonSerialize(Object obj)
+    {
+        ISerialize serialize = new JsonSerialize();
+        return serialize.serialize(obj);
+    }
+
+    public static Object getJsonDeserialize(String json, Class<?> cls)
+    {
+        ISerialize serialize = new JsonSerialize();
+        return serialize.deserialize(json, cls);
+    }
+
+    public static <T> T getJsonDeserializeT(String json, Class<T> cls)
+    {
+        ISerialize serialize = new JsonSerialize();
+        return serialize.deserializeT(json, cls);
+    }
+
+    public static <T> List<T> getJsonDeserializeListT(String json,Class<T> cls)
+    {
+        ISerialize serialize = new JsonSerialize();
+        return serialize.deserializeListT(json, cls);
+    }
 }

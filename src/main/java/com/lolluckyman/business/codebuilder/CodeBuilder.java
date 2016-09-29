@@ -77,6 +77,19 @@ public class CodeBuilder implements ICodeBuilder{
     }
 
     /**
+     * 获取一个新的账户编码(规则：年月日时分秒+6位序列号)
+     *
+     * @return 新的账户编码
+     */
+    @Override
+    public String getAccountCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.ACCOUNT_CODE.name(),6));
+        return builder.toString();
+    }
+
+    /**
      * 获取一个新的奖品编码(规则：年月日时分秒+4位序列号)
      *
      * @return 新的奖品编码
@@ -150,7 +163,20 @@ public class CodeBuilder implements ICodeBuilder{
     public String getPlayRecordCode() {
         StringBuilder builder = new StringBuilder();
         builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
-        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.RESTRAIN_CODE.name(),4));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.PLAYRECORD_CODE.name(),4));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的充值提现信息编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的充值提现信息编码
+     */
+    @Override
+    public String getTopUpWithdrawalCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.TOPUPWITHDRAWAL_CODE.name(),6));
         return builder.toString();
     }
 }

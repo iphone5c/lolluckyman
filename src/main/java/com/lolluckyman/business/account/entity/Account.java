@@ -6,9 +6,9 @@
 package com.lolluckyman.business.account.entity;
 
 import com.lolluckyman.business.account.entity.em.*;
+import com.lolluckyman.business.accountassets.entity.AccountAssets;
 
-import java.util.*;
-import java.math.*;
+import java.util.Date;
 
 /**
  * 账户信息
@@ -53,6 +53,9 @@ public class Account implements java.io.Serializable {
     private ExchangePrizeStatus exchangePrizeStatus;
     // 投注状态
     private BettingStatus bettingStatus;
+
+    //账户资金
+    private AccountAssets accountAssets;
 
     /**
      * 获取账户code [主键]
@@ -360,4 +363,11 @@ public class Account implements java.io.Serializable {
         this.bettingStatus = bettingStatus;
     }
 
+    public AccountAssets getAccountAssets() {
+        return accountAssets;
+    }
+
+    public void setAccountAssets(AccountAssets accountAssets) {
+        this.accountAssets = accountAssets;
+    }
 }

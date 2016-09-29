@@ -2,7 +2,6 @@ package com.lolluckyman.business.bettingrecord.service;
 
 import com.lolluckyman.business.bettingrecord.entity.BettingRecord;
 import com.lolluckyman.business.bettingrecord.entity.em.BettingRecordStatus;
-import com.lolluckyman.business.topupwithdrawal.entity.em.DisposalStatus;
 import com.lolluckyman.utils.core.PageList;
 import com.lolluckyman.utils.core.QueryParams;
 
@@ -51,5 +50,15 @@ public interface IBettingRecordService {
      * @return true表示操作成功 false表示操作失败
      */
     public boolean deleteBettingRecordByPlayRecordCode(String playRecordCode);
+
+    /**
+     * 用户投注
+     * @param accountCode 投注人
+     * @param playRecordCode 投注玩法
+     * @param quizMoney 竞猜币数量
+     * @param betting 投注结果
+     * @return 投注信息
+     */
+    public BettingRecord accountBetting(String accountCode,String playRecordCode,Double quizMoney,String betting);
 
 }

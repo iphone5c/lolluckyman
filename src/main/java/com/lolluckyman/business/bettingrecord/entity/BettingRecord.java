@@ -29,11 +29,13 @@ public class BettingRecord implements java.io.Serializable {
     private String playRecordCode;
     // 投注竞猜币数量
     private Double quizMoney;
+    //投注
+    private String betting;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 投注时间
     private Date bettingRecordTime;
-    // 投注结果
+    // 投注处理结果
     private BettingRecordResult bettingRecordResult;
     // 投注状态
     private BettingRecordStatus bettingRecordStatus;
@@ -110,7 +112,25 @@ public class BettingRecord implements java.io.Serializable {
         this.quizMoney = quizMoney;
     }
 
-    /** 
+    /**
+     * 获取投注
+     *
+     * @return 投注
+     */
+    public String getBetting() {
+        return betting;
+    }
+
+    /**
+     * 设置投注
+     *
+     * @param betting 投注
+     */
+    public void setBetting(String betting) {
+        this.betting = betting;
+    }
+
+    /**
      * 获取投注时间
      * 
      * @return 投注时间
