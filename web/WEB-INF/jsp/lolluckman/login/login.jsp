@@ -31,15 +31,15 @@
 <body>
 <div class="mockup-content">
     <div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
-        <button type="button">Login</button>
+        <button type="button">登陆</button>
         <div class="morph-content">
             <div>
                 <div class="content-style-form content-style-form-1">
-                    <span class="icon icon-close">Close the dialog</span>
-                    <h2>Login</h2>
+                    <span class="icon icon-close"></span>
+                    <h3 style="text-align:center;padding-top: 50px;">LOL竞猜登陆</h3>
                     <form>
-                        <p><label>Email</label><input type="text" id="loginAccount" /></p>
-                        <p><label>Password</label><input type="password" id="password"/></p>
+                        <p><label>账号</label><input type="text" id="loginAccount" /></p>
+                        <p><label>密码</label><input type="password" id="password"/></p>
                         <p><button class="btn_login" onclick="submitLogin()">Login</button></p>
                     </form>
                 </div>
@@ -48,12 +48,12 @@
     </div><!-- morph-button -->
     <strong class="joiner">or</strong>
     <div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
-        <button type="button">Signup</button>
+        <button type="button">注册</button>
         <div class="morph-content">
             <div>
                 <div class="content-style-form content-style-form-2">
                     <span class="icon icon-close">Close the dialog</span>
-                    <h2>Sign Up</h2>
+                    <h3 style="text-align:center;padding-top: 50px;">LOL竞猜注册</h3>
                     <form>
                         <p><label>会员账号</label><input type="text" id="loginName"/></p>
                         <p><label>会员密码</label><input type="password" id="loginPassword"/></p>

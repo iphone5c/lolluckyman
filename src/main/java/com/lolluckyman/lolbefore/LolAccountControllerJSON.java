@@ -44,7 +44,7 @@ public class LolAccountControllerJSON extends BaseController {
         account.setLoginAccount(loginAccount);
         account.setPassword(password);
         Account login=accountService.loginAccount(account);
-        request.getSession().setAttribute("CURRENT_ACCOUNT",loginAccount);
+        request.getSession().setAttribute("CURRENT_ACCOUNT",login);
         if (login!=null){
             return result("登录成功");
         }else{

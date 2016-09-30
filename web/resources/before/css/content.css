@@ -213,8 +213,8 @@
 
 .content-style-form input[type="text"]:focus,
 .content-style-form input[type="password"]:focus {
-	border-color: #e75854;
-	color: #e75854;
+	border-color: #c58a30;
+	color: #c58a30;
 }
 
 .content-style-form input:focus {
@@ -227,7 +227,7 @@
 	padding: 1.5em;
 	width: 100%;
 	border: none;
-	background: #e75854;
+	background: #c58a30;
 	color: #f9f6e5;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -243,7 +243,7 @@
 }
 
 .content-style-form .icon-close:hover {
-	color: #e75854;
+	color: #c58a30;
 }
 
 .js .content-style-form-1 h2,
@@ -377,7 +377,7 @@
 }
 
 .morph-button-inflow-2 > button svg path {
-	fill: #e75854;
+	fill: #c58a30;
 }
 
 .content-style-social a {
@@ -400,11 +400,11 @@
 }
 
 .content-style-social a:hover {
-	color: #e75854;
+	color: #c58a30;
 }
 
 .content-style-social a:hover svg path {
-	fill: #e75854;
+	fill: #c58a30;
 }
 
 .content-style-social a svg {
@@ -542,7 +542,12 @@
 	vertical-align: -10%;
 	color: rgba(0,0,0,0.2);
 }
-
+.xg_span{
+    display: inline-block;
+    width:25%;
+    text-align: center;
+    background: red;
+}
 @media screen and (max-width: 770px) {
 	.content-style-overlay {
 		font-size: 75%;

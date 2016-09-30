@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/lol/bettingrecord")
-public class LolBettingRecordController extends BaseController {
+@RequestMapping(value = "/lol/bettingrecord/json")
+public class LolBettingRecordControllerJSON extends BaseController {
 
-    public Logger log = Logger.getLogger(LolBettingRecordController.class);//日志
+    public Logger log = Logger.getLogger(LolBettingRecordControllerJSON.class);//日志
 
     @Autowired
     private IBettingRecordService bettingRecordService;

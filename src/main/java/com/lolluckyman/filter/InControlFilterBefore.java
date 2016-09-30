@@ -73,6 +73,7 @@ public class InControlFilterBefore implements Filter {
             response.sendRedirect("/lol/account/jsp/loginHtml") ;
             return ;
         }
+        filterChain.doFilter(request, response) ;
         return ;
     }
 
