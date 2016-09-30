@@ -39,6 +39,8 @@ public class Team implements java.io.Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 添加时间
     private Date createTime;
+    //战队图片
+    private String teamphone;
 
     /** 
      * 获取战队code [主键]
@@ -184,4 +186,11 @@ public class Team implements java.io.Serializable {
         this.createTime = createTime;
     }
 
+    public String getTeamphone() {
+        return teamphone;
+    }
+
+    public void setTeamphone(String teamphone) {
+        this.teamphone = teamphone;
+    }
 }

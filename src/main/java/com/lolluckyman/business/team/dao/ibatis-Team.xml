@@ -15,10 +15,11 @@
         <result property="createTeamTime" column="createteamtime" />
         <result property="description" column="description" />
         <result property="createTime" column="createtime" />
+        <result property="teamphone" column="teamphone" />
     </resultMap>
 
     <sql id="baseCol">
-        code, chinaname, englishname, teamteacher, teamweb, createteamtime, description, createtime
+        code, chinaname, englishname, teamteacher, teamweb, createteamtime, description, createtime,teamphone
     </sql>
 
     <sql id="whereSql">
@@ -69,6 +70,13 @@
             </if>
             <if test="createTime != null"><![CDATA[ and createtime = #{createTime} ]]></if>
             <if test="createTime_r_min != null"><![CDATA[ and createtime >= #{createTime_r_min} and createtime < #{createTime_r_max} ]]></if>
+            <if test="teamphone != null"><![CDATA[ and teamphone like #{teamphone} ]]></if>
+            <if test="teamphone_enum != null">
+                <![CDATA[ and teamphone in ]]>
+                <foreach collection="teamphone_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -78,6 +86,7 @@
                     <if test="item.name == 'teamTeacher'"><![CDATA[ teamteacher like #{item.value} ]]></if>
                     <if test="item.name == 'teamWeb'"><![CDATA[ teamweb like #{item.value} ]]></if>
                     <if test="item.name == 'description'"><![CDATA[ description like #{item.value} ]]></if>
+                    <if test="item.name == 'teamphone'"><![CDATA[ teamphone like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -101,18 +110,20 @@
             <if test="_orderBy == 'description_asc'"><![CDATA[ description, ]]></if>
             <if test="_orderBy == 'createTime_desc'"><![CDATA[ createtime desc, ]]></if>
             <if test="_orderBy == 'createTime_asc'"><![CDATA[ createtime, ]]></if>
+            <if test="_orderBy == 'teamphone_desc'"><![CDATA[ teamphone desc, ]]></if>
+            <if test="_orderBy == 'teamphone_asc'"><![CDATA[ teamphone, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.lolluckyman.business.team.entity.Team">
         insert into
-        lol_team(code,chinaname,englishname,teamteacher,teamweb,createteamtime,description,createtime)
-        values(#{code},#{chinaName},#{englishName},#{teamTeacher},#{teamWeb},#{createTeamTime},#{description},#{createTime});
+        lol_team(code,chinaname,englishname,teamteacher,teamweb,createteamtime,description,createtime,teamphone)
+        values(#{code},#{chinaName},#{englishName},#{teamTeacher},#{teamWeb},#{createTeamTime},#{description},#{createTime},#{teamphone});
     </insert>
 
     <update id="updateObject" parameterType="com.lolluckyman.business.team.entity.Team">
         update lol_team
-        set chinaname=#{chinaName},englishname=#{englishName},teamteacher=#{teamTeacher},teamweb=#{teamWeb},createteamtime=#{createTeamTime},description=#{description},createtime=#{createTime}
+        set chinaname=#{chinaName},englishname=#{englishName},teamteacher=#{teamTeacher},teamweb=#{teamWeb},createteamtime=#{createTeamTime},description=#{description},createtime=#{createTime},teamphone=#{teamphone}
         where code=#{code};
     </update>
 

@@ -35,12 +35,13 @@
         <div class="morph-content">
             <div>
                 <div class="content-style-form content-style-form-1">
-                    <span class="icon icon-close"></span>
-                    <h3 style="text-align:center;padding-top: 50px;">LOL竞猜登陆</h3>
+                    <img src="/resources/before/img/cloes.png" alt="" class="icon icon-close" style="width: 15px;height: 15px;position: absolute;right: 10px;top: -10px;"/>
+                    <h4 style="text-align: center;padding-top: 20px;">LOL竞猜登陆</h4>
                     <form>
-                        <p><label>账号</label><input type="text" id="loginAccount" /></p>
-                        <p><label>密码</label><input type="password" id="password"/></p>
-                        <p><button class="btn_login" onclick="submitLogin()">Login</button></p>
+                        <p><input type="button" value="账号" class="xg_title"/><input type="text" class="xg_title2" id="loginAccount" placeholder="请输入账号"/></p>
+                        <p><input type="button" value="密码" class="xg_title"/><input type="password" class="xg_title2" id="password" placeholder="请输入密码"/></p>
+                        <p style="text-align: right;cursor: pointer">忘记密码？</p>
+                        <p><button class="btn_login" style="border-radius: 5px" onclick="submitLogin()">Login</button></p>
                     </form>
                 </div>
             </div>
@@ -52,16 +53,17 @@
         <div class="morph-content">
             <div>
                 <div class="content-style-form content-style-form-2">
-                    <span class="icon icon-close">Close the dialog</span>
-                    <h3 style="text-align:center;padding-top: 50px;">LOL竞猜注册</h3>
-                    <form>
-                        <p><label>会员账号</label><input type="text" id="loginName"/></p>
-                        <p><label>会员密码</label><input type="password" id="loginPassword"/></p>
-                        <p><label>确认密码</label><input type="password" id="repassword"/></p>
-                        <p><label>取款密码</label><input type="password" id="withdrawalsPassword"/></p>
-                        <p><label>验证码</label><input type="text" id="securityCode"/></p>
-                        <p><label></label><img src="/lol/account/jsp/getKaptchaImage" onclick="getKaptchaImage(this)"></p>
-                        <p><button class="btn_register" onclick="submitSignup()">Sign Up</button></p>
+                    <img src="/resources/before/img/cloes.png" alt="" class="icon icon-close" style="width: 15px;height: 15px;position: absolute;right: 10px;top: -10px;"/>
+                    <h4 style="text-align: center;padding-top: 20px;">LOL竞猜注册</h4>
+                    <form class="xg_form">
+                        <p><input type="button" value="会员账号" class="xg_title"/><input type="text" class="xg_title2" id="loginName" placeholder="请输入账号"/></p>
+                        <p><input type="button" value="会员密码" class="xg_title"/><input type="password" class="xg_title2" id="loginPassword" placeholder="请输入密码"/></p>
+                        <p><input type="button" value="确认密码" class="xg_title"/><input type="password" class="xg_title2" id="repassword" placeholder="请输入确认密码"/></p>
+                        <p><input type="button" value="提现密码" class="xg_title"/><input type="password" class="xg_title2" id="withdrawalsPassword" placeholder="请输入提现密码"/></p>
+                        <p style="position: relative"><input type="button" value="验证码" class="xg_title"/><input type="text" class="xg_title2 xg_Yz" id="securityCode" placeholder="请输入验证码"/>
+                            <img src="/lol/account/jsp/getKaptchaImage" onclick="getKaptchaImage(this)" style="position: absolute;top:0;right:5px">
+                        </p>
+                        <p><button class="btn_login" style="border-radius: 5px" onclick="submitSignup()">注册</button></p>
                     </form>
                 </div>
             </div>
