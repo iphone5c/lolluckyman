@@ -86,4 +86,11 @@ public interface ICompetitionService {
      */
     public boolean isExistCompetitionByTeam(String teamCode);
 
+    /**
+     * 根据时间字符串查询比赛集合,格式：2016-10-01
+     * @param dateInfo
+     * @return
+     */
+    public List<Competition> getCompetitionListByDate(String dateInfo);
+
 }

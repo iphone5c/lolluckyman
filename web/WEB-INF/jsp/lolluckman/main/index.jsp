@@ -28,6 +28,7 @@
     <script src="/resources/before/js/modernizr.custom.js"></script>
     <script src="/resources/before/lol/common.js"></script>
     <script src="/resources/before/lol/login.js"></script>
+    <script src="/resources/before/lol/main.js"></script>
     <script src="/resources/before/js/classie.js"></script>
     <script src="/resources/before/js/uiMorphingButton_fixed.js"></script>
 </head>
@@ -153,613 +154,174 @@
 <div class="firstroundText">
     <img src="/resources/before/img/firstround.png">
 </div>
-<div class="timeText">
-    <span>9月30日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/corps/G2.png">
-        <span>G2</span>
+    <c:forEach var="v" items="${competitionList1}">
+    <input type="hidden" id="${v.key}" name="competitionList1">
+    <div class="timeText">
+        <span>${v.key}</span>
     </div>
-    <div>
-        <img src="/resources/before/img/corps/ROX.png">
-        <span>ROX</span>
+    <div class="teamsOne">
+        <c:forEach var="vs" items="${v.value}">
+            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList1')">
+                <img src="/resources/before/img/corps/G2.png">
+                <span>${vs.teamA.chinaName}</span>
+            </div>
+        </c:forEach>
     </div>
-    <div>
-        <img src="/resources/before/img/corps/H2K.png">
-        <span>H2K</span>
+    <div class="vsText">
+        <img src="/resources/before/img/vstext.png">
     </div>
-    <div>
-        <img src="/resources/before/img/corps/INTZ.png">
-        <span>INTZ</span>
+    <div class="teamsTwo">
+        <c:forEach var="vs" items="${v.value}">
+            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList1')">
+                <img src="/resources/before/img/corps/G2.png">
+                <span>${vs.teamB.chinaName}</span>
+            </div>
+        </c:forEach>
     </div>
-    <div>
-        <img src="/resources/before/img/corps/SSG.png">
-        <span>SSG</span>
+    <div class="choiceTexts">
+        <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
     </div>
-    <div>
-        <img src="/resources/before/img/corps/TSM.png">
-        <span>TSM</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/corps/G2.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/corps/ROX.png">
-        <span>ROX</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/corps/H2K.png">
-        <span>H2K</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/corps/INTZ.png">
-        <span>INTZ</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/corps/SSG.png">
-        <span>SSG</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/corps/TSM.png">
-        <span>TSM</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
-<div class="timeText">
-    <span>10月1日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
-<div class="timeText">
-    <span>10月2日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
-<div class="timeText">
-    <span>10月3日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
+</c:forEach>
 </div>
 <div  class="timeXz">
 <div class="firstroundText">
     <img src="/resources/before/img/secondround.png">
 </div>
-<div class="timeText">
-    <span>10月07日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
+<c:forEach var="v" items="${competitionList2}">
+    <input type="hidden" id="${v.key}" name="competitionList2">
+    <div class="timeText">
+        <span>${v.key}</span>
     </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
+    <div class="teamsOne">
+        <c:forEach var="vs" items="${v.value}">
+            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList2')">
+                <img src="/resources/before/img/corps/G2.png">
+                <span>${vs.teamA.chinaName}</span>
+            </div>
+        </c:forEach>
     </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
+    <div class="vsText">
+        <img src="/resources/before/img/vstext.png">
     </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
+    <div class="teamsTwo">
+        <c:forEach var="vs" items="${v.value}">
+            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList2')">
+                <img src="/resources/before/img/corps/G2.png">
+                <span>${vs.teamB.chinaName}</span>
+            </div>
+        </c:forEach>
     </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
+    <div class="choiceTexts">
+        <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
     </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
-<div class="timeText">
-    <span>10月08日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
-<div class="timeText">
-    <span>10月09日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
-<div class="timeText">
-    <span>10月10日</span>
-</div>
-<div class="teamsOne">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="vsText">
-    <img src="/resources/before/img/vstext.png">
-</div>
-<div class="teamsTwo">
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-    <div>
-        <img src="/resources/before/img/2016.png">
-        <span>G2</span>
-    </div>
-</div>
-<div class="choiceTexts">
-    <img src="/resources/before/img/choice.png">
-</div>
+</c:forEach>
 </div>
 <div  class="timeXz">
     <div class="firstroundText">
         <img src="/resources/before/img/4-1finals.png">
     </div>
-    <div class="timeText">
-        <span>10月14日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+    <c:forEach var="v" items="${competitionList3}">
+        <input type="hidden" id="${v.key}" name="competitionList3">
+        <div class="timeText">
+            <span>${v.key}</span>
         </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="teamsOne" style="margin-left: 460px">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList3')">
+                    <img src="/resources/before/img/corps/G2.png">
+                    <span>${vs.teamA.chinaName}</span>
+                </div>
+            </c:forEach>
         </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
-    <div class="timeText">
-        <span>10月15日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="vsText">
+            <img src="/resources/before/img/vstext.png">
         </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="teamsTwo" style="margin-left: 460px">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList3')">
+                    <img src="/resources/before/img/corps/G2.png">
+                    <span>${vs.teamB.chinaName}</span>
+                </div>
+            </c:forEach>
         </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
-    <div class="timeText">
-        <span>10月16日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="choiceTexts">
+            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
         </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
-        </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
-    <div class="timeText">
-        <span>10月17日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
-        </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
-        </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
+    </c:forEach>
 </div>
 <div  class="timeXz">
     <div class="firstroundText">
         <img src="/resources/before/img/semifinal.png">
     </div>
-    <div class="timeText">
-        <span>10月22日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+    <c:forEach var="v" items="${competitionList4}">
+        <input type="hidden" id="${v.key}" name="competitionList4">
+        <div class="timeText">
+            <span>${v.key}</span>
         </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="teamsOne" style="margin-left: 460px">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList4')">
+                    <img src="/resources/before/img/corps/G2.png">
+                    <span>${vs.teamA.chinaName}</span>
+                </div>
+            </c:forEach>
         </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
-    <div class="timeText">
-        <span>10月23日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="vsText">
+            <img src="/resources/before/img/vstext.png">
         </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="teamsTwo" style="margin-left: 460px">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList4')">
+                    <img src="/resources/before/img/corps/G2.png">
+                    <span>${vs.teamB.chinaName}</span>
+                </div>
+            </c:forEach>
         </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
+        <div class="choiceTexts">
+            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        </div>
+    </c:forEach>
 </div>
 <div  class="timeXz">
     <div class="firstroundText">
         <img src="/resources/before/img/Finals.png">
     </div>
-    <div class="timeText">
-        <span>10月30日</span>
-    </div>
-    <div class="teamsOne" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+    <c:forEach var="v" items="${competitionList5}">
+        <input type="hidden" id="${v.key}" name="competitionList5">
+        <div class="timeText">
+            <span>${v.key}</span>
         </div>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo" style="margin-left: 460px">
-        <div>
-            <img src="/resources/before/img/2016.png">
-            <span>G2</span>
+        <div class="teamsOne" style="margin-left: 460px">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList5')">
+                    <img src="/resources/before/img/corps/G2.png">
+                    <span>${vs.teamA.chinaName}</span>
+                </div>
+            </c:forEach>
         </div>
-    </div>
-    <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png">
-    </div>
+        <div class="vsText">
+            <img src="/resources/before/img/vstext.png">
+        </div>
+        <div class="teamsTwo" style="margin-left: 460px">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList5')">
+                    <img src="/resources/before/img/corps/G2.png">
+                    <span>${vs.teamB.chinaName}</span>
+                </div>
+            </c:forEach>
+        </div>
+        <div class="choiceTexts">
+            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        </div>
+    </c:forEach>
 </div>
 </div>
 </div>
 <!--第三步-->
 <div class="content-steptwo">
     <div class="choice">
-        <img style="margin-left: 21px" src="/resources/before/img/step1.png">
-        <img style="margin-left: -21px" src="/resources/before/img/step2.png">
+        <img style="margin-left: 21px" src="/resources/before/img/step1.png" onclick="window.location.href='/lol/main/jsp/mainIndex'">
+        <img style="margin-left: -21px" src="/resources/before/img/step2.png" onclick="window.location.href='/lol/main/jsp/mainIndex'">
         <img style="margin-left: -21px" src="/resources/before/img/step3.png">
     </div>
     <div class="choiceText">
@@ -970,7 +532,7 @@
 <div class="bombBoxbg">
     <div class="bombBox">
         <div class="bombBoxTop">提示<img src="/resources/before/img/colse.png"></div>
-        <div class="bombBoxText">您还没有选择！</div>
+        <div class="bombBoxText" style="color: #000000">您还没有选择！</div>
     </div>
 </div>
 </div>
@@ -1103,9 +665,9 @@
         });
         // 第一、二步确认选择
         $(".choiceTexts img").click(function(){
-            $(".content-steptwo").show();
-            $(".content-stepone").hide();
-            document.body.scrollTop=0;
+//            $(".content-steptwo").show();
+//            $(".content-stepone").hide();
+//            document.body.scrollTop=0;
         })
         // 第一、二步选择时间
         $(".firstround .times").click(function(){

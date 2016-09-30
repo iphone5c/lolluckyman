@@ -5,6 +5,7 @@ import com.lolluckyman.business.competition.dao.ICompetitionDao;
 import com.lolluckyman.business.competition.entity.Competition;
 import com.lolluckyman.business.competition.entity.em.CompetitionStatus;
 import com.lolluckyman.business.team.service.ITeamService;
+import com.lolluckyman.utils.LolConvert;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseService;
 import com.lolluckyman.utils.core.PageList;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -207,6 +209,28 @@ public class CompetitionService extends BaseService implements ICompetitionServi
         queryParams.addMulAttrParameter("teamCodeB",teamCode);
         List<Competition> competitionList = competitionDao.queryList(queryParams,0,-1,true);
         return (competitionList!=null&&competitionList.size()>0)?true:false;
+    }
+
+    /**
+     * 根据时间字符串查询比赛集合,格式：2016-10-01
+     * @param dateInfo
+     * @return
+     */
+    @Override
+    public List<Competition> getCompetitionListByDate(String dateInfo) {
+        if (LolUtils.isEmptyOrNull(dateInfo))
+            throw new IllegalArgumentException("根据时间字符串查询比赛集合，dateInfo不能为空或null");
+        try {
+            Date min = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+            Date max = LolConvert.toDate(dateInfo+" 23:29:29",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+            QueryParams queryParams=new QueryParams();
+            queryParams.addParameterByRange("gameStartTime",min,max);
+            List<Competition> competitions=competitionDao.queryList(queryParams,0,-1,true);
+            return competitions;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

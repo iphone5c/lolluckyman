@@ -61,6 +61,10 @@ public final class LolConvert {
      */
     public static String DATEFORMAT_DATA_CH_LONG = "yyyy年M月d日";
     /**
+     * 日期格式：M月d日
+     */
+    public static String DATEFORMAT_DATA_M_D = "M月d日";
+    /**
      * 日期格式：H点m分
      */
     public static String DATEFORMAT_TIME_CH_SORT = "H点m分";
