@@ -53,10 +53,9 @@ public class InControlFilterBefore implements Filter {
         }
 
         if (
-                requestPath.startsWith("/lol/account/jsp/loginHtml")
+                requestPath.startsWith("/lol/main/jsp")
                 || requestPath.startsWith("/lol/account/json/login")
                 || requestPath.startsWith("/lol/account/json/registerAccount")
-                || requestPath.startsWith("/lol/account/jsp/getKaptchaImage")
             )
         {
             //添加安全Header
@@ -70,7 +69,7 @@ public class InControlFilterBefore implements Filter {
         //判断用户是否已经登录
         Account account = LolUtils.getCurrentAccount(request);
         if (account==null){
-            response.sendRedirect("/lol/account/jsp/loginHtml") ;
+            response.sendRedirect("/lol/main/jsp/mainIndex") ;
             return ;
         }
         filterChain.doFilter(request, response) ;

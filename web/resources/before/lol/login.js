@@ -9,10 +9,11 @@ function submitLogin(){
         password:password
     }
     var result = invokeService('/lol/account/json/login',param);
-    if(result.statusCode!=100){
+    if(result.statusCode!=1000){
         alert(result.errorMessage)
         return false;
     }
+    window.location.href="/lol/main/jsp/mainIndex";
 }
 
 /**
@@ -55,5 +56,18 @@ function submitSignup(){
         alert(result.errorMessage)
         return false;
     }
-    window.location.href="/lol/account/jsp/loginHtml";
+    window.location.href="/lol/main/jsp/mainIndex";
+}
+
+/**
+ * 注销当前登陆用户
+ * @returns {boolean}
+ */
+function logout(){
+    var result = invokeService('/lol/account/json/logout',{});
+    if(result.statusCode!=1000){
+        alert(result.errorMessage)
+        return false;
+    }
+    window.location.href="/lol/main/jsp/mainIndex";
 }

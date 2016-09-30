@@ -35,7 +35,7 @@ public class LolAccountControllerJSON extends BaseController {
      * @return
      */
     @RequestMapping(value = "/login")
-    public Object login(HttpServletRequest request,HttpServletResponse response,String loginAccount,String password){
+    public Object login(HttpServletRequest request ,String loginAccount,String password){
         if (LolUtils.isEmptyOrNull(loginAccount))
             return validationResult(1001,"用户名不能为空");
         if (LolUtils.isEmptyOrNull(password))
@@ -50,6 +50,17 @@ public class LolAccountControllerJSON extends BaseController {
         }else{
             return validationResult(1001,"登录失败");
         }
+    }
+
+    /**
+     * 退出当前登陆用户
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/logout")
+    public Object logout(HttpServletRequest request){
+        LolUtils.destoryAccount(request);
+        return result("退出成功");
     }
 
     /**

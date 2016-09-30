@@ -380,6 +380,14 @@ public final class LolUtils {
         return account;
     }
 
+    /**
+     * 注销当前登陆的前端用户
+     * @param request
+     */
+    public static void destoryAccount(HttpServletRequest request){
+        request.getSession().removeAttribute("CURRENT_ACCOUNT");
+    }
+
     public static List<Map> getPreviewGroup(HttpServletRequest request){
         List<Map> list= (List<Map>) request.getSession().getAttribute("PREVIEW_GROUPS");
         return list;

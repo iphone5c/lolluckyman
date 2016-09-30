@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -31,13 +30,6 @@ public class LolAccountControllerJSP extends BaseController {
     private IAccountService accountService;
     @Autowired
     private Producer captchaProducer = null;
-
-    @RequestMapping(value = "loginHtml")
-    public ModelAndView loginHtml(){
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("/lolluckman/login/login");
-        return modelAndView;
-    }
 
     @RequestMapping(value = "/getKaptchaImage")
     public void getKaptchaImage(HttpServletRequest request, HttpServletResponse response) throws IOException {

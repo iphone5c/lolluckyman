@@ -64,7 +64,7 @@ input{
     position: relative;
     padding: 7px 26px;
     outline: none;
-    border: 1px solid #a9a9a9;
+    border: 2px solid #a9a9a9;
     background: none;
 }
 .xg_input2{
@@ -73,7 +73,7 @@ input{
     padding: 7px 26px;
     margin-left: 30px;
     outline: none;
-    border: 1px solid #a9a9a9;
+    border: 2px solid #a9a9a9;
     background: none;
 }
 .right_top .active{
@@ -109,7 +109,7 @@ input{
     position: relative;
     padding: 7px 26px;
     outline: none;
-    border: 1px solid #a9a9a9;
+    border: 2px solid #a9a9a9;
     background: none;
 }
 .xg2_input2{
@@ -118,7 +118,7 @@ input{
     padding: 7px 26px;
     margin-left: 30px;
     outline: none;
-    border: 1px solid #a9a9a9;
+    border: 2px solid #a9a9a9;
     background: none;
 }
 .left ul li.active{

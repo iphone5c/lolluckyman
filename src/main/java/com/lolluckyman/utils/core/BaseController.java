@@ -1,11 +1,16 @@
 package com.lolluckyman.utils.core;
 
+import com.lolluckyman.business.account.entity.Account;
+import com.lolluckyman.business.account.service.IAccountService;
+import com.lolluckyman.utils.cmd.LolUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 public class BaseController {
 
     public Logger log = Logger.getLogger(BaseController.class);//日志
+
+    @Autowired
+    private IAccountService accountService;
 
     /**
      * 所有Controller层通过此方法返回数据给客户端
@@ -70,6 +78,13 @@ public class BaseController {
             log.error("异常状态码："+LolExceptionCode.PROGRAM_EXCEPTION+"，异常信息："+ex);
         }
         return result;
+    }
+
+    @ModelAttribute
+    public void publicInfo(HttpServletRequest request){
+        Account account = LolUtils.getCurrentAccount(request);
+        if (account!=null)
+            request.setAttribute("account",accountService.getAccountByCode(account.getCode()) );
     }
 
 }

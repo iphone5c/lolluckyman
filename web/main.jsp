@@ -3,4 +3,4 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<jsp:forward page="/lol/account/jsp/loginHtml"></jsp:forward>
+<jsp:forward page="/lol/main/jsp/mainIndex"></jsp:forward>

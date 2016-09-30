@@ -17,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/lol/topupwithdrawal")
-public class LolTopUpWithdrawalController extends BaseController {
+@RequestMapping(value = "/lol/topupwithdrawal/json")
+public class LolTopUpWithdrawalControllerJSON extends BaseController {
 
-    public Logger log = Logger.getLogger(LolTopUpWithdrawalController.class);//日志
+    public Logger log = Logger.getLogger(LolTopUpWithdrawalControllerJSON.class);//日志
 
     @Autowired
     private ITopUpWithdrawalService topUpWithdrawalService;
