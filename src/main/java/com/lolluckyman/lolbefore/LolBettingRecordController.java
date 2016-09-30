@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping(value = "/lol/bettingrecord")
-public class BettingRecordController extends BaseController {
+public class LolBettingRecordController extends BaseController {
 
-    public Logger log = Logger.getLogger(BettingRecordController.class);//日志
+    public Logger log = Logger.getLogger(LolBettingRecordController.class);//日志
 
     @Autowired
     private IBettingRecordService bettingRecordService;
@@ -33,18 +33,18 @@ public class BettingRecordController extends BaseController {
      * @param betting 投注结果
      */
     @RequestMapping(value = "/applyTopUp")
-    public void applyTopUp(HttpServletRequest request,HttpServletResponse response,String playRecordCode, Double quizMoney, String betting){
+    public Object applyTopUp(HttpServletRequest request,HttpServletResponse response,String playRecordCode, Double quizMoney, String betting){
         if (quizMoney==null||quizMoney<10)
-            validationResultJSONP(request,response,1001,"投注最小竞猜币为10个");
+            return validationResult(1001,"投注最小竞猜币为10个");
         if (LolUtils.isEmptyOrNull(playRecordCode))
-            validationResultJSONP(request,response,1001,"投注的玩法不能为空");
+            return validationResult(1001,"投注的玩法不能为空");
         if (LolUtils.isEmptyOrNull(betting))
-            validationResultJSONP(request,response,1001,"投注的结果不能为空");
+            return validationResult(1001,"投注的结果不能为空");
         BettingRecord bettingRecord=bettingRecordService.accountBetting(LolUtils.getCurrentAccount(request).getCode(), playRecordCode, quizMoney, betting);
         if (bettingRecord!=null){
-            resultJSONP(request,response,"投注成功");
+            return result("投注成功");
         }else{
-            validationResultJSONP(request,response,1001,"投注失败");
+            return validationResult(1001,"投注失败");
         }
     }
 }

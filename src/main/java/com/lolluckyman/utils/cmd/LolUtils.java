@@ -1,6 +1,7 @@
 package com.lolluckyman.utils.cmd;
 
 
+import com.google.code.kaptcha.Constants;
 import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.admin.entity.Admin;
 import com.lolluckyman.utils.LolConvert;
@@ -643,5 +644,22 @@ public final class LolUtils {
     {
         ISerialize serialize = new JsonSerialize();
         return serialize.deserializeListT(json, cls);
+    }
+
+    /**
+     * 验证输入是否正确
+     * @param securityCode
+     * @return
+     */
+    public static boolean isExistSecurityCode(HttpServletRequest request,String securityCode){
+        String sessionSecurityCode= (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        if (LolUtils.isEmptyOrNull(securityCode))
+            throw new IllegalArgumentException("验证码输入不能为空");
+        if (LolUtils.isEmptyOrNull(sessionSecurityCode))
+            throw new IllegalArgumentException("尚未获取到验证码");
+        if (sessionSecurityCode.equals(securityCode))
+            return true;
+        else
+            return false;
     }
 }

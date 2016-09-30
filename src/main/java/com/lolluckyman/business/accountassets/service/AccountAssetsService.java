@@ -1,6 +1,5 @@
 package com.lolluckyman.business.accountassets.service;
 
-import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.account.service.IAccountService;
 import com.lolluckyman.business.accountassets.dao.IAccountAssetsDao;
 import com.lolluckyman.business.accountassets.entity.AccountAssets;
@@ -83,9 +82,9 @@ public class AccountAssetsService extends BaseService implements IAccountAssetsS
             throw new IllegalArgumentException("新增账户资产时，账户资产对象不能为空或者null");
         if (LolUtils.isEmptyOrNull(accountAssets.getAccountCode()))
             throw new IllegalArgumentException("新增账户资产时，账户编号不能为空或者null");
-        Account account= accountService.getAccountByCode(accountAssets.getAccountCode());
-        if (account==null)
-            throw new IllegalArgumentException("新增账户资产时，找不到关联的账户信息，accountCode："+accountAssets.getAccountCode());
+//        Account account= accountService.getAccountByCode(accountAssets.getAccountCode());
+//        if (account==null)
+//            throw new IllegalArgumentException("新增账户资产时，找不到关联的账户信息，accountCode："+accountAssets.getAccountCode());
         accountAssets.setCode(codeBuilder.getAccountAssetsCode());
         int info=accountAssetsDao.insertObject(accountAssets);
         return info>0?accountAssets:null;

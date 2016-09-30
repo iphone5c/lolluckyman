@@ -330,7 +330,7 @@ public class AccountService extends BaseService implements IAccountService {
         Account temp=this.getAccountByloginAccount(account.getLoginAccount());
         if (temp==null)
             throw new IllegalArgumentException("无此账户");
-        if (!LolUtils.verifyPassword(temp.getPassword(),temp.getPassword()))
+        if (!LolUtils.verifyPassword(account.getPassword(),temp.getPassword()))
             throw new IllegalArgumentException("账户登录时，密码错误");
         if (temp.getAccountStatus()!=AccountStatus.正常)
             throw new IllegalArgumentException("此账户已被禁用");
@@ -365,14 +365,14 @@ public class AccountService extends BaseService implements IAccountService {
             throw new IllegalArgumentException("注册新用户，登陆账号不能为空");
         if (LolUtils.isEmptyOrNull(account.getPassword()))
             throw new IllegalArgumentException("注册新用户，登陆密码不能为空");
-        if (LolUtils.isEmptyOrNull(account.getRealName()))
-            throw new IllegalArgumentException("注册新用户，真实姓名不能为空");
-        if (LolUtils.isEmptyOrNull(account.getEmail()))
-            throw new IllegalArgumentException("注册新用户，邮箱地址不能为空");
-        if (account.getPasswordProblem()==null)
-            throw new IllegalArgumentException("注册新用户，密码问题不能为空");
-        if (LolUtils.isEmptyOrNull(account.getPasswordAnswer()))
-            throw new IllegalArgumentException("注册新用户，问题答案不能为空");
+//        if (LolUtils.isEmptyOrNull(account.getRealName()))
+//            throw new IllegalArgumentException("注册新用户，真实姓名不能为空");
+//        if (LolUtils.isEmptyOrNull(account.getEmail()))
+//            throw new IllegalArgumentException("注册新用户，邮箱地址不能为空");
+//        if (account.getPasswordProblem()==null)
+//            throw new IllegalArgumentException("注册新用户，密码问题不能为空");
+//        if (LolUtils.isEmptyOrNull(account.getPasswordAnswer()))
+//            throw new IllegalArgumentException("注册新用户，问题答案不能为空");
         if (LolUtils.isEmptyOrNull(account.getWithdrawalsPassword()))
             throw new IllegalArgumentException("注册新用户，取款密码不能为空");
         if (account.getPassword().equals(account.getWithdrawalsPassword()))
@@ -381,6 +381,8 @@ public class AccountService extends BaseService implements IAccountService {
         if (temp!=null)
             throw new IllegalArgumentException("注册新用户,此登录名已存在");
         String accountCode = codeBuilder.getAccountCode();
+        account.setPassword(LolUtils.encryptPassword(account.getPassword()));
+        account.setWithdrawalsPassword(LolUtils.encryptPassword(account.getWithdrawalsPassword()));
         account.setCode(accountCode);
         account.setCreateTime(new Date());
         account.setAccountStatus(AccountStatus.正常);
