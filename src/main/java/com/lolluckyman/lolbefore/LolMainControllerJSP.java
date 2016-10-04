@@ -1,11 +1,15 @@
 package com.lolluckyman.lolbefore;
 
+import com.lolluckyman.business.competition.controller.model.CompetitionModel;
 import com.lolluckyman.business.competition.entity.Competition;
 import com.lolluckyman.business.competition.service.ICompetitionService;
+import com.lolluckyman.business.restrain.entity.Restrain;
+import com.lolluckyman.business.restrain.service.IRestrainService;
 import com.lolluckyman.business.team.entity.Team;
 import com.lolluckyman.business.team.service.ITeamService;
 import com.lolluckyman.lolbefore.model.CompetitionParamsModel;
 import com.lolluckyman.utils.LolConvert;
+import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,8 @@ public class LolMainControllerJSP extends BaseController {
     private ICompetitionService competitionService;
     @Autowired
     private ITeamService teamService;
+    @Autowired
+    private IRestrainService restrainService;
 
     /**
      * 首页
@@ -53,13 +59,19 @@ public class LolMainControllerJSP extends BaseController {
             if (competitionList==null||competitionList.size()<=0)
                 continue;
             for (Competition competition:competitionList){
-                CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
-                Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
-                Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
-                competitionParamsModel.setCompetition(competition);
-                competitionParamsModel.setTeamA(teamA);
-                competitionParamsModel.setTeamB(teamB);
-                competitionParamsModelList.add(competitionParamsModel);
+                List<Restrain> restrainList=restrainService.getRestrainListByCompetition(competition.getCode());
+
+                for(Restrain restrain:restrainList){
+
+                    CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
+                    Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+                    Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+                    competitionParamsModel.setTeamA(teamA);
+                    competitionParamsModel.setTeamB(teamB);
+                    competitionParamsModel.setRestrain(restrain);
+
+                    competitionParamsModelList.add(competitionParamsModel);
+                }
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
@@ -78,13 +90,19 @@ public class LolMainControllerJSP extends BaseController {
             if (competitionList==null||competitionList.size()<=0)
                 continue;
             for (Competition competition:competitionList){
-                CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
-                Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
-                Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
-                competitionParamsModel.setCompetition(competition);
-                competitionParamsModel.setTeamA(teamA);
-                competitionParamsModel.setTeamB(teamB);
-                competitionParamsModelList.add(competitionParamsModel);
+                List<Restrain> restrainList=restrainService.getRestrainListByCompetition(competition.getCode());
+
+                for(Restrain restrain:restrainList){
+
+                    CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
+                    Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+                    Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+                    competitionParamsModel.setTeamA(teamA);
+                    competitionParamsModel.setTeamB(teamB);
+                    competitionParamsModel.setRestrain(restrain);
+
+                    competitionParamsModelList.add(competitionParamsModel);
+                }
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
@@ -104,13 +122,19 @@ public class LolMainControllerJSP extends BaseController {
             if (competitionList==null||competitionList.size()<=0)
                 continue;
             for (Competition competition:competitionList){
-                CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
-                Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
-                Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
-                competitionParamsModel.setCompetition(competition);
-                competitionParamsModel.setTeamA(teamA);
-                competitionParamsModel.setTeamB(teamB);
-                competitionParamsModelList.add(competitionParamsModel);
+                List<Restrain> restrainList=restrainService.getRestrainListByCompetition(competition.getCode());
+
+                for(Restrain restrain:restrainList){
+
+                    CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
+                    Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+                    Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+                    competitionParamsModel.setTeamA(teamA);
+                    competitionParamsModel.setTeamB(teamB);
+                    competitionParamsModel.setRestrain(restrain);
+
+                    competitionParamsModelList.add(competitionParamsModel);
+                }
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
@@ -130,13 +154,19 @@ public class LolMainControllerJSP extends BaseController {
             if (competitionList==null||competitionList.size()<=0)
                 continue;
             for (Competition competition:competitionList){
-                CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
-                Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
-                Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
-                competitionParamsModel.setCompetition(competition);
-                competitionParamsModel.setTeamA(teamA);
-                competitionParamsModel.setTeamB(teamB);
-                competitionParamsModelList.add(competitionParamsModel);
+                List<Restrain> restrainList=restrainService.getRestrainListByCompetition(competition.getCode());
+
+                for(Restrain restrain:restrainList){
+
+                    CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
+                    Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+                    Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+                    competitionParamsModel.setTeamA(teamA);
+                    competitionParamsModel.setTeamB(teamB);
+                    competitionParamsModel.setRestrain(restrain);
+
+                    competitionParamsModelList.add(competitionParamsModel);
+                }
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
@@ -156,13 +186,19 @@ public class LolMainControllerJSP extends BaseController {
             if (competitionList==null||competitionList.size()<=0)
                 continue;
             for (Competition competition:competitionList){
-                CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
-                Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
-                Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
-                competitionParamsModel.setCompetition(competition);
-                competitionParamsModel.setTeamA(teamA);
-                competitionParamsModel.setTeamB(teamB);
-                competitionParamsModelList.add(competitionParamsModel);
+                List<Restrain> restrainList=restrainService.getRestrainListByCompetition(competition.getCode());
+
+                for(Restrain restrain:restrainList){
+
+                    CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
+                    Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+                    Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+                    competitionParamsModel.setTeamA(teamA);
+                    competitionParamsModel.setTeamB(teamB);
+                    competitionParamsModel.setRestrain(restrain);
+
+                    competitionParamsModelList.add(competitionParamsModel);
+                }
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
@@ -178,4 +214,29 @@ public class LolMainControllerJSP extends BaseController {
         modelAndView.addObject("competitionList5",listMap5);
         return modelAndView;
     }
+
+    /**
+     * 选择比赛队伍
+     */
+    @RequestMapping(value = "/mainIndexFrameTeam")
+    public ModelAndView mainIndexFrameTeam(String teamCode){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/lolluckman/main/play");
+        if (LolUtils.isEmptyOrNull(teamCode))
+            throw new IllegalArgumentException("请选择队伍");
+        CompetitionParamsModel competitionParamsModel=new CompetitionParamsModel();
+        Restrain restrain = restrainService.getRestrainByCode(teamCode);
+        Competition competition = competitionService.getCompetitionByCode(restrain.getCompetitionCode());
+        Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+        Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+        competitionParamsModel.setTeamA(teamA);
+        competitionParamsModel.setTeamB(teamB);
+
+        modelAndView.addObject("competition",competitionParamsModel);
+        modelAndView.addObject("restrainCode",teamCode);
+        return modelAndView;
+
+    }
 }
+
+

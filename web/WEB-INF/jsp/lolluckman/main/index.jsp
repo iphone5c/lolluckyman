@@ -161,7 +161,7 @@
     </div>
     <div class="teamsOne">
         <c:forEach var="vs" items="${v.value}">
-            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList1')">
+            <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
                 <img src="/resources/before/img/corps/G2.png">
                 <span>${vs.teamA.chinaName}</span>
             </div>
@@ -172,7 +172,7 @@
     </div>
     <div class="teamsTwo">
         <c:forEach var="vs" items="${v.value}">
-            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList1')">
+            <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
                 <img src="/resources/before/img/corps/G2.png">
                 <span>${vs.teamB.chinaName}</span>
             </div>
@@ -194,7 +194,7 @@
     </div>
     <div class="teamsOne">
         <c:forEach var="vs" items="${v.value}">
-            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList2')">
+            <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList2')">
                 <img src="/resources/before/img/corps/G2.png">
                 <span>${vs.teamA.chinaName}</span>
             </div>
@@ -205,7 +205,7 @@
     </div>
     <div class="teamsTwo">
         <c:forEach var="vs" items="${v.value}">
-            <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList2')">
+            <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList2')">
                 <img src="/resources/before/img/corps/G2.png">
                 <span>${vs.teamB.chinaName}</span>
             </div>
@@ -227,7 +227,7 @@
         </div>
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
-                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList3')">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList3')">
                     <img src="/resources/before/img/corps/G2.png">
                     <span>${vs.teamA.chinaName}</span>
                 </div>
@@ -238,7 +238,7 @@
         </div>
         <div class="teamsTwo" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
-                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList3')">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList3')">
                     <img src="/resources/before/img/corps/G2.png">
                     <span>${vs.teamB.chinaName}</span>
                 </div>
@@ -260,7 +260,7 @@
         </div>
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
-                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList4')">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList4')">
                     <img src="/resources/before/img/corps/G2.png">
                     <span>${vs.teamA.chinaName}</span>
                 </div>
@@ -271,7 +271,7 @@
         </div>
         <div class="teamsTwo" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
-                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList4')">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList4')">
                     <img src="/resources/before/img/corps/G2.png">
                     <span>${vs.teamB.chinaName}</span>
                 </div>
@@ -293,7 +293,7 @@
         </div>
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
-                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList5')">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList5')">
                     <img src="/resources/before/img/corps/G2.png">
                     <span>${vs.teamA.chinaName}</span>
                 </div>
@@ -304,7 +304,7 @@
         </div>
         <div class="teamsTwo" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
-                <div onclick="seletedTeam('${v.key}','${vs.competition.code}','competitionList5')">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList5')">
                     <img src="/resources/before/img/corps/G2.png">
                     <span>${vs.teamB.chinaName}</span>
                 </div>
@@ -317,215 +317,21 @@
 </div>
 </div>
 </div>
-<!--第三步-->
-<div class="content-steptwo">
-    <div class="choice">
-        <img style="margin-left: 21px" src="/resources/before/img/step1.png" onclick="window.location.href='/lol/main/jsp/mainIndex'">
-        <img style="margin-left: -21px" src="/resources/before/img/step2.png" onclick="window.location.href='/lol/main/jsp/mainIndex'">
-        <img style="margin-left: -21px" src="/resources/before/img/step3.png">
-    </div>
-    <div class="choiceText">
-        <img src="/resources/before/img/rectangle.png">
-        <img style="margin-left: 50px" src="/resources/before/img/teamText.png">
-    </div>
-    <div class="choiceTeam">
-        <img style="float: left;margin-top: 40px" src="/resources/before/img/team-iocn.png">
-        <img src="/resources/before/img/vs-icon.png">
-        <img style="float: right;margin-top: 40px" src="/resources/before/img/team-iocn.png">
-    </div>
-    <div class="gameplayText">
-        <img src="/resources/before/img/gameplayText.png">
-    </div>
-    <div class="gameplayOne">
-        <div class="gameplayLink"></div>
-        <ul>
-            <li class="active1">总局输赢</li>
-            <li>单局输赢</li>
-            <li>比分</li>
-            <li>一血</li>
-            <li>一塔</li>
-            <li>一小龙</li>
-            <li>第一亚龙属性</li>
-            <li>小龙数量</li>
-        </ul>
-        <div style="display: block" class="concretePlay">
-            <span class="gameTitle">竞猜全球总决赛获胜的战队</span>
-            <div class="gameTwo">
-                <div>投注G2(1.80)</div>
-                <div>投注CLG(1.80)</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜获得当局胜利的战队</span>
-            <div class="gameTwo">
-                <div>投注G2(1.80)</div>
-                <div>投注CLG(1.80)</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜对战局数比分</span>
-            <div class="gameThree">
-                <div style="margin-left: 120px">1:2</div>
-                <div>2:1</div>
-                <div>2:0</div>
-                <div>0:2</div>
-                <div>2:3</div>
-                <div style="margin-left: 120px">0:3</div>
-                <div>3:0</div>
-                <div>1:3</div>
-                <div>3:1</div>
-                <div>3:2</div>
-            </div>
-        </div>
+<div id="selectTeamCompetition" class="content-steptwo">
 
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜"一血"所属位置</span>
-            <div class="gameFour">
-                <div>上单</div>
-                <div>中单</div>
-                <div>下路组合</div>
-                <div>打野</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜"一塔"所属线路</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">上路</div>
-                <div>中路</div>
-                <div>下路</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜"一小龙"所属战队</span>
-            <div class="gameTwo">
-                <div>投注G2(1.80)</div>
-                <div>投注CLG(1.80)</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜"第一亚龙属性"所属属性</span>
-            <div class="gameFour">
-                <div>风属性</div>
-                <div>火属性</div>
-                <div>土属性</div>
-                <div>水属性</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜对战结束时战队所获小龙数量</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>相同</div>
-            </div>
-        </div>
-    </div>
-    <div class="gameplayOne gameplayTwo">
-        <div class="gameplayLink"></div>
-        <ul>
-            <li>一大龙</li>
-            <li>一峡谷先锋</li>
-            <li>单局四杀</li>
-            <li>单局五杀</li>
-            <li>率先十杀</li>
-            <li>单局超神</li>
-            <li>一水晶</li>
-            <li>单方人头数单双</li>
-            <li style="width: 136px">总人头数单双</li>
-        </ul>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜对战中所获的第一条大龙所属战队</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>均无</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜对战中攻占第一条峡谷先锋的战队</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>均无</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜单局对战中获得四杀的的战队</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>均无</div>
-            </div>
-        </div>
-
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜单局对战中获得五杀的的战队</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>均无</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜单局对战中率先获得10个人头的战队</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>均无</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜单局对战中“单局超神”所属战队</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">投注G2(1.80)</div>
-                <div>投注G2(1.80)</div>
-                <div>均无</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜单局对战中所获的第一座水晶所属线路</span>
-            <div class="gameFive">
-                <div style="margin-left: 215px">上路</div>
-                <div>中路</div>
-                <div>下路</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜对战单方最终所获人头数的单双</span>
-            <div class="gameFour">
-                <div>投注G2单(1.80)</div>
-                <div>投注G2双(1.80)</div>
-                <div>投注CLG单(1.80)</div>
-                <div>投注CLG双(1.80)</div>
-            </div>
-        </div>
-        <div class="concretePlay">
-            <span class="gameTitle">竞猜对战双方最终所获人头总数的单双</span>
-            <div class="gameTwo">
-                <div>投注单(1.80)</div>
-                <div>投注双(1.80)</div>
-            </div>
-        </div>
-    </div>
-    <div style="clear: both"></div>
-    <div class="confirm">
-        <img src="/resources/before/img/confirm.png">
-    </div>
-</div>
 </div>
 <!--选中玩法之后的弹出框-->
 <div class="bettingBg">
     <div class="betting">
-        <div class="bettingTop"><span>总局输赢竞猜</span><img src="/resources/before/img/colse.png"></div>
-        <h4>您投给了 : <span>SSG</span></h4>
+        <div class="bettingTop"><span id="titleConfirm"></span><img src="/resources/before/img/colse.png"></div>
+        <h4>您的投注: <span id="infoConfirm"></span></h4>
         <div class="bettingIntegral">
-            <span>投注积分</span>
-            <div></div>
-            <input type="text" value="10">
+            <span>投注竞猜币</span>
+            <div><input id="quizMoney" type="text" style="width: 246px;height: 38px;margin-left: 3px;text-align: center; placeholder="请输入数量"/></div>
         </div>
-        <div class="bettingEstimate">预计可赢：<span>18</span></div>
-        <div class="bettingText">当前积分：<span>100</span></div>
-        <div class="bettingQr">确认投注</div>
+        <div class="bettingEstimate">预计可赢：<span>0</span></div>
+        <div class="bettingText">当前竞猜币：<span>${account.accountAssets.quizMoney}</span></div>
+        <div class="bettingQr" onclick="submitTz()">确认投注</div>
     </div>
 </div>
 <!--提示模板-->
@@ -597,40 +403,7 @@
             bttn.addEventListener( 'click', function( ev ) { ev.preventDefault(); } );
         } );
         $(".mockup-content").css("background","transparent")
-        // 选择小龙数量
-        $(".num").click(function(){
-            $(".num4").toggle();
-        });
-        $(".num4,.num").mouseleave(function(){
-            $(".num4").hide();
 
-        });
-        $(".num4 ul li").click(function(){
-            var i= $(".num4 ul li").index(this);
-            var x = $(".num4 ul li").eq(i).html();
-            $(".num1").html(x)
-        });
-        // 第三步确认选择并弹出投注框
-        $(".confirm").click(function(){
-            $(".bettingBg").show();
-        })
-        $(".bettingTop img").click(function(){
-            $(".bettingBg").hide();
-        })
-        // 第三步选中具体玩法
-        $(".gameplayOne>ul li").click(function(){
-            var i= $(".gameplayOne>ul li").index(this);
-            $(".gameplayOne>ul li").removeClass("active1");
-            $(".gameplayOne>ul li").eq(i).addClass("active1");
-            $(".concretePlay").css("display","none");
-            $(".concretePlay").eq(i).css("display","block");
-        });
-        // 第三步选中玩法
-        $(".concretePlay div div").click(function(){
-            var i= $(".concretePlay div div").index(this);
-            $(".concretePlay div div").removeClass("active2");
-            $(".concretePlay div div").eq(i).addClass("active2");
-        })
         // 第一、二步选择队伍
         $(".teamsOne div").click(function(){
             var i = $(".teamsOne div").index(this);

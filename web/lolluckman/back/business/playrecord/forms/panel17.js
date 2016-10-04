@@ -97,10 +97,10 @@ Ext.define('LLManBack.business.playrecord.forms.panel17', {
         var me = this;
         if (form.isValid()) {
             var info = form.getFieldValues();
-            var result="{" +
+            var result=
                             "SINGULAR:" +info.oddsSingular+"," +
-                            "DUAL:" +info.oddsDual+
-                        "}";
+                            "DUAL:" +info.oddsDual;
+
             me.parent.down('#content').setValue(result);
             me.up('window').close();
         }

@@ -87,4 +87,10 @@ public interface IRestrainService {
      */
     public boolean isExisRestrain(int restrainNum,String competitionCode);
 
+    /**
+     *根据比赛code 获取局数信息
+     * @param wheres    条件
+     * @return 对象列表
+     */
+    public List<Restrain> getRestrainListByCompetition(String competitionCode);
 }

@@ -4,6 +4,8 @@ import com.lolluckyman.business.account.entity.Account;
 import com.lolluckyman.business.account.entity.em.AccountStatus;
 import com.lolluckyman.business.account.entity.em.WithdrawalsStatus;
 import com.lolluckyman.business.account.service.IAccountService;
+import com.lolluckyman.business.accountassets.entity.AccountAssets;
+import com.lolluckyman.business.accountassets.service.IAccountAssetsService;
 import com.lolluckyman.business.codebuilder.ICodeBuilder;
 import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.team.service.ITeamService;
@@ -43,6 +45,8 @@ public class TopUpWithdrawalService extends BaseService implements ITopUpWithdra
     private ICompetitionService competitionService;
     @Autowired
     private IAccountService accountService;
+    @Autowired
+    private IAccountAssetsService accountAssetsService;
 
     /**
      *获取充值提现信息分页列表
@@ -137,4 +141,66 @@ public class TopUpWithdrawalService extends BaseService implements ITopUpWithdra
         return info>0?topUpWithdrawal:null;
     }
 
+    /**
+     * 锁定
+     * @param code
+     * @return
+     */
+    @Override
+    public boolean locking(String code) {
+        if(LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("锁定时，code不能为空");
+        TopUpWithdrawal topUpWithdrawal=topUpWithdrawalDao.getObject(code,true);
+        if(topUpWithdrawal==null)
+            throw new IllegalArgumentException("找不到此充值提现记录");
+        if(topUpWithdrawal.getDisposalStatus()!=DisposalStatus.等待处理)
+            throw new IllegalArgumentException("只有等带处理的记录才能进行锁定操作");
+        return this.operationTopUpWithdrawalStatus(code,DisposalStatus.正在处理);
+    }
+
+    /**
+     * 审核
+     * @param code
+     * @return
+     */
+    @Override
+    public boolean examine(String code,Double money) {
+        if(LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("审核时，code不能为空");
+        TopUpWithdrawal topUpWithdrawal=topUpWithdrawalDao.getObject(code,true);
+        if(topUpWithdrawal==null)
+            throw new IllegalArgumentException("找不到此充值提现记录");
+        if(topUpWithdrawal.getDisposalStatus()!=DisposalStatus.正在处理)
+            throw new IllegalArgumentException("只有锁定的记录才能进行审核操作");
+        topUpWithdrawal.setMoney(money);
+        topUpWithdrawal.setDisposalStatus(DisposalStatus.处理完成);
+        topUpWithdrawal.setDisposalTime(new Date());
+        topUpWithdrawalDao.updateObject(topUpWithdrawal);
+        AccountAssets accountAssets  = accountAssetsService.getAccountAssetsByAccountCode(topUpWithdrawal.getApplyAccountCode());
+        if(accountAssets==null)
+            throw new IllegalArgumentException("找不到此申请人资产信息");
+        accountAssets.setQuizMoney(accountAssets.getQuizMoney()+money);
+        accountAssetsService.updateAccountAssets(accountAssets);
+        return true;
+    }
+
+    /**
+     * 撤销
+     * @param code
+     * @return
+     */
+    @Override
+    public boolean revoke(String code) {
+        if(LolUtils.isEmptyOrNull(code))
+            throw new IllegalArgumentException("撤销时，code不能为空");
+        TopUpWithdrawal topUpWithdrawal=topUpWithdrawalDao.getObject(code,true);
+        if(topUpWithdrawal==null)
+            throw new IllegalArgumentException("找不到此充值提现记录");
+        if(topUpWithdrawal.getDisposalStatus()!=DisposalStatus.等待处理)
+            throw new IllegalArgumentException("只有等带处理的记录才能进行撤销操作");
+        topUpWithdrawal.setDisposalStatus(DisposalStatus.用户撤销);
+        topUpWithdrawal.setDisposalTime(new Date());
+        int info=topUpWithdrawalDao.updateObject(topUpWithdrawal);
+        return info>0?true:false;
+    }
 }

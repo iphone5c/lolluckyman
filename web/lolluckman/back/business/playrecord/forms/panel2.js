@@ -110,11 +110,12 @@ Ext.define('LLManBack.business.playrecord.forms.panel2', {
         if (form.isValid()) {
             var info = form.getFieldValues();
             var tA=data.teamA.code;
+            var tNA=data.teamA.chinaName;
             var tB=data.teamB.code;
-            var result="{" +
-                            tA + ":" +info.oddsA+"," +
-                            tB + ":" +info.oddsB+
-                        "}";
+            var tNB=data.teamB.chinaName;
+            var result= tA + ":" + tNA + ":" +info.oddsA+"," +
+                        tB + ":" + tNB + ":" +info.oddsB;
+
             me.parent.down('#content').setValue(result);
             me.up('window').close();
         }

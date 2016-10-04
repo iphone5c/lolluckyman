@@ -1,22 +1,23 @@
 package com.lolluckyman.lolbefore.model;
 
 import com.lolluckyman.business.competition.entity.Competition;
+import com.lolluckyman.business.restrain.entity.Restrain;
 import com.lolluckyman.business.team.entity.Team;
 
 /**
  * Created by lenovo on 2016/9/29.
  */
 public class CompetitionParamsModel {
-    private Competition competition;
+    private Restrain restrain;
     private Team teamA;
     private Team teamB;
 
-    public Competition getCompetition() {
-        return competition;
+    public Restrain getRestrain() {
+        return restrain;
     }
 
-    public void setCompetition(Competition competition) {
-        this.competition = competition;
+    public void setRestrain(Restrain restrain) {
+        this.restrain = restrain;
     }
 
     public Team getTeamA() {

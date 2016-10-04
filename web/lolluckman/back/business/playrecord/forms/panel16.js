@@ -155,13 +155,15 @@ Ext.define('LLManBack.business.playrecord.forms.panel16', {
         if (form.isValid()) {
             var info = form.getFieldValues();
             var tA=data.teamA.code;
+            var tNA=data.teamA.chinaName;
             var tB=data.teamB.code;
-            var result="{" +
-                            tA + "-" + info.ds1 + ":" +info.odds1+"," +
-                            tA + "-" + info.ds2 + ":" +info.odds2+"," +
-                            tB + "-" + info.ds3 + ":" +info.odds3+"," +
-                            tB + "-" + info.ds4 + ":" +info.odds4+
-                        "}";
+            var tNB=data.teamB.chinaName;
+            var result=
+                            tA + ":" + tNA + ":" + info.ds1 + ":" +info.odds1+"," +
+                            tA + ":" + tNA + ":" + info.ds2 + ":" +info.odds2+"," +
+                            tB + ":" + tNA + ":" + info.ds3 + ":" +info.odds3+"," +
+                            tB + ":" + tNA + ":" + info.ds4 + ":" +info.odds4;
+
             me.parent.down('#content').setValue(result);
             me.up('window').close();
         }

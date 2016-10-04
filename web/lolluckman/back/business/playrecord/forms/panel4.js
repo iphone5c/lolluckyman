@@ -104,12 +104,12 @@ Ext.define('LLManBack.business.playrecord.forms.panel4', {
         var me = this;
         if (form.isValid()) {
             var info = form.getFieldValues();
-            var result="{" +
+            var result=
                             "UP:" +info.oddsUp+"," +
                             "CENTER:" +info.oddsCenter+"," +
                             "DOWN:" +info.oddsDown+"," +
-                            "QT:" + info.oddsQt +
-                        "}";
+                            "QT:" + info.oddsQt ;
+
             me.parent.down('#content').setValue(result);
             me.up('window').close();
         }

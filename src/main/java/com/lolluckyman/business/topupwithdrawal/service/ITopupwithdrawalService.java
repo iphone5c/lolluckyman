@@ -55,4 +55,24 @@ public interface ITopUpWithdrawalService {
      */
     public TopUpWithdrawal applyTopUp(Double applyMoney,String applyAccountCode ,TradeType tradeType,String tradeNumber);
 
+    /**
+     * 锁定
+     * @param code
+     * @return
+     */
+    public boolean locking(String code);
+
+    /**
+     * 审核
+     * @param code
+     * @return
+     */
+    public boolean examine(String code,Double money);
+
+    /**
+     * 撤销
+     * @param code
+     * @return
+     */
+    public boolean revoke(String code);
 }

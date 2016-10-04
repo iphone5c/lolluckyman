@@ -56,6 +56,7 @@ public class InControlFilterBefore implements Filter {
                 requestPath.startsWith("/lol/main/jsp")
                 || requestPath.startsWith("/lol/account/json/login")
                 || requestPath.startsWith("/lol/account/json/registerAccount")
+                || requestPath.startsWith("/lol/account/jsp/getKaptchaImage")
             )
         {
             //添加安全Header

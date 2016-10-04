@@ -207,14 +207,14 @@ Ext.define('LLManBack.business.playrecord.forms.panel3', {
             var info = form.getFieldValues();
             var tA=data.teamA.code;
             var tB=data.teamB.code;
-            var result="{" +
+            var result=
                             tA + "-" + tB + ";" + info.bf1 + ":" +info.odds1+"," +
                             tA + "-" + tB + ";" + info.bf2 + ":" +info.odds2+"," +
                             tA + "-" + tB + ";" + info.bf3 + ":" +info.odds3+"," +
                             tA + "-" + tB + ";" + info.bf4 + ":" +info.odds4+"," +
                             tA + "-" + tB + ";" + info.bf5 + ":" +info.odds5+"," +
-                            tA + "-" + tB + ";" + info.bf6 + ":" +info.odds6+
-                        "}";
+                            tA + "-" + tB + ";" + info.bf6 + ":" +info.odds6;
+
             me.parent.down('#content').setValue(result);
             me.up('window').close();
         }

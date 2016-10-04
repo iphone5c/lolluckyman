@@ -207,4 +207,17 @@ public class RestrainService extends BaseService implements IRestrainService {
         return (restrainList==null||restrainList.size()<=0)?false:true;
     }
 
+    /**
+     *根据比赛code 获取局数信息
+     * @param wheres    条件
+     * @return 对象列表
+     */
+    @Override
+    public List<Restrain> getRestrainListByCompetition(String competitionCode) {
+        if(LolUtils.isEmptyOrNull(competitionCode))
+            throw new IllegalArgumentException("根据比赛code 获取局数信息，赛事competitionCode不能为空或者null");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("competitionCode",competitionCode);
+        return restrainDao.queryList(queryParams,0,-1,true);
+    }
 }

@@ -30,19 +30,33 @@ Ext.define('LLManBack.business.topupwithdrawal.topupwithdrawalCZList',{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
-                        xtype: 'button', text: '新增',  scope: me,
-                        handler: function () {
-                            me.showDetailWin();
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '删除',  scope: me,
+                        xtype: 'button', text: '锁定',  scope: me,
                         handler: function () {
                             var list = me.getSelection();
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.deletePlayRecord(list[0].data.code);
+                                me.locking(list[0].data.code);
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '审核',  scope: me,
+                        handler: function () {
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.examine(list[0].data.code);
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '撤销',  scope: me,
+                        handler: function () {
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.revoke(list[0].data.code);
                         }
                     }
                 ]
@@ -121,11 +135,50 @@ Ext.define('LLManBack.business.topupwithdrawal.topupwithdrawalCZList',{
         return store;
     },
 
-    showDetailWin: function (playRecordCode) {
-        var win = Ext.appContext.openWindow("LLManBack.business.playrecord.forms.playRecordDetailForm",{playRecordCode: playRecordCode}, {width: 375, height: 255});
-        win.innerView.on('DataChanged', function (source, param) {
+    /**
+     * 锁定
+     * @param topUpwithdrawalCode
+     */
+    locking:function(topUpwithdrawalCode){
+        var result = Ext.appContext.invokeService("/back/TopUpWithdrawal","/locking", {topUpwithdrawalCode: topUpwithdrawalCode});
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
+            Ext.Msg.alert('成功', result.result);
             this.reload();
-        }, this);
-    }
+        }
+    },
+
+    /**
+     * 审核
+     * @param topUpwithdrawalCode
+     */
+    examine:function(topUpwithdrawalCode){
+        Ext.MessageBox.prompt("确认金额","输入确认金额？",function(btn,txt){
+            if(btn=='ok'){
+                var result = Ext.appContext.invokeService("/back/TopUpWithdrawal","/examine", {topUpwithdrawalCode: topUpwithdrawalCode,money:txt});
+                if(result.statusCode!=1000){
+                    Ext.Msg.alert('操作失败', result.errorMessage);
+                }else{
+                    Ext.Msg.alert('成功', result.result);
+                    this.reload();
+                }
+            }
+        });
+    },
+
+    /**
+     * 撤销
+     * @param topUpwithdrawalCode
+     */
+    revoke:function(topUpwithdrawalCode){
+        var result = Ext.appContext.invokeService("/back/TopUpWithdrawal","/revoke", {topUpwithdrawalCode: topUpwithdrawalCode});
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
+            Ext.Msg.alert('成功', result.result);
+            this.reload();
+        }
+    },
 
 })
