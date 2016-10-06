@@ -27,10 +27,10 @@
     <div class="content" style="margin-top: 20px;">
         <h3>我的订单</h3>
         <ul class="record_ul">
-            <li class="active">所有订单</li>
-            <li>未结算</li>
-            <li>已结算</li>
-            <li>已撤销</li>
+            <li class="${(status!=1&&status!=2&&status!=3)?'active':''}" onclick="window.location.href='/lol/bettingrecord/jsp/getBettingRecordList'">所有订单</li>
+            <li class="${(status==2)?'active':''}" onclick="window.location.href='/lol/bettingrecord/jsp/getBettingRecordList?status=2'">未结算</li>
+            <li class="${(status==1)?'active':''}" onclick="window.location.href='/lol/bettingrecord/jsp/getBettingRecordList?status=1'">已结算</li>
+            <li class="${(status==3)?'active':''}" onclick="window.location.href='/lol/bettingrecord/jsp/getBettingRecordList?status=3'">已撤销</li>
             <div style="clear: both"></div>
         </ul>
         <ul class="record_ul_title">
@@ -43,31 +43,29 @@
         </ul>
         <table class="record_table" border="1" cellpadding="0" cellspacing="0">
             <thead>
-            <tr>
-                <td colspan="5">9月30日(星期五)</td>
-            </tr>
             </thead>
             <tbody>
-                <c:forEach var="v" items="${bettingRecordPageList.list}">
+                <c:forEach var="v" items="${bettingRecordList}">
                     <tr>
                         <td class="first_td">
-                            <img src="/resources/before/img/d1.png" alt=""/>
-                            <span class="f1"> G2 </span>
+                            <div style="margin-bottom: -45px;"><fmt:formatDate value="${v.competition.gameStartTime }" pattern="yyyy-MM-dd" /></div>
+                            <img src=" ${v.teamA.teamphone }" alt=""/>
+                            <span class="f1"> ${v.teamA.chinaName } </span>
                             <span class="f2">VS</span>
-                            <span class="f1"> CLG </span>
-                            <img src="/resources/before/img/d2.png" alt=""/>
+                            <span class="f1"> ${v.teamB.chinaName } </span>
+                            <img src="${v.teamB.teamphone }" alt=""/>
                         </td>
-                        <td>${v.bettingRecordStatus}</td>
-                        <td>${v.playRecordCode}</td>
-                        <td>你选择了<br><span>"${v.betting}"</span></td>
+                        <td>${v.bettingRecord.bettingRecordStatus}</td>
+                        <td>${v.playRecord.play}</td>
+                        <td>你选择了<br><span>"${v.playRecordResult}"</span></td>
                         <td>
-                            <c:if test="${v.bettingRecordResult=='输'}">
+                            <c:if test="${v.bettingRecord.bettingRecordResult=='输'}">
                                 <button class="btn_record_no">竞猜失败</button>
                             </c:if>
-                            <c:if test="${v.bettingRecordResult=='赢'}">
+                            <c:if test="${v.bettingRecord.bettingRecordResult=='赢'}">
                                 <button class="btn_record_ok">竞猜成功</button>
                             </c:if>
-                            <c:if test="${v.bettingRecordResult=='等待结果'}">
+                            <c:if test="${v.bettingRecord.bettingRecordResult=='等待结果'}">
                                 等待处理结果
                             </c:if>
                         </td>
@@ -75,18 +73,6 @@
                 </c:forEach>
             </tbody>
         </table>
-        <div class="xg_F">
-            <span class="f3">上一页</span>
-            <ul class="F_ul">
-                <li class="active">1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-            </ul>
-            <span class="f3">下一页</span>
-        </div>
     </div>
 </div>
 </body>

@@ -106,7 +106,7 @@
                 <span>${account.accountAssets.victoryMoney}</span>
             </div>
             <div class="link"></div>
-            <div class="guessingRecord" onclick="window.location.href='/lol/bettingrecord/jsp/getBettingRecordPageList?pageIndex=0&pageSize=10'">我的竞猜记录</div>
+            <div class="guessingRecord" onclick="window.location.href='/lol/bettingrecord/jsp/getBettingRecordList'">我的竞猜记录</div>
             <div class="instantRecharge" onclick="window.location.href='/lol/topupwithdrawal/jsp/topUpWithdrawal'">立即充值</div>
         </div>
     </div>
@@ -179,7 +179,12 @@
         </c:forEach>
     </div>
     <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        <c:if test="${empty account}">
+            <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+        </c:if>
+        <c:if test="${not empty account}">
+            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        </c:if>
     </div>
 </c:forEach>
 </div>
@@ -212,7 +217,12 @@
         </c:forEach>
     </div>
     <div class="choiceTexts">
-        <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        <c:if test="${empty account}">
+            <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+        </c:if>
+        <c:if test="${not empty account}">
+            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        </c:if>
     </div>
 </c:forEach>
 </div>
@@ -245,7 +255,12 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${empty account}">
+                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            </c:if>
+            <c:if test="${not empty account}">
+                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            </c:if>
         </div>
     </c:forEach>
 </div>
@@ -278,7 +293,12 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${empty account}">
+                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            </c:if>
+            <c:if test="${not empty account}">
+                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            </c:if>
         </div>
     </c:forEach>
 </div>
@@ -311,7 +331,12 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${empty account}">
+                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            </c:if>
+            <c:if test="${not empty account}">
+                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            </c:if>
         </div>
     </c:forEach>
 </div>

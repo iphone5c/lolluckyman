@@ -9,7 +9,8 @@ function submitTeam(key){
         return false;
     }
 
-    jQuery('#selectTeamCompetition').load("/lol/main/jsp/mainIndexFrameTeam",{teamCode:checked},function(){
+
+    jQuery('#selectTeamCompetition').load("/lol/main/jsp/mainIndexFrameTeam",{teamCode:checked},function(data){
         $(".content-steptwo").show();
         $(".content-stepone").hide();
         document.body.scrollTop=0;
