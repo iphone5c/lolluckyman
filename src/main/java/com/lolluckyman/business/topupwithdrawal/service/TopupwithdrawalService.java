@@ -179,7 +179,7 @@ public class TopUpWithdrawalService extends BaseService implements ITopUpWithdra
         AccountAssets accountAssets  = accountAssetsService.getAccountAssetsByAccountCode(topUpWithdrawal.getApplyAccountCode());
         if(accountAssets==null)
             throw new IllegalArgumentException("找不到此申请人资产信息");
-        accountAssets.setQuizMoney(accountAssets.getQuizMoney()+money);
+        accountAssets.setQuizMoney(accountAssets.getQuizMoney()+money*10);
         accountAssetsService.updateAccountAssets(accountAssets);
         return true;
     }

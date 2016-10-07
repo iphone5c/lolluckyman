@@ -31,6 +31,7 @@ function topup(){
         alert(result.errorMessage)
         return false;
     }
-
-    window.location.href="/lol/topupwithdrawal/jsp/topUpWithdrawal";
+    alert("充值成功");
+    $('#confirmTop').val('继续充值')
+//    window.location.href="/lol/topupwithdrawal/jsp/topUpWithdrawal";
 }

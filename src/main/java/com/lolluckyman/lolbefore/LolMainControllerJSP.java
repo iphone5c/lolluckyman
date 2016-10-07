@@ -44,7 +44,7 @@ public class LolMainControllerJSP extends BaseController {
     public ModelAndView mainIndex(HttpServletRequest request){
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("/lolluckman/main/index");
-        Map<String,List<CompetitionParamsModel>> listMap1=new HashMap<>();
+        Map<String,List<CompetitionParamsModel>> listMap1=new LinkedHashMap<>();
         for (int i=0;i<=3;i++){
             String dateInfo="";
             List<Competition> competitionList=null;
@@ -80,7 +80,7 @@ public class LolMainControllerJSP extends BaseController {
                 e.printStackTrace();
             }
         }
-        Map<String,List<CompetitionParamsModel>> listMap2=new HashMap<>();
+        Map<String,List<CompetitionParamsModel>> listMap2=new LinkedHashMap<>();
         for (int i=7;i<=10;i++){
             String dateInfo="";
             List<Competition> competitionList=null;
@@ -112,7 +112,7 @@ public class LolMainControllerJSP extends BaseController {
             }
         }
 
-        Map<String,List<CompetitionParamsModel>> listMap3=new HashMap<>();
+        Map<String,List<CompetitionParamsModel>> listMap3=new LinkedHashMap<>();
         for (int i=14;i<=17;i++){
             String dateInfo="";
             List<Competition> competitionList=null;
@@ -144,7 +144,7 @@ public class LolMainControllerJSP extends BaseController {
             }
         }
 
-        Map<String,List<CompetitionParamsModel>> listMap4=new HashMap<>();
+        Map<String,List<CompetitionParamsModel>> listMap4=new LinkedHashMap<>();
         for (int i=22;i<=23;i++){
             String dateInfo="";
             List<Competition> competitionList=null;
@@ -176,7 +176,7 @@ public class LolMainControllerJSP extends BaseController {
             }
         }
 
-        Map<String,List<CompetitionParamsModel>> listMap5=new HashMap<>();
+        Map<String,List<CompetitionParamsModel>> listMap5=new LinkedHashMap<>();
         for (int i=30;i<=30;i++){
             String dateInfo="";
             List<Competition> competitionList=null;

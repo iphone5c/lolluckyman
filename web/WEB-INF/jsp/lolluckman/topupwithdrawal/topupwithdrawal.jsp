@@ -66,7 +66,7 @@
             <img src="/resources/before/img/er.png" alt="" class="img2" style="display: none"/>
             <br/>
             <br/>
-            <span style="opacity: 0">充值账号：</span><input type="button" value="确认充值" class="btn_ok" onclick="topup()"/>
+            <span style="opacity: 0">充值账号：</span><input type="button" value="确认充值" id="confirmTop" class="btn_ok" onclick="topup()"/>
         </div>
         <hr style="width: 80%;margin:0 auto;border:0;border-bottom: 1px solid #e8e8e8;" />
         <div class="right_bottom">

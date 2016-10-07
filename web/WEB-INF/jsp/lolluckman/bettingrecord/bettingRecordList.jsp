@@ -49,11 +49,11 @@
                     <tr>
                         <td class="first_td">
                             <div style="margin-bottom: -45px;"><fmt:formatDate value="${v.competition.gameStartTime }" pattern="yyyy-MM-dd" /></div>
-                            <img src=" ${v.teamA.teamphone }" alt=""/>
+                            <img src=" ${v.teamA.teamphone }" alt="" style="width: 80px;height: 80px;"/>
                             <span class="f1"> ${v.teamA.chinaName } </span>
                             <span class="f2">VS</span>
                             <span class="f1"> ${v.teamB.chinaName } </span>
-                            <img src="${v.teamB.teamphone }" alt=""/>
+                            <img src="${v.teamB.teamphone }" alt="" style="width: 80px;height: 80px;"/>
                         </td>
                         <td>${v.bettingRecord.bettingRecordStatus}</td>
                         <td>${v.playRecord.play}</td>

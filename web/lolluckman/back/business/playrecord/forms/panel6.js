@@ -118,7 +118,7 @@ Ext.define('LLManBack.business.playrecord.forms.panel6', {
             var tB=data.teamB.code;
             var tNB=data.teamB.chinaName;
             var result= tA + ":" + tNA + ":" +info.oddsA+"," +
-                        tB + ":" + tNB + ":" +info.oddsB+","＋
+                        tB + ":" + tNB + ":" +info.oddsB+"," +
                         "OTHER:" +info.oddsQt;
 
             me.parent.down('#content').setValue(result);

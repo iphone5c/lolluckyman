@@ -19,7 +19,7 @@
 <div class="choiceTeam">
     <img style="float: left;margin-top: 40px" src="${competition.teamA.teamphone}">
     <img src="/resources/before/img/vs-icon.png">
-    <img style="float: right;margin-top: 40px" src="${competition.teamA.teamphone}">
+    <img style="float: right;margin-top: 40px" src="${competition.teamB.teamphone}">
 </div>
 <div class="gameplayText">
     <img src="/resources/before/img/gameplayText.png">

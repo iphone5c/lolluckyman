@@ -162,7 +162,7 @@
     <div class="teamsOne">
         <c:forEach var="vs" items="${v.value}">
             <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
-                <img src="/resources/before/img/corps/G2.png">
+                <img src="${vs.teamA.teamphone}">
                 <span>${vs.teamA.chinaName}</span>
             </div>
         </c:forEach>
@@ -173,7 +173,7 @@
     <div class="teamsTwo">
         <c:forEach var="vs" items="${v.value}">
             <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
-                <img src="/resources/before/img/corps/G2.png">
+                <img src="${vs.teamB.teamphone}">
                 <span>${vs.teamB.chinaName}</span>
             </div>
         </c:forEach>
@@ -200,7 +200,7 @@
     <div class="teamsOne">
         <c:forEach var="vs" items="${v.value}">
             <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList2')">
-                <img src="/resources/before/img/corps/G2.png">
+                <img src="${vs.teamA.teamphone}">
                 <span>${vs.teamA.chinaName}</span>
             </div>
         </c:forEach>
@@ -211,7 +211,7 @@
     <div class="teamsTwo">
         <c:forEach var="vs" items="${v.value}">
             <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList2')">
-                <img src="/resources/before/img/corps/G2.png">
+                <img src="${vs.teamB.teamphone}">
                 <span>${vs.teamB.chinaName}</span>
             </div>
         </c:forEach>
@@ -238,7 +238,7 @@
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
                 <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList3')">
-                    <img src="/resources/before/img/corps/G2.png">
+                    <img src="${vs.teamA.teamphone}">
                     <span>${vs.teamA.chinaName}</span>
                 </div>
             </c:forEach>
@@ -249,7 +249,7 @@
         <div class="teamsTwo" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
                 <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList3')">
-                    <img src="/resources/before/img/corps/G2.png">
+                    <img src="${vs.teamB.teamphone}">
                     <span>${vs.teamB.chinaName}</span>
                 </div>
             </c:forEach>
@@ -276,7 +276,7 @@
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
                 <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList4')">
-                    <img src="/resources/before/img/corps/G2.png">
+                    <img src="${vs.teamA.teamphone}">
                     <span>${vs.teamA.chinaName}</span>
                 </div>
             </c:forEach>
@@ -287,7 +287,7 @@
         <div class="teamsTwo" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
                 <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList4')">
-                    <img src="/resources/before/img/corps/G2.png">
+                    <img src="${vs.teamB.teamphone}">
                     <span>${vs.teamB.chinaName}</span>
                 </div>
             </c:forEach>
@@ -314,7 +314,7 @@
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
                 <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList5')">
-                    <img src="/resources/before/img/corps/G2.png">
+                    <img src="${vs.teamA.teamphone}">
                     <span>${vs.teamA.chinaName}</span>
                 </div>
             </c:forEach>
@@ -325,7 +325,7 @@
         <div class="teamsTwo" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
                 <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList5')">
-                    <img src="/resources/before/img/corps/G2.png">
+                    <img src="${vs.teamB.teamphone}">
                     <span>${vs.teamB.chinaName}</span>
                 </div>
             </c:forEach>
