@@ -18,7 +18,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/resources/before/css/index.css">
     <link rel="stylesheet" type="text/css" href="/resources/before/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/resources/before/css/demo.css" />
@@ -42,12 +41,13 @@
             <div>
                 <div class="content-style-form content-style-form-1">
                     <img src="/resources/before/img/cloes.png" alt="" class="icons1" style="width: 15px;height: 15px;position: absolute;right: 10px;top: 10px;"/>
-                    <h4 style="text-align: center;padding-top: 20px;">LOL竞猜登陆</h4>
+                    <h4 style="text-align: center;padding-top: 30px;">LOL竞猜登陆</h4>
+                    <br/>
                     <form>
-                        <p><input type="button" value="账号" class="xg_title"/><input type="text" class="xg_title2" id="loginAccount" placeholder="请输入账号"/></p>
+                        <p style="margin-bottom: 20px;"><input type="button" value="账号" class="xg_title"/><input type="text" class="xg_title2" id="loginAccount" placeholder="请输入账号"/></p>
                         <p><input type="button" value="密码" class="xg_title"/><input type="password" class="xg_title2" id="password" placeholder="请输入密码"/></p>
-                        <p style="text-align: right;cursor: pointer">忘记密码？</p>
-                        <p><button class="btn_login" style="border-radius: 5px" onclick="submitLogin()">Login</button></p>
+                        <%--<p style="text-align: right;cursor: pointer">忘记密码？</p>--%>
+                        <p><button class="btn_login" style="border-radius: 5px" onclick="submitLogin()">登陆</button></p>
                     </form>
                 </div>
             </div>
@@ -59,7 +59,8 @@
             <div>
                 <div class="content-style-form content-style-form-2">
                     <img src="/resources/before/img/cloes.png" alt="" class="icons2" style="width: 15px;height: 15px;position: absolute;right: 10px;top: 10px;"/>
-                    <h4 style="text-align: center;padding-top: 20px;">LOL竞猜注册</h4>
+                    <h4 style="text-align: center;padding-top: 30px;">LOL竞猜注册</h4>
+                    <br/>
                     <form class="xg_form">
                         <p><input type="button" value="会员账号" class="xg_title"/><input type="text" class="xg_title2" id="loginName" placeholder="请输入账号"/></p>
                         <p><input type="button" value="会员密码" class="xg_title"/><input type="password" class="xg_title2" id="loginPassword" placeholder="请输入密码"/></p>

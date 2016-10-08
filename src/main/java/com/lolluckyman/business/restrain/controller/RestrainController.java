@@ -5,6 +5,9 @@ import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.restrain.controller.model.RestrainModel;
 import com.lolluckyman.business.restrain.entity.Restrain;
 import com.lolluckyman.business.restrain.service.IRestrainService;
+import com.lolluckyman.business.team.entity.Team;
+import com.lolluckyman.business.team.service.ITeamService;
+import com.lolluckyman.utils.LolConvert;
 import com.lolluckyman.utils.cmd.LolUtils;
 import com.lolluckyman.utils.core.BaseController;
 import com.lolluckyman.utils.core.NameValue;
@@ -31,6 +34,8 @@ public class RestrainController extends BaseController {
     private IRestrainService restrainService;
     @Autowired
     private ICompetitionService competitionService;
+    @Autowired
+    private ITeamService teamService;
 
     @RequestMapping(value = "/getRestrainPageList")
     public Object getRestrainPageList(int pageIndex,int pageSize){
@@ -88,7 +93,14 @@ public class RestrainController extends BaseController {
         if (restrainList==null&&restrainList.size()<=0)
             return result(nameValueList);
         for (Restrain restrain:restrainList){
-            nameValueList.add(NameValue.create(restrain.getCompetitionCode()+"(第"+restrain.getRestrainNum()+"局)",restrain.getCode()));
+            Competition competition = competitionService.getCompetitionByCode(restrain.getCompetitionCode());
+            if (competition==null)
+                return validationResult(1001,"找不到此局的比赛信息");
+            Team teamA=teamService.getTeamByCode(competition.getTeamCodeA());
+            Team teamB=teamService.getTeamByCode(competition.getTeamCodeB());
+            if (teamA==null || teamB==null)
+                return validationResult(1001,"找不到比赛对阵战队信息");
+            nameValueList.add(NameValue.create(LolConvert.dateToString(competition.getGameStartTime(),LolConvert.DATEFORMAT_DATA_M_D)+"——"+teamA.getChinaName()+"——"+teamB.getChinaName()+"(第"+restrain.getRestrainNum()+"局)",restrain.getCode()));
         }
         return result(nameValueList);
     }

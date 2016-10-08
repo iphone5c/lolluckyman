@@ -12,8 +12,8 @@ function topup(){
         errorMessage="充值金额不能为空";
     }else if(isEmpty(tradeType)){
         errorMessage="充值方式不能为空";
-    }else if(applyMoney<100){
-        errorMessage="充值金额不能小于100";
+    }else if(applyMoney<0){
+        errorMessage="充值金额不能小于零";
     }
     if(!isEmpty(errorMessage)){
         alert(errorMessage);
