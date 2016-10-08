@@ -181,11 +181,16 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <c:if test="${empty account}">
-                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            <c:if test="${fn:substringBefore(v.key, '_')==1}">
+                <img src="/resources/before/img/over.png">
             </c:if>
-            <c:if test="${not empty account}">
-                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${fn:substringBefore(v.key, '_')==2}">
+                <c:if test="${empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+                </c:if>
+                <c:if test="${not empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+                </c:if>
             </c:if>
         </div>
     </c:forEach>
@@ -263,11 +268,16 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <c:if test="${empty account}">
-                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            <c:if test="${fn:substringBefore(v.key, '_')==1}">
+                <img src="/resources/before/img/over.png">
             </c:if>
-            <c:if test="${not empty account}">
-                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${fn:substringBefore(v.key, '_')==2}">
+                <c:if test="${empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+                </c:if>
+                <c:if test="${not empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+                </c:if>
             </c:if>
         </div>
     </c:forEach>
@@ -301,11 +311,16 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <c:if test="${empty account}">
-                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            <c:if test="${fn:substringBefore(v.key, '_')==1}">
+                <img src="/resources/before/img/over.png">
             </c:if>
-            <c:if test="${not empty account}">
-                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${fn:substringBefore(v.key, '_')==2}">
+                <c:if test="${empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+                </c:if>
+                <c:if test="${not empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+                </c:if>
             </c:if>
         </div>
     </c:forEach>
@@ -339,11 +354,16 @@
             </c:forEach>
         </div>
         <div class="choiceTexts">
-            <c:if test="${empty account}">
-                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            <c:if test="${fn:substringBefore(v.key, '_')==1}">
+                <img src="/resources/before/img/over.png">
             </c:if>
-            <c:if test="${not empty account}">
-                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            <c:if test="${fn:substringBefore(v.key, '_')==2}">
+                <c:if test="${empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+                </c:if>
+                <c:if test="${not empty account}">
+                    <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+                </c:if>
             </c:if>
         </div>
     </c:forEach>
