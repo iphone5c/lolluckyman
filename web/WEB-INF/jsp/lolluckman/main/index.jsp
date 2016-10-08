@@ -156,38 +156,38 @@
     <img src="/resources/before/img/firstround.png">
 </div>
     <c:forEach var="v" items="${competitionList1}">
-    <input type="hidden" id="${v.key}" name="competitionList1">
-    <div class="timeText">
-        <span>${v.key}</span>
-    </div>
-    <div class="teamsOne">
-        <c:forEach var="vs" items="${v.value}">
-            <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
-                <img src="${vs.teamA.teamphone}">
-                <span>${vs.teamA.chinaName}</span>
-            </div>
-        </c:forEach>
-    </div>
-    <div class="vsText">
-        <img src="/resources/before/img/vstext.png">
-    </div>
-    <div class="teamsTwo">
-        <c:forEach var="vs" items="${v.value}">
-            <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
-                <img src="${vs.teamB.teamphone}">
-                <span>${vs.teamB.chinaName}</span>
-            </div>
-        </c:forEach>
-    </div>
-    <div class="choiceTexts">
-        <c:if test="${empty account}">
-            <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
-        </c:if>
-        <c:if test="${not empty account}">
-            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
-        </c:if>
-    </div>
-</c:forEach>
+        <input type="hidden" id="${v.key}" name="competitionList1">
+        <div class="timeText">
+            <span>${v.key}</span>
+        </div>
+        <div class="teamsOne">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
+                    <img src="${vs.teamA.teamphone}">
+                    <span>${vs.teamA.chinaName}</span>
+                </div>
+            </c:forEach>
+        </div>
+        <div class="vsText">
+            <img src="/resources/before/img/vstext.png">
+        </div>
+        <div class="teamsTwo">
+            <c:forEach var="vs" items="${v.value}">
+                <div onclick="seletedTeam('${v.key}','${vs.restrain.code}','competitionList1')">
+                    <img src="${vs.teamB.teamphone}">
+                    <span>${vs.teamB.chinaName}</span>
+                </div>
+            </c:forEach>
+        </div>
+        <div class="choiceTexts">
+            <c:if test="${empty account}">
+                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            </c:if>
+            <c:if test="${not empty account}">
+                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            </c:if>
+        </div>
+    </c:forEach>
 </div>
 <div  class="timeXz">
 <div class="firstroundText">
