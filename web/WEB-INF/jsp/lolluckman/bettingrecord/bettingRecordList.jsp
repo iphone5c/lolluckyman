@@ -19,10 +19,48 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="/resources/before/css/record.css"/>
+    <link rel="stylesheet" href="/resources/before/css/index.css"/>
     <script type="text/javascript" src="/resources/before/lol/common.js"></script>
 </head>
 <body>
+
 <div class="allcontent">
+    <c:if test="${not empty account}">
+        <div class="navboxs">
+            <div class="navbox">
+                <div class="portrait">
+                    <img src="/resources/before/img/portrait.png">
+                    <span>${account.loginAccount}</span>
+                </div>
+                <div class="link"></div>
+                    <%--<div class="account">--%>
+                    <%--<div class="integral">--%>
+                    <%--<h4>我的积分:</h4>--%>
+                    <%--<span class="integralText">1520</span>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                <div class="guessing">
+                    <img src="/resources/before/img/guessing-icon.png">
+                    竞猜币
+                    <span>${account.accountAssets.quizMoney}</span>
+                </div>
+                <div class="pension">
+                    <img src="/resources/before/img/Pension-icon.png">
+                    抚恤金
+                    <span>${account.accountAssets.pensionMoney}</span>
+                </div>
+                <div class="win">
+                    <img src="/resources/before/img/win-icon.png">
+                    胜利币
+                    <span>${account.accountAssets.victoryMoney}</span>
+                </div>
+                <div class="link"></div>
+                <div class="guessingRecord" onclick="window.location.href='/lol/main/jsp/mainIndex'">返回首页</div>
+                <div class="instantRecharge" onclick="window.location.href='/lol/topupwithdrawal/jsp/topUpWithdrawal'">立即充值</div>
+            </div>
+        </div>
+    </c:if>
+    <div style="clear: both"></div>
     <span>您现在的位置是 ></span><span style="color:#d29031;">我的竞猜记录</span>
     <div class="content" style="margin-top: 20px;">
         <h3>我的订单</h3>
