@@ -1,6 +1,5 @@
 package com.lolluckyman.lolbefore;
 
-import com.lolluckyman.business.competition.controller.model.CompetitionModel;
 import com.lolluckyman.business.competition.entity.Competition;
 import com.lolluckyman.business.competition.service.ICompetitionService;
 import com.lolluckyman.business.restrain.entity.Restrain;
@@ -75,7 +74,9 @@ public class LolMainControllerJSP extends BaseController {
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
-                listMap1.put(LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D),competitionParamsModelList);
+                Date current = LolConvert.toDate(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_LONG)+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+                String key = (date.before(current)?"1":"2")+"_"+LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D);
+                listMap1.put(key,competitionParamsModelList);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -106,7 +107,9 @@ public class LolMainControllerJSP extends BaseController {
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
-                listMap2.put(LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D),competitionParamsModelList);
+                Date current = LolConvert.toDate(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_LONG)+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+                String key = (date.before(current)?"1":"2")+"_"+LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D);
+                listMap2.put(key,competitionParamsModelList);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -138,7 +141,9 @@ public class LolMainControllerJSP extends BaseController {
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
-                listMap3.put(LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D),competitionParamsModelList);
+                Date current = LolConvert.toDate(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_LONG)+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+                String key = (date.before(current)?"1":"2")+"_"+LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D);
+                listMap3.put(key,competitionParamsModelList);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -170,7 +175,9 @@ public class LolMainControllerJSP extends BaseController {
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
-                listMap4.put(LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D),competitionParamsModelList);
+                Date current = LolConvert.toDate(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_LONG)+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+                String key = (date.before(current)?"1":"2")+"_"+LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D);
+                listMap4.put(key,competitionParamsModelList);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -202,7 +209,9 @@ public class LolMainControllerJSP extends BaseController {
             }
             try {
                 Date date = LolConvert.toDate(dateInfo+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
-                listMap5.put(LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D),competitionParamsModelList);
+                Date current = LolConvert.toDate(LolConvert.dateToString(new Date(),LolConvert.DATEFORMAT_DATA_EN_LONG)+" 00:00:00",LolConvert.DATEFORMAT_DATETIME_EN_LONG);
+                String key = (date.before(current)?"1":"2")+"_"+LolConvert.dateToString(date,LolConvert.DATEFORMAT_DATA_M_D);
+                listMap5.put(key,competitionParamsModelList);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

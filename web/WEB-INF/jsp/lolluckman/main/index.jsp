@@ -17,6 +17,7 @@
 <html lang="zh" class="no-js">
 <head>
     <meta charset="UTF-8" />
+    <title>S6总结赛竞猜</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/resources/before/css/index.css">
     <link rel="stylesheet" type="text/css" href="/resources/before/css/normalize.css" />
@@ -158,7 +159,7 @@
     <c:forEach var="v" items="${competitionList1}">
         <input type="hidden" id="${v.key}" name="competitionList1">
         <div class="timeText">
-            <span>${v.key}</span>
+            <span>${fn:substringAfter(v.key, '_')}</span>
         </div>
         <div class="teamsOne">
             <c:forEach var="vs" items="${v.value}">
@@ -196,7 +197,7 @@
 <c:forEach var="v" items="${competitionList2}">
     <input type="hidden" id="${v.key}" name="competitionList2">
     <div class="timeText">
-        <span>${v.key}</span>
+        <span>${fn:substringAfter(v.key, '_')}</span>
     </div>
     <div class="teamsOne">
         <c:forEach var="vs" items="${v.value}">
@@ -218,12 +219,18 @@
         </c:forEach>
     </div>
     <div class="choiceTexts">
-        <c:if test="${empty account}">
-            <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+        <c:if test="${fn:substringBefore(v.key, '_')==1}">
+            <img src="/resources/before/img/over.png">
         </c:if>
-        <c:if test="${not empty account}">
-            <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+        <c:if test="${fn:substringBefore(v.key, '_')==2}">
+            <c:if test="${empty account}">
+                <img src="/resources/before/img/choice.png" onclick="alert('请先登录，再来选择。')">
+            </c:if>
+            <c:if test="${not empty account}">
+                <img src="/resources/before/img/choice.png" onclick="submitTeam('${v.key}')">
+            </c:if>
         </c:if>
+
     </div>
 </c:forEach>
 </div>
@@ -234,7 +241,7 @@
     <c:forEach var="v" items="${competitionList3}">
         <input type="hidden" id="${v.key}" name="competitionList3">
         <div class="timeText">
-            <span>${v.key}</span>
+            <span>${fn:substringAfter(v.key, '_')}</span>
         </div>
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
@@ -272,7 +279,7 @@
     <c:forEach var="v" items="${competitionList4}">
         <input type="hidden" id="${v.key}" name="competitionList4">
         <div class="timeText">
-            <span>${v.key}</span>
+            <span>${fn:substringAfter(v.key, '_')}</span>
         </div>
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
@@ -310,7 +317,7 @@
     <c:forEach var="v" items="${competitionList5}">
         <input type="hidden" id="${v.key}" name="competitionList5">
         <div class="timeText">
-            <span>${v.key}</span>
+            <span>${fn:substringAfter(v.key, '_')}</span>
         </div>
         <div class="teamsOne" style="margin-left: 460px">
             <c:forEach var="vs" items="${v.value}">
@@ -353,9 +360,9 @@
         <h4>您的投注: <span id="infoConfirm"></span></h4>
         <div class="bettingIntegral">
             <span>投注竞猜币</span>
-            <div><input id="quizMoney" type="text" style="width: 246px;height: 38px;margin-left: 3px;text-align: center; placeholder="请输入数量"/></div>
+            <div><input id="quizMoney" type="text" style="width: 246px;height: 38px;margin-left: 3px;text-align: center;" placeholder="请输入数量" onkeyup="expectNum()"/></div>
         </div>
-        <div class="bettingEstimate">预计可赢：<span>0</span></div>
+        <div class="bettingEstimate">预计可赢：<span id="expectMoney">0</span></div>
         <div class="bettingText">当前竞猜币：<span>${account.accountAssets.quizMoney}</span></div>
         <div class="bettingQr" onclick="submitTz()">确认投注</div>
     </div>

@@ -212,7 +212,7 @@
     position: relative;
     width: 1200px;
     margin: 0 auto;
-    height: 300px;
+    height: 350px;
     background-color: #1A1408;
 }
 
@@ -229,12 +229,15 @@
 .gameplayOne>ul li{
     float: left;
     list-style: none;
-    width: 150px;
+    width: 133px;
     height: 50px;
     background-color: #2D230E;
     color: white;
     text-align: center;
     line-height: 50px;
+}
+.gameplayOne>ul li:nth-of-type(9){
+    width: 136px;
 }
 .gameplayTwo>ul li{
     float: left;
@@ -301,7 +304,7 @@
 .gameThree div{
     display: inline-block;
     width: 150px;
-    margin-left: 50px;
+    margin-left: 80px;
     height: 30px;
     line-height: 30px;
     text-align: center;

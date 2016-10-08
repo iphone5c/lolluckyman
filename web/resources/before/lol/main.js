@@ -98,8 +98,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜全球总决赛获胜的战队</span>' +
                 '<div class="gameTwo">' +
-                    '<div onclick="selectedPlay(\'总局输赢\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'总局输赢\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'总局输赢\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'总局输赢\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                 '</div>' +
             '</div>';
     }else if(result.play=='单局输赢'){
@@ -109,8 +109,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜获得当局胜利的战队</span>' +
                 '<div class="gameTwo">' +
-                    '<div onclick="selectedPlay(\'单局输赢\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'单局输赢\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'单局输赢\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'单局输赢\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                 '</div>' +
             '</div>';
     }else if(result.play=='比分'){
@@ -130,10 +130,11 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜对战局数比分</span>' +
                 '<div class="gameThree">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'比分\',\''+t1_bf[1]+'-'+t1[1]+'\',\''+result.code+'||'+button[0]+'\')">'+t1_bf[1]+'('+t1[1]+')'+'</div>' +
+                    '<div style="margin-left: 295px" onclick="selectedPlay(\'比分\',\''+t1_bf[1]+'-'+t1[1]+'\',\''+result.code+'||'+button[0]+'\')">'+t1_bf[1]+'('+t1[1]+')'+'</div>' +
                     '<div onclick="selectedPlay(\'比分\',\''+t2_bf[1]+'-'+t2[1]+'\',\''+result.code+'||'+button[1]+'\')">'+t2_bf[1]+'('+t2[1]+')'+'</div>' +
                     '<div onclick="selectedPlay(\'比分\',\''+t3_bf[1]+'-'+t3[1]+'\',\''+result.code+'||'+button[2]+'\')">'+t3_bf[1]+'('+t3[1]+')'+'</div>' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'比分\',\''+t4_bf[1]+'-'+t4[1]+'\',\''+result.code+'||'+button[3]+'\')">'+t4_bf[1]+'('+t4[1]+')'+'</div>' +
+
+                    '<div style="margin-left: 295px" onclick="selectedPlay(\'比分\',\''+t4_bf[1]+'-'+t4[1]+'\',\''+result.code+'||'+button[3]+'\')">'+t4_bf[1]+'('+t4[1]+')'+'</div>' +
                     '<div onclick="selectedPlay(\'比分\',\''+t5_bf[1]+'-'+t5[1]+'\',\''+result.code+'||'+button[4]+'\')">'+t5_bf[1]+'('+t5[1]+')'+'</div>' +
                     '<div onclick="selectedPlay(\'比分\',\''+t6_bf[1]+'-'+t6[1]+'\',\''+result.code+'||'+button[5]+'\')">'+t6_bf[1]+'('+t6[1]+')'+'</div>' +
                 '</div>' +
@@ -175,8 +176,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜"一小龙"所属战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'一小龙\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'一小龙\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'一小龙\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'一小龙\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'一小龙\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -203,8 +204,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜对战结束时战队所获小龙数量</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'小龙数量\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'小龙数量\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'小龙数量\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'小龙数量\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'小龙数量\',\'投注相同-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">相同('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -216,8 +217,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜对战中所获的第一条大龙所属战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'一大龙\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'一大龙\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'一大龙\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'一大龙\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'一大龙\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -229,8 +230,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜对战中攻占第一条峡谷先锋的战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'一峡谷先锋\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'一峡谷先锋\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'一峡谷先锋\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'一峡谷先锋\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'一峡谷先锋\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -242,8 +243,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜单局对战中获得四杀的的战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'单局四杀\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'单局四杀\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'单局四杀\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'单局四杀\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'单局四杀\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -255,8 +256,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜单局对战中获得五杀的的战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'单局五杀\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'单局五杀杀\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'单局五杀\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'单局五杀杀\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'单局五杀\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -268,8 +269,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜单局对战中率先获得10个人头的战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'率先十杀\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'率先十杀\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'率先十杀\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'率先十杀\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'率先十杀\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -281,8 +282,8 @@ function playHtml(result){
         html+='<div class="concretePlay" id="'+result.code+'">' +
                 '<span class="gameTitle">竞猜单局对战中“单局超神”所属战队</span>' +
                 '<div class="gameFive">' +
-                    '<div style="margin-left: 215px" onclick="selectedPlay(\'单局超神\',\'投注'+tA[1]+'－'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
-                    '<div onclick="selectedPlay(\'单局超神\',\'投注'+tB[1]+'－'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
+                    '<div style="margin-left: 215px" onclick="selectedPlay(\'单局超神\',\'投注'+tA[1]+'-'+tA[2]+'\',\''+result.code+'||'+button[0]+'\')">投注'+tA[1]+'('+tA[2]+')</div>' +
+                    '<div onclick="selectedPlay(\'单局超神\',\'投注'+tB[1]+'-'+tB[2]+'\',\''+result.code+'||'+button[1]+'\')">投注'+tB[1]+'('+tB[2]+')</div>' +
                     '<div onclick="selectedPlay(\'单局超神\',\'投注均无-'+OTHER[1]+'\',\''+result.code+'||'+button[2]+'\')">均无('+OTHER[1]+')</div>' +
                 '</div>' +
             '</div>';
@@ -352,7 +353,7 @@ function submitTz(){
     var param = {
         playRecordCode:content[0],
         quizMoney:quizMoney,
-        betting:content[1],
+        betting:content[1]
     }
     var result = invokeService('/lol/bettingrecord/json/applyTopUp',param);
     if(result.statusCode!=1000){
@@ -360,4 +361,15 @@ function submitTz(){
         return false;
     }
     window.location.href='/lol/main/jsp/mainIndex';
+}
+
+function expectNum(){
+    var content = $('#infoConfirm').html().split('-');
+    var quizMoney = $('#quizMoney').val();
+    var reg = new RegExp("^[0-9]+(.[0-9]{1,3})?$");
+    if(!reg.test(quizMoney)){
+        $('#quizMoney').val();
+        return false;
+    }
+    $('#expectMoney').html(content[content.length-1]*quizMoney);
 }
