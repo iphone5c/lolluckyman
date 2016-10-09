@@ -19,6 +19,8 @@
     <meta charset="UTF-8" />
     <title>S6总结赛竞猜</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu-site-verification" content="NFVMI3XkUB" />
+    <link rel="shortcut icon" href="/resources/before/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/resources/before/css/index.css">
     <link rel="stylesheet" type="text/css" href="/resources/before/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/resources/before/css/demo.css" />

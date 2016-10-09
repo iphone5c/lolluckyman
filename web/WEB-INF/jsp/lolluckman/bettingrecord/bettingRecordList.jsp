@@ -17,6 +17,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.2, minimum-scale=.3, maximum-scale=.3, user-scalable=no" />B
     <title></title>
     <link rel="stylesheet" href="/resources/before/css/record.css"/>
     <link rel="stylesheet" href="/resources/before/css/index.css"/>

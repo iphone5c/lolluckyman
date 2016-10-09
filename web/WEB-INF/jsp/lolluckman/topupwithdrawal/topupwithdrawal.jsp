@@ -18,13 +18,13 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=.2, minimum-scale=.3, maximum-scale=.3, user-scalable=no" />
     <link rel="stylesheet" href="/resources/before/css/Recharge.css"/>
     <link rel="stylesheet" href="/resources/before/css/index.css"/>
     <script type="text/javascript" src="/resources/before/lol/common.js"></script>
     <script type="text/javascript" src="/resources/before/lol/topupwithdrawal.js"></script>
-
 </head>
-<body>
+<body style="width: 100%">
 <div class="allcontent">
     <c:if test="${not empty account}">
         <div class="navboxs">
